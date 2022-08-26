@@ -37,11 +37,11 @@ void menu(void){
     printf("|-----------------------------------------------------------------|\n");
     printf("|   ----- Sistema de Agendamento para Clínicas Médicas -----      |\n");
     printf("|                                                                 |\n");              
-    printf("| 1-Módulo clientes                                               |\n");
-    printf("| 2-Módulo funcionários                                           |\n");
+    printf("| 1-Módulo Serviços                                               |\n");
+    printf("| 2-Módulo Profissionais                                          |\n");
     printf("| 3-Módulo pagamentos                                             |\n");
     printf("| 4-Módulo horários                                               |\n");
-    printf("| 5-Módulo avaliação                                              |\n");
+    printf("| 5-Módulo Meus agendamentos                                      |\n");
     printf("| 6-Acesso online                                                 |\n");
     printf("| 0-Sair                                                          |\n");
     printf("|_________________________________________________________________|\n");
