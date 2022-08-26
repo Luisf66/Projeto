@@ -11,12 +11,12 @@ ___________________________________________________________________
 
 #include <stdio.h>
 
-_Assinatura das funções
+  Assinatura das funções
 void menu(void);
 void info(void);
 void equipe(void);
 
-_Programa principal
+  Programa principal
 int main(void) {
     menu();
     info();
@@ -24,7 +24,7 @@ int main(void) {
     return 0;
 }
 
-_Funções
+  Funções
 void menu(void){
     printf("\n");
     printf("___________________________________________________________________\n");
