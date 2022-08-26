@@ -1,22 +1,22 @@
-___________________________________________________________________
-|       UFRN- Universidade Federal do Rio Grande do Norte         |
-|             Centro de Ensino Superior do Seridó                 |
-|         DCT- Departamento de computação e tecnologia            |
-|              Disciplina DCT1106 -- Programação                  |
-|   Projeto -- Um Sistema de Agendamento para Clínicas Médicas    |
-|          Developed by @Luisf66 - since Ago , 2022               |
-|-----------------------------------------------------------------|
-|                             Semana 1                            |
-|_________________________________________________________________|
+//___________________________________________________________________
+//|       UFRN- Universidade Federal do Rio Grande do Norte         |
+//|             Centro de Ensino Superior do Seridó                 |
+//|         DCT- Departamento de computação e tecnologia            |
+//|              Disciplina DCT1106 -- Programação                  |
+//|   Projeto -- Um Sistema de Agendamento para Clínicas Médicas    |
+//|          Developed by @Luisf66 - since Ago , 2022               |
+//|-----------------------------------------------------------------|
+//|                             Semana 1                            |
+//|_________________________________________________________________|
 
 #include <stdio.h>
 
-  Assinatura das funções
+//  Assinatura das funções
 void menu(void);
 void info(void);
 void equipe(void);
 
-  Programa principal
+//  Programa principal
 int main(void) {
     menu();
     info();
@@ -24,7 +24,7 @@ int main(void) {
     return 0;
 }
 
-  Funções
+//  Funções
 void menu(void){
     printf("\n");
     printf("___________________________________________________________________\n");
@@ -85,4 +85,4 @@ void info(void){
      printf("|_________________________________________________________________|\n");
      printf("\n");
 }
-     
+  
