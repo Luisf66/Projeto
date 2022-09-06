@@ -183,7 +183,7 @@ void pro(void){
 
 // Horário
 
-void met_pag(void){
+void horario(void){
      printf("\n");
      printf("___________________________________________________________________\n");
      printf("|       UFRN- Universidade Federal do Rio Grande do Norte         |\n");
