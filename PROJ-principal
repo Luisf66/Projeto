@@ -10,6 +10,7 @@
 //|_________________________________________________________________|
 
 #include <stdio.h>
+#include <stdlib.h>
 //#include <time.h>
 
 //  Assinatura das funções
@@ -42,6 +43,8 @@ int bissexto(int);
 
 //  Funções
 void menu(void){
+    char op;
+    system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
     printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
@@ -59,11 +62,16 @@ void menu(void){
     printf("| 5-Meus agendamentos                                                     |\n");
     printf("| 6-Acesso online                                                         |\n");
     printf("| 0-Sair                                                                  |\n");
+    printf("| Escolha uma das opções ");                                                 
+    scanf("%c", &op);
+    getchar();
+    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
     printf("\n");
 }
 
 void info(void){
+    system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
     printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
@@ -78,9 +86,12 @@ void info(void){
     printf("|                    DIGITAR INFORMAÇÕES DO PROGRAMA                      |\n"); 
     printf("|_________________________________________________________________________|\n");
     printf("\n");
+    printf("\t\t\t>>> Aperte ENTER para continuar\n");
+    getchar();
 }
  
  void equipe(void){
+    system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
     printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
@@ -99,11 +110,16 @@ void info(void){
     printf("|                 Git: https://github.com/Luisf66/Projeto                 |\n"); 
     printf("|_________________________________________________________________________|\n");
     printf("\n");
+    printf("\t\t\t>>> Aperte ENTER para continuar\n");
+    getchar();
+    
 }
 
 // Página seguinte
 
  void paciente(void){
+    char op;
+    system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
     printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
@@ -119,11 +135,19 @@ void info(void){
     printf("| 2-Editar                                                                |\n");
     printf("| 3-Deletar                                                               |\n");
     printf("| 0-voltar                                                                |\n");
+    printf("| Escolha uma das opções ");                                                 
+    scanf("%c", &op);
+    getchar();
+    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
     printf("\n");
+    printf("\t\t\t>>> Aperte ENTER para continuar\n");
+    getchar();
 }
 
  void profissionais(void){
+    char op;
+    system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
     printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
@@ -139,11 +163,18 @@ void info(void){
     printf("| 2-Editar                                                                |\n");
     printf("| 3-Deletar                                                               |\n");
     printf("| 0-voltar                                                                |\n");
+    printf("| Escolha uma das opções ");                                                 
+    scanf("%c", &op);
+    getchar();
+    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
     printf("\n");
+    printf("\t\t\t>>> Aperte ENTER para continuar\n");
+    getchar();
 }
 
 void pro(void){
+    system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
     printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
@@ -154,7 +185,7 @@ void pro(void){
     printf("|              Developed by @Luisf66 - since Mar, 2022                    |\n");
     printf("|-------------------------------------------------------------------------|\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                                Profissionais                            |\n"); 
+    printf("|                              Profissionais                              |\n"); 
     printf("|                                                                         |\n");             
     printf("| Endocrinologia || Dr. AAAAAAA                                           |\n");
     printf("| Clínica geral  || Dr. BBBBBBB                                           |\n");
@@ -162,12 +193,15 @@ void pro(void){
     printf("| Cardiologia    || Dr. DDDDDDD                                           |\n");
     printf("| Neurologia     || Dr. EEEEEEE                                           |\n");
     printf("| Ortopedia      || Dr. FFFFFFF                                           |\n");
-    printf("| 0-Sair         ||                                                       |\n");
     printf("|_________________________________________________________________________|\n");
     printf("\n");
+    printf("\t\t\t>>> Aperte ENTER para continuar\n");
+    getchar();
 }
 
  void pagamento(void){
+    char op;
+    system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
     printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
@@ -185,13 +219,19 @@ void pro(void){
     printf("| 4-Boleto                                                                |\n");
     printf("| 5-Convenio                                                              |\n");
     printf("| 0-Sair                                                                  |\n");
+    printf("| Escolha uma das opções ");                                                 
+    scanf("%c", &op);
+    getchar();
     printf("|_________________________________________________________________________|\n");
     printf("\n");
+    printf("\t\t\t>>> Aperte ENTER para continuar\n");
+    getchar();
  }
 
 // Horário
 
 void horario(void){
+    system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
     printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
@@ -218,4 +258,6 @@ void horario(void){
     printf("|  17  |          |          |          |          |           |          |\n");
     printf("|______|__________|__________|__________|__________|___________|__________|\n");
     printf("\n");
+    printf("\t\t\t>>> Aperte ENTER para continuar\n");
+    getchar();
 }
