@@ -6,7 +6,7 @@
 //|   Projeto -- Um Sistema de Agendamento para Clínicas Médicas    |
 //|          Developed by @Luisf66 - since Ago , 2022               |
 //|-----------------------------------------------------------------|
-//|                             Semana 2                            |
+//|                             Semana 1                            |
 //|_________________________________________________________________|
 
 #include <stdio.h>
@@ -22,6 +22,12 @@ void profissionais(void); //v
 void pro(void); //v
 void pagamento(void); //v
 void horario(void); //v 
+void cadastrarpaciente(void); //
+void cadastrarprofissional(void); //
+void editarpaciente(void); //
+void editarprofissional(void); //
+void deletarpaciente(void); //
+void deletarprofissional(void); //
 
 
 
@@ -35,6 +41,12 @@ int main(void) {
     pro();
     pagamento();
     horario();
+    cadastrarpaciente(); 
+    cadastrarprofissional(); 
+    editarpaciente(); 
+    editarprofissional(); 
+    deletarpaciente(); 
+    deletarprofissional(); 
     return 0;
 }
 
@@ -257,6 +269,152 @@ void horario(void){
     printf("|  16  |          |          |          |          |           |          |\n");
     printf("|  17  |          |          |          |          |           |          |\n");
     printf("|______|__________|__________|__________|__________|___________|__________|\n");
+    printf("\n");
+    printf("\t\t\t>>> Aperte ENTER para continuar\n");
+    getchar();
+}
+
+// CADASTRO
+ void cadastrarpaciente(void){
+    system("clear||cls");
+    printf("\n");
+    printf("__________________________________________________________________________\n");
+    printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
+    printf("|                 Centro de Ensino Superior do Seridó                     |\n");
+    printf("|             DCT- Departamento de computação e tecnologia                |\n");
+    printf("|                  Disciplina DCT1106 -- Programação                      |\n");
+    printf("|        Projeto -- Um Sistema de Agendamento para Clínicas Médicas       |\n");
+    printf("|              Developed by @Luisf66 - since Mar, 2022                    |\n");
+    printf("|-------------------------------------------------------------------------|\n");
+    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+    printf("|                           Cadastrar paciente                            |\n");              
+    printf("| Nome:                                                                   |\n");
+    printf("| CPF:                                                                    |\n");
+    printf("| Celular:                                                                |\n");
+    printf("| E-mail:                                                                 |\n");
+    printf("| Nascimento:                                                             |\n");
+    printf("| Tipo sanguíneo:                                                         |\n");
+    printf("| 0-voltar                                                                |\n");                                               
+    printf("|                                                                         |\n");
+    printf("|_________________________________________________________________________|\n");
+    printf("\n");
+    printf("\t\t\t>>> Aperte ENTER para continuar\n");
+    getchar();
+}
+
+ void cadastrarprofissional(void){
+    system("clear||cls");
+    printf("\n");
+    printf("__________________________________________________________________________\n");
+    printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
+    printf("|                 Centro de Ensino Superior do Seridó                     |\n");
+    printf("|             DCT- Departamento de computação e tecnologia                |\n");
+    printf("|                  Disciplina DCT1106 -- Programação                      |\n");
+    printf("|        Projeto -- Um Sistema de Agendamento para Clínicas Médicas       |\n");
+    printf("|              Developed by @Luisf66 - since Mar, 2022                    |\n");
+    printf("|-------------------------------------------------------------------------|\n");
+    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+    printf("|                          Cadastrar profissional                         |\n");              
+    printf("| Nome:                                                                   |\n");
+    printf("| CPF:                                                                    |\n");
+    printf("| Celular:                                                                |\n");
+    printf("| E-mail:                                                                 |\n");
+    printf("| Nascimento:                                                             |\n");
+    printf("| 0-voltar                                                                |\n");                                               
+    printf("|                                                                         |\n");
+    printf("|_________________________________________________________________________|\n");
+    printf("\n");
+    printf("\t\t\t>>> Aperte ENTER para continuar\n");
+    getchar();
+}
+
+// EDITAR
+
+ void editarpaciente(void){
+    system("clear||cls");
+    printf("\n");
+    printf("__________________________________________________________________________\n");
+    printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
+    printf("|                 Centro de Ensino Superior do Seridó                     |\n");
+    printf("|             DCT- Departamento de computação e tecnologia                |\n");
+    printf("|                  Disciplina DCT1106 -- Programação                      |\n");
+    printf("|        Projeto -- Um Sistema de Agendamento para Clínicas Médicas       |\n");
+    printf("|              Developed by @Luisf66 - since Mar, 2022                    |\n");
+    printf("|-------------------------------------------------------------------------|\n");
+    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+    printf("|                             Editar paciente                             |\n");              
+    printf("| CPF:                                                                    |\n");
+    printf("|                                                                         |\n");
+    printf("| 0-voltar                                                                |\n");                                               
+    printf("|_________________________________________________________________________|\n");
+    printf("\n");
+    printf("\t\t\t>>> Aperte ENTER para continuar\n");
+    getchar();
+}
+
+ void editarprofissional(void){
+    system("clear||cls");
+    printf("\n");
+    printf("__________________________________________________________________________\n");
+    printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
+    printf("|                 Centro de Ensino Superior do Seridó                     |\n");
+    printf("|             DCT- Departamento de computação e tecnologia                |\n");
+    printf("|                  Disciplina DCT1106 -- Programação                      |\n");
+    printf("|        Projeto -- Um Sistema de Agendamento para Clínicas Médicas       |\n");
+    printf("|              Developed by @Luisf66 - since Mar, 2022                    |\n");
+    printf("|-------------------------------------------------------------------------|\n");
+    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+    printf("|                            Editar profissional                          |\n");              
+    printf("| CPF:                                                                    |\n");
+    printf("|                                                                         |\n");
+    printf("| 0-voltar                                                                |\n");                                               
+    printf("|_________________________________________________________________________|\n");
+    printf("\n");
+    printf("\t\t\t>>> Aperte ENTER para continuar\n");
+    getchar();
+}
+
+// DELETAR
+
+ void deletarpaciente(void){
+    system("clear||cls");
+    printf("\n");
+    printf("__________________________________________________________________________\n");
+    printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
+    printf("|                 Centro de Ensino Superior do Seridó                     |\n");
+    printf("|             DCT- Departamento de computação e tecnologia                |\n");
+    printf("|                  Disciplina DCT1106 -- Programação                      |\n");
+    printf("|        Projeto -- Um Sistema de Agendamento para Clínicas Médicas       |\n");
+    printf("|              Developed by @Luisf66 - since Mar, 2022                    |\n");
+    printf("|-------------------------------------------------------------------------|\n");
+    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+    printf("|                             Deletar paciente                            |\n");              
+    printf("| CPF:                                                                    |\n");
+    printf("|                                                                         |\n");
+    printf("| 0-voltar                                                                |\n");                                               
+    printf("|_________________________________________________________________________|\n");
+    printf("\n");
+    printf("\t\t\t>>> Aperte ENTER para continuar\n");
+    getchar();
+}
+
+ void deletarprofissional(void){
+    system("clear||cls");
+    printf("\n");
+    printf("__________________________________________________________________________\n");
+    printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
+    printf("|                 Centro de Ensino Superior do Seridó                     |\n");
+    printf("|             DCT- Departamento de computação e tecnologia                |\n");
+    printf("|                  Disciplina DCT1106 -- Programação                      |\n");
+    printf("|        Projeto -- Um Sistema de Agendamento para Clínicas Médicas       |\n");
+    printf("|              Developed by @Luisf66 - since Mar, 2022                    |\n");
+    printf("|-------------------------------------------------------------------------|\n");
+    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+    printf("|                            Deletar profissional                         |\n");              
+    printf("| CPF:                                                                    |\n");
+    printf("|                                                                         |\n");
+    printf("| 0-voltar                                                                |\n");                                               
+    printf("|_________________________________________________________________________|\n");
     printf("\n");
     printf("\t\t\t>>> Aperte ENTER para continuar\n");
     getchar();
