@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 //#include <time.h>
+//#include <validata>
 
 //  Assinatura das funções
 void menu(void); //v
@@ -33,6 +34,10 @@ void agendar(void); //v
 void remarcar(void); //v 
 void cancelar(void); //v
 void acesso_online(void); //v
+void pix(void); //
+void debito(void); //
+void credito(void); // 
+void convenio(void); //
 
 
 //  Programa principal
@@ -83,7 +88,7 @@ void menu(void){
     printf("| 5-Meus agendamentos                                                     |\n");
     printf("| 6-Acesso online                                                         |\n");
     printf("| 0-Sair                                                                  |\n");
-    printf("| Escolha uma das opções                                                  |\n");                                                 
+    printf("| Escolha uma das opções:                                                 |\n");                                                 
     scanf("%c", &op);
     getchar();
     printf("|                                                                         |\n");
@@ -156,7 +161,7 @@ void paciente(void){
     printf("| 2-Editar                                                                |\n");
     printf("| 3-Deletar                                                               |\n");
     printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções                                                  |\n");
+    printf("| Escolha uma das opções:                                                  |\n");
     scanf("%c", &op);
     getchar();
     printf("|                                                                         |\n");
@@ -183,7 +188,7 @@ void profissionais(void){
     printf("| 2-Editar                                                                |\n");
     printf("| 3-Deletar                                                               |\n");
     printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções                                                  |\n");
+    printf("| Escolha uma das opções:                                                 |\n");
     scanf("%c", &op);
     getchar();
     printf("|                                                                         |\n");
@@ -238,14 +243,14 @@ void pagamento(void){
     printf("| 4-Boleto                                                                |\n");
     printf("| 5-Convenio                                                              |\n");
     printf("| 0-Sair                                                                  |\n");
-    printf("| Escolha uma das opções                                                  |\n");
+    printf("| Escolha uma das opções:                                                 |\n");
     scanf("%c", &op);
     getchar();
     printf("|_________________________________________________________________________|\n");
     printf("\n");
     printf("\t\t\t Aperte ENTER para continuar\n");
     getchar();
- }
+}
 
 // Horário
 
@@ -283,6 +288,10 @@ void horario(void){
 
 // CADASTRO
 void cadastrarpaciente(void){
+   // char nome[20];
+   // char CPF,Celular,data;
+  //  char email;
+  //  char tipo;
     system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
@@ -301,7 +310,8 @@ void cadastrarpaciente(void){
     printf("| E-mail:                                                                 |\n");
     printf("| Nascimento: (dd/mm/aa)                                                  |\n");
     printf("| Tipo sanguíneo:                                                         |\n");
-    printf("| 0-voltar                                                                |\n");                                               
+    printf("| 0-voltar                                                                |\n");
+    //scanf("%[A-Za-z]", nome);                                               
     printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
     printf("\n");
@@ -445,7 +455,7 @@ void agendamento(void){
     printf("| 2-Remarcar                                                              |\n");
     printf("| 3-Cancelar                                                              |\n");
     printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções                                                  |\n");                                               
+    printf("| Escolha uma das opções:                                                 |\n");                                               
     scanf("%c", &op);
     getchar();
     printf("|                                                                         |\n");
@@ -474,7 +484,7 @@ void agendar(void){
     printf("| Horário desejado: (7h~17h)                                              |\n");
     printf("| Serviço desejado:                                                       |\n");
     printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções                                                  |\n");                                               
+    printf("| Escolha uma das opções:                                                 |\n");                                               
     scanf("%c", &op);
     getchar();
     printf("|                                                                         |\n");
@@ -502,7 +512,7 @@ void remarcar(void){
     printf("| Novo horário desejado: (7h~17h)                                         |\n");
     printf("| Serviço desejado:                                                       |\n");
     printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções                                                  |\n");                                               
+    printf("| Escolha uma das opções:                                                 |\n");                                               
     scanf("%c", &op);
     getchar();
     printf("|                                                                         |\n");
@@ -530,7 +540,7 @@ void cancelar(void){
     printf("| Horário cadastrado: (7h~17h)                                            |\n");
     printf("| Serviço cadastrado:                                                     |\n");
     printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções                                                  |\n");                                               
+    printf("| Escolha uma das opções:                                                 |\n");                                               
     scanf("%c", &op);
     getchar();
     printf("|                                                                         |\n");
@@ -557,7 +567,119 @@ void acesso_online(void){
     printf("| 2-Ver todas as consultas                                                |\n");
     printf("| 3-Pagamento                                                             |\n");
     printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções                                                  |\n");                                               
+    printf("| Escolha uma das opções:                                                 |\n");                                               
+    scanf("%c", &op);
+    getchar();
+    printf("|                                                                         |\n");
+    printf("|_________________________________________________________________________|\n");
+    printf("\n");
+    getchar();
+}
+
+void pix(void){
+    char op;
+    system("clear||cls");
+    printf("\n");
+    printf("__________________________________________________________________________\n");
+    printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
+    printf("|                 Centro de Ensino Superior do Seridó                     |\n");
+    printf("|             DCT- Departamento de computação e tecnologia                |\n");
+    printf("|                  Disciplina DCT1106 -- Programação                      |\n");
+    printf("|        Projeto -- Um Sistema de Agendamento para Clínicas Médicas       |\n");
+    printf("|              Developed by @Luisf66 - since Mar, 2022                    |\n");
+    printf("|-------------------------------------------------------------------------|\n");
+    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
+    printf("|                                   Pix                                   |\n");              
+    printf("| CPF:                                                                    |\n");
+    printf("| CNPJ:                                                                   |\n");
+    printf("| Celular:                                                                |\n");
+    printf("| E-mail:                                                                 |\n");
+    printf("| 0-voltar                                                                |\n");
+    printf("| Escolha uma das opções:                                                 |\n");                                               
+    scanf("%c", &op);
+    getchar();
+    printf("|                                                                         |\n");
+    printf("|_________________________________________________________________________|\n");
+    printf("\n");
+    getchar();
+}
+
+void credito(void){
+    char op;
+    system("clear||cls");
+    printf("\n");
+    printf("__________________________________________________________________________\n");
+    printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
+    printf("|                 Centro de Ensino Superior do Seridó                     |\n");
+    printf("|             DCT- Departamento de computação e tecnologia                |\n");
+    printf("|                  Disciplina DCT1106 -- Programação                      |\n");
+    printf("|        Projeto -- Um Sistema de Agendamento para Clínicas Médicas       |\n");
+    printf("|              Developed by @Luisf66 - since Mar, 2022                    |\n");
+    printf("|-------------------------------------------------------------------------|\n");
+    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
+    printf("|                                 Crédito                                 |\n");              
+    printf("|                                                                         |\n");
+    printf("|                                                                         |\n");
+    printf("|                                                                         |\n");
+    printf("|                                                                         |\n");
+    printf("| 0-voltar                                                                |\n");
+    printf("| Escolha uma das opções:                                                 |\n");                                               
+    scanf("%c", &op);
+    getchar();
+    printf("|                                                                         |\n");
+    printf("|_________________________________________________________________________|\n");
+    printf("\n");
+    getchar();
+}
+
+void debito(void){
+    char op;
+    system("clear||cls");
+    printf("\n");
+    printf("__________________________________________________________________________\n");
+    printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
+    printf("|                 Centro de Ensino Superior do Seridó                     |\n");
+    printf("|             DCT- Departamento de computação e tecnologia                |\n");
+    printf("|                  Disciplina DCT1106 -- Programação                      |\n");
+    printf("|        Projeto -- Um Sistema de Agendamento para Clínicas Médicas       |\n");
+    printf("|              Developed by @Luisf66 - since Mar, 2022                    |\n");
+    printf("|-------------------------------------------------------------------------|\n");
+    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
+    printf("|                                  Débito                                 |\n");              
+    printf("|                                                                         |\n");
+    printf("|                                                                         |\n");
+    printf("|                                                                         |\n");
+    printf("|                                                                         |\n");
+    printf("| 0-voltar                                                                |\n");
+    printf("| Escolha uma das opções:                                                 |\n");                                               
+    scanf("%c", &op);
+    getchar();
+    printf("|                                                                         |\n");
+    printf("|_________________________________________________________________________|\n");
+    printf("\n");
+    getchar();
+}
+
+void convenio(void){
+    char op;
+    system("clear||cls");
+    printf("\n");
+    printf("__________________________________________________________________________\n");
+    printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
+    printf("|                 Centro de Ensino Superior do Seridó                     |\n");
+    printf("|             DCT- Departamento de computação e tecnologia                |\n");
+    printf("|                  Disciplina DCT1106 -- Programação                      |\n");
+    printf("|        Projeto -- Um Sistema de Agendamento para Clínicas Médicas       |\n");
+    printf("|              Developed by @Luisf66 - since Mar, 2022                    |\n");
+    printf("|-------------------------------------------------------------------------|\n");
+    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
+    printf("|                                Convênio                                 |\n");              
+    printf("|                                                                         |\n");
+    printf("|                                                                         |\n");
+    printf("|                                                                         |\n");
+    printf("|                                                                         |\n");
+    printf("| 0-voltar                                                                |\n");
+    printf("| Escolha uma das opções:                                                 |\n");                                               
     scanf("%c", &op);
     getchar();
     printf("|                                                                         |\n");
