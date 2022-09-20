@@ -61,6 +61,10 @@ int main(void) {
     remarcar();
     cancelar();
     acesso_online();
+    pix();
+    debito();
+    credito(); 
+    convenio();
     return 0;
 }
 
