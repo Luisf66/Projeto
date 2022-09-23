@@ -68,9 +68,6 @@ int main(void) {
     return 0;
 }
 
-int dataValida(int, int, int);
-int bissexto(int);
-
 //  Funções
 void menu(void){
     char op;
