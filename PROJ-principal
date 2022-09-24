@@ -1,3 +1,5 @@
+// gcc -c -Wall projetoCM.c
+// gcc projetoCM.c -o projetoCM
 //___________________________________________________________________
 //|       UFRN- Universidade Federal do Rio Grande do Norte         |
 //|             Centro de Ensino Superior do Seridó                 |
@@ -6,7 +8,7 @@
 //|     Projeto -- Sistema de Agendamento para Clínicas Médicas     |
 //|            Developed by @Luisf66 - since Ago , 2022             |
 //|-----------------------------------------------------------------|
-//|                             Semana 4                            |
+//|                             Semana 5                            |
 //|_________________________________________________________________|
 
 #include <stdio.h>
@@ -15,62 +17,120 @@
 //#include <validata>
 
 //  Assinatura das funções
-void menu(void); //v
-void info(void); //v
-void equipe(void); //v
-void paciente(void); //v
-void profissionais(void); //v
-void servicos(void); //v
-void pagamento(void); //v
-void horario(void); //v 
-void cadastrarpaciente(void); //v
-void cadastrarprofissional(void); //v
-void editarpaciente(void); //v
-void editarprofissional(void); //v
-void deletarpaciente(void); //v
-void deletarprofissional(void); //v
-void agendamento(void); //v
-void agendar(void); //v
-void remarcar(void); //v 
-void cancelar(void); //v
-void acesso_online(void); //v
-void pix(void); //
-void debito(void); //
-void credito(void); // 
-void convenio(void); //
+void menu(void); 
+void info(void); 
+void equipe(void); 
+void paciente(void); 
+void profissionais(void); 
+void servicos(void); 
+void pagamento(void); 
+void horario(void); 
+void cadastrarpaciente(void);
+void cadastrarprofissional(void);
+void editarpaciente(void); 
+void editarprofissional(void);
+void deletarpaciente(void); 
+void deletarprofissional(void); 
+void agendamento(void); 
+void agendar(void); 
+void remarcar(void); 
+void cancelar(void); 
+void acesso_online(void); 
+void pix(void);
+void debito(void);
+void credito(void); 
+void convenio(void); 
+void boleto(void);
 
 
 //  Programa principal
 int main(void) {
+    char op;
     menu();
-    info();
-    equipe();
-    paciente();
-    profissionais();
-    servicos();
-    pagamento();
-    horario();
-    cadastrarpaciente(); 
-    cadastrarprofissional(); 
-    editarpaciente(); 
-    editarprofissional(); 
-    deletarpaciente(); 
-    deletarprofissional(); 
-    agendamento();
-    agendar();
-    remarcar();
-    cancelar();
-    acesso_online();
-    pix();
-    debito();
-    credito(); 
-    convenio();
-    return 0;
+    scanf("%c", &op);
+    getchar();
+    while (op != 0){
+        if (op == '1'){
+            char opcaopaciente;
+            paciente();
+            scanf("%c", &opcaopaciente);
+            getchar();
+            if (opcaopaciente == '1'){
+                cadastrarpaciente();
+            }
+            else if (opcaopaciente == '2'){
+                editarpaciente();
+            }
+            else if (opcaopaciente == '3'){
+                deletarpaciente();
+            }
+            else if (opcaopaciente == '0'){
+                menu();
+            }
+        }
+        else if(op == '2'){
+            char opcaoprofissional;
+            profissionais();
+            scanf("%c", &opcaoprofissional);
+            getchar();
+            if (opcaoprofissional == '1'){
+                cadastrarprofissional();
+            }
+            else if (opcaoprofissional == '2'){
+                editarprofissional();
+            }
+            else if (opcaoprofissional == '3'){
+                deletarprofissional();
+            }
+            else if (opcaoprofissional == '0'){
+                menu();
+            }
+        }
+        else if(op == '3'){
+            servicos();
+        }
+        else if(op == '4'){
+            horario();
+        }
+        else if(op == '5'){
+            char opagendamento;
+            agendamento();
+            scanf("%c", &opagendamento);
+            getchar();
+            if (opagendamento == '1'){
+                agendar();
+            }
+            else if (opagendamento == '2'){
+                remarcar();
+            }
+            else if (opagendamento == '3'){
+                cancelar();
+            }
+            else if (opagendamento == '0'){
+                menu();
+            }
+        }
+        else if(op == '6'){
+            char opacesso_online;
+            acesso_online();
+            scanf("%c", &opacesso_online);
+            getchar();
+            if (opacesso_online == '1'){
+                printf("Pacientes cadastrados:");
+            }
+            else if (opacesso_online == '2'){
+                printf("Consultas cadastradas:");
+            }
+            else if (opacesso_online == '3'){
+                pagamento();
+            }
+        }
+    }
 }
+
 
 //  Funções
 void menu(void){
-    char op;
     system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
@@ -90,9 +150,6 @@ void menu(void){
     printf("| 6-Acesso online                                                         |\n");
     printf("| 0-Sair                                                                  |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                                 
-    scanf("%c", &op);
-    getchar();
-    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
     printf("\n");
 }
@@ -110,7 +167,8 @@ void info(void){
     printf("|-------------------------------------------------------------------------|\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                                                         |\n"); 
-    printf("|                    DIGITAR INFORMAÇÕES DO PROGRAMA                      |\n"); 
+    printf("|   Programa feito para realizar o cadastro de pacientes e profissionais  |\n"); 
+    printf("|   e ministrar consultas de forma que as mesmas não se sobreponham       |\n");
     printf("|_________________________________________________________________________|\n");
     printf("\n");
     printf("\t\t\t Aperte ENTER para continuar\n");
@@ -145,7 +203,6 @@ void equipe(void){
 // Página seguinte
 
 void paciente(void){
-    char op;
     system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
@@ -162,9 +219,7 @@ void paciente(void){
     printf("| 2-Editar                                                                |\n");
     printf("| 3-Deletar                                                               |\n");
     printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                  |\n");
-    scanf("%c", &op);
-    getchar();
+    printf("| Escolha uma das opções:                                                 |\n");
     printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
     printf("\n");
@@ -172,7 +227,6 @@ void paciente(void){
 }
 
 void profissionais(void){
-    char op;
     system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
@@ -190,8 +244,6 @@ void profissionais(void){
     printf("| 3-Deletar                                                               |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");
-    scanf("%c", &op);
-    getchar();
     printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
     printf("\n");
@@ -210,7 +262,7 @@ void servicos(void){
     printf("|              Developed by @Luisf66 - since Mar, 2022                    |\n");
     printf("|-------------------------------------------------------------------------|\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                              Profissionais                              |\n"); 
+    printf("|                         Serviços e Profissionais                        |\n"); 
     printf("|                                                                         |\n");             
     printf("| Endocrinologia || Dr. AAAAAAA                                           |\n");
     printf("| Clínica geral  || Dr. BBBBBBB                                           |\n");
@@ -225,7 +277,6 @@ void servicos(void){
 }
 
 void pagamento(void){
-    char op;
     system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
@@ -245,8 +296,6 @@ void pagamento(void){
     printf("| 5-Convenio                                                              |\n");
     printf("| 0-Sair                                                                  |\n");
     printf("| Escolha uma das opções:                                                 |\n");
-    scanf("%c", &op);
-    getchar();
     printf("|_________________________________________________________________________|\n");
     printf("\n");
     printf("\t\t\t Aperte ENTER para continuar\n");
@@ -675,6 +724,34 @@ void convenio(void){
     printf("|-------------------------------------------------------------------------|\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                Convênio                                 |\n");              
+    printf("|                                                                         |\n");
+    printf("|                                                                         |\n");
+    printf("|                                                                         |\n");
+    printf("|                                                                         |\n");
+    printf("| 0-voltar                                                                |\n");
+    printf("| Escolha uma das opções:                                                 |\n");                                               
+    scanf("%c", &op);
+    getchar();
+    printf("|                                                                         |\n");
+    printf("|_________________________________________________________________________|\n");
+    printf("\n");
+    getchar();
+}
+
+void boleto(void){
+    char op;
+    system("clear||cls");
+    printf("\n");
+    printf("__________________________________________________________________________\n");
+    printf("|           UFRN- Universidade Federal do Rio Grande do Norte             |\n");
+    printf("|                 Centro de Ensino Superior do Seridó                     |\n");
+    printf("|             DCT- Departamento de computação e tecnologia                |\n");
+    printf("|                  Disciplina DCT1106 -- Programação                      |\n");
+    printf("|        Projeto -- Um Sistema de Agendamento para Clínicas Médicas       |\n");
+    printf("|              Developed by @Luisf66 - since Mar, 2022                    |\n");
+    printf("|-------------------------------------------------------------------------|\n");
+    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
+    printf("|                                  Boleto                                 |\n");              
     printf("|                                                                         |\n");
     printf("|                                                                         |\n");
     printf("|                                                                         |\n");
