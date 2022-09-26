@@ -52,36 +52,41 @@ int main(void) {
     while (opmenu != '0'){
         if (opmenu == '1'){
             char oppaciente;
-            paciente();
-            scanf("%c", &oppaciente);
-            getchar();
-            if (oppaciente == '1'){
-                cadastrarpaciente();
-            }
-            if (oppaciente == '2'){
-                editarpaciente();
-            }
-            if (oppaciente == '3'){
-                deletarpaciente();
-            }
-            if (oppaciente == '0'){
-                menu();
-            }
+            do {
+                paciente();
+                scanf("%c", &oppaciente);
+                getchar();
+                if (oppaciente == '1'){
+                    cadastrarpaciente();
+                }
+                if (oppaciente == '2'){
+                    editarpaciente();
+                }
+                if (oppaciente == '3'){
+                    deletarpaciente();
+                }
+                //if (oppaciente == '0'){
+                //    menu();
+                //}
+            } while (oppaciente != '0');
         }
         if (opmenu == '2'){
             char opprofissional;
-            profissionais();
-            scanf("%c", &opprofissional);
-            getchar();
-            if (opprofissional == '1'){
-                cadastrarprofissional();
-            }
-            if (opprofissional == '2'){
-                editarprofissional();
-            }
-            if (opprofissional == '3'){
-                deletarprofissional();
-            }
+            do {
+                profissionais();
+                scanf("%c", &opprofissional);
+                getchar();
+                if (opprofissional == '1'){
+                    cadastrarprofissional();
+                }
+                if (opprofissional == '2'){
+                    editarprofissional();
+                }
+                if (opprofissional == '3'){
+                    deletarprofissional();
+                }
+            } while (opprofissional != '0');
+            
         }
         if (opmenu == '3'){
             servicos();
@@ -138,6 +143,9 @@ int main(void) {
                 }
             }
         }
+        menu();
+        scanf("%c", &opmenu);
+        getchar();
     }
 }
 
