@@ -1,5 +1,5 @@
-// gcc -c -Wall projetoCM.c
-// gcc projetoCM.c -o projetoCM
+// gcc -c -Wall projeto.c
+// gcc projeto.c -o projeto
 //___________________________________________________________________
 //|       UFRN- Universidade Federal do Rio Grande do Norte         |
 //|             Centro de Ensino Superior do Seridó                 |
@@ -45,54 +45,51 @@ void boleto(void);
 
 //  Programa principal
 int main(void) {
-    char op;
+    char opmenu;
     menu();
-    scanf("%c", &op);
+    scanf("%c", &opmenu);
     getchar();
-    while (op != 0){
-        if (op == '1'){
-            char opcaopaciente;
+    while (opmenu != '0'){
+        if (opmenu == '1'){
+            char oppaciente;
             paciente();
-            scanf("%c", &opcaopaciente);
+            scanf("%c", &oppaciente);
             getchar();
-            if (opcaopaciente == '1'){
+            if (oppaciente == '1'){
                 cadastrarpaciente();
             }
-            else if (opcaopaciente == '2'){
+            if (oppaciente == '2'){
                 editarpaciente();
             }
-            else if (opcaopaciente == '3'){
+            if (oppaciente == '3'){
                 deletarpaciente();
             }
-            else if (opcaopaciente == '0'){
+            if (oppaciente == '0'){
                 menu();
             }
         }
-        else if(op == '2'){
-            char opcaoprofissional;
+        if (opmenu == '2'){
+            char opprofissional;
             profissionais();
-            scanf("%c", &opcaoprofissional);
+            scanf("%c", &opprofissional);
             getchar();
-            if (opcaoprofissional == '1'){
+            if (opprofissional == '1'){
                 cadastrarprofissional();
             }
-            else if (opcaoprofissional == '2'){
+            if (opprofissional == '2'){
                 editarprofissional();
             }
-            else if (opcaoprofissional == '3'){
+            if (opprofissional == '3'){
                 deletarprofissional();
             }
-            else if (opcaoprofissional == '0'){
-                menu();
-            }
         }
-        else if(op == '3'){
+        if (opmenu == '3'){
             servicos();
         }
-        else if(op == '4'){
+        if (opmenu == '4'){
             horario();
         }
-        else if(op == '5'){
+        if (opmenu == '5'){
             char opagendamento;
             agendamento();
             scanf("%c", &opagendamento);
@@ -100,17 +97,15 @@ int main(void) {
             if (opagendamento == '1'){
                 agendar();
             }
-            else if (opagendamento == '2'){
+            if (opagendamento == '2'){
                 remarcar();
             }
-            else if (opagendamento == '3'){
+            if (opagendamento == '3'){
                 cancelar();
             }
-            else if (opagendamento == '0'){
-                menu();
-            }
+
         }
-        else if(op == '6'){
+        if (opmenu == '6'){
             char opacesso_online;
             acesso_online();
             scanf("%c", &opacesso_online);
@@ -118,11 +113,29 @@ int main(void) {
             if (opacesso_online == '1'){
                 printf("Pacientes cadastrados:");
             }
-            else if (opacesso_online == '2'){
+            if (opacesso_online == '2'){
                 printf("Consultas cadastradas:");
             }
-            else if (opacesso_online == '3'){
+            if (opacesso_online == '3'){
+                char oppagamento;
                 pagamento();
+                scanf("%c", &oppagamento);
+                getchar();
+                if (oppagamento == '1'){
+                    pix();
+                }
+                if (oppagamento == '2'){
+                    debito();
+                }
+                if (oppagamento == '3'){
+                    credito();
+                }
+                 if (oppagamento == '1'){
+                    boleto();
+                }
+                if (oppagamento == '2'){
+                    convenio();
+                }
             }
         }
     }
@@ -151,7 +164,6 @@ void menu(void){
     printf("| 0-Sair                                                                  |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                                 
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
 }
 
 void info(void){
@@ -170,8 +182,6 @@ void info(void){
     printf("|   Programa feito para realizar o cadastro de pacientes e profissionais  |\n"); 
     printf("|   e ministrar consultas de forma que as mesmas não se sobreponham       |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
-    printf("\t\t\t Aperte ENTER para continuar\n");
     getchar();
 }
  
@@ -194,8 +204,6 @@ void equipe(void){
     printf("|                 E-mail: luis.felipe.santos.701@ufrn.edu.br              |\n"); 
     printf("|                 Git: https://github.com/Luisf66/Projeto                 |\n"); 
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
-    printf("\t\t\t Aperte ENTER para continuar\n");
     getchar();
     
 }
@@ -220,10 +228,7 @@ void paciente(void){
     printf("| 3-Deletar                                                               |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");
-    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
-    getchar();
 }
 
 void profissionais(void){
@@ -244,13 +249,11 @@ void profissionais(void){
     printf("| 3-Deletar                                                               |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");
-    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
-    getchar();
 }
 
 void servicos(void){
+    char op;
     system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
@@ -271,8 +274,7 @@ void servicos(void){
     printf("| Neurologia     || Dr. EEEEEEE                                           |\n");
     printf("| Ortopedia      || Dr. FFFFFFF                                           |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
-    printf("\t\t\t Aperte ENTER para continuar\n");
+    scanf("%c", &op);
     getchar();
 }
 
@@ -297,8 +299,7 @@ void pagamento(void){
     printf("| 0-Sair                                                                  |\n");
     printf("| Escolha uma das opções:                                                 |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
-    printf("\t\t\t Aperte ENTER para continuar\n");
+    printf("Aperte ENTER para continuar\n");
     getchar();
 }
 
@@ -331,13 +332,13 @@ void horario(void){
     printf("|  16  |          |          |          |          |           |          |\n");
     printf("|  17  |          |          |          |          |           |          |\n");
     printf("|______|__________|__________|__________|__________|___________|__________|\n");
-    printf("\n");
-    printf("\t\t\t Aperte ENTER para continuar\n");
+    printf("Aperte ENTER para continuar\n");
     getchar();
 }
 
 // CADASTRO
 void cadastrarpaciente(void){
+    char opcadastro;
    // char nome[20];
    // char CPF,Celular,data;
   //  char email;
@@ -362,14 +363,13 @@ void cadastrarpaciente(void){
     printf("| Tipo sanguíneo:                                                         |\n");
     printf("| 0-voltar                                                                |\n");
     //scanf("%[A-Za-z]", nome);                                               
-    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
-    printf("\t\t\t Aperte ENTER para continuar\n");
+    scanf("%c", &opcadastro);
     getchar();
 }
 
 void cadastrarprofissional(void){
+    char opcadastro;
     system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
@@ -387,17 +387,16 @@ void cadastrarprofissional(void){
     printf("| Celular: (11 91234-5678)                                                |\n");
     printf("| E-mail:                                                                 |\n");
     printf("| Nascimento: (dd/mm/aa)                                                  |\n");
-    printf("| 0-voltar                                                                |\n");                                               
-    printf("|                                                                         |\n");
+    printf("| 0-voltar                                                                |\n");                                        
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
-    printf("\t\t\t Aperte ENTER para continuar\n");
+    scanf("%c", &opcadastro);
     getchar();
 }
 
 // EDITAR
 
 void editarpaciente(void){
+    char cpf;
     system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
@@ -414,12 +413,12 @@ void editarpaciente(void){
     printf("|                                                                         |\n");
     printf("| 0-voltar                                                                |\n");                                               
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
-    printf("\t\t\t Aperte ENTER para continuar\n");
+    scanf("%c", &cpf);
     getchar();
 }
 
 void editarprofissional(void){
+    char cpf;
     system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
@@ -436,14 +435,14 @@ void editarprofissional(void){
     printf("|                                                                         |\n");
     printf("| 0-voltar                                                                |\n");                                               
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
-    printf("\t\t\t Aperte ENTER para continuar\n");
+    scanf("%c", &cpf);
     getchar();
 }
 
 // DELETAR
 
 void deletarpaciente(void){
+    char cpf;
     system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
@@ -460,12 +459,12 @@ void deletarpaciente(void){
     printf("|                                                                         |\n");
     printf("| 0-voltar                                                                |\n");                                               
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
-    printf("\t\t\t Aperte ENTER para continuar\n");
+    scanf("%c", &cpf);
     getchar();
 }
 
 void deletarprofissional(void){
+    char cpf;
     system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
@@ -482,8 +481,7 @@ void deletarprofissional(void){
     printf("|                                                                         |\n");
     printf("| 0-voltar                                                                |\n");                                               
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
-    printf("\t\t\t Aperte ENTER para continuar\n");
+    scanf("%c", &cpf);
     getchar();
 }
 
@@ -506,11 +504,8 @@ void agendamento(void){
     printf("| 3-Cancelar                                                              |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
-    scanf("%c", &op);
-    getchar();
-    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
+    scanf("%c", &op);
     getchar();
 }
 
@@ -535,11 +530,8 @@ void agendar(void){
     printf("| Serviço desejado:                                                       |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
-    scanf("%c", &op);
-    getchar();
-    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
+    scanf("%c", &op);
     getchar();
 }
 
@@ -563,11 +555,8 @@ void remarcar(void){
     printf("| Serviço desejado:                                                       |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
-    scanf("%c", &op);
-    getchar();
-    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
+    scanf("%c", &op);
     getchar();
 }
 
@@ -591,11 +580,8 @@ void cancelar(void){
     printf("| Serviço cadastrado:                                                     |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
-    scanf("%c", &op);
-    getchar();
-    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
+    scanf("%c", &op);
     getchar();
 }
 
@@ -618,11 +604,8 @@ void acesso_online(void){
     printf("| 3-Pagamento                                                             |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
-    scanf("%c", &op);
-    getchar();
-    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
+    scanf("%c", &op);
     getchar();
 }
 
@@ -646,11 +629,8 @@ void pix(void){
     printf("| E-mail:                                                                 |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
-    scanf("%c", &op);
-    getchar();
-    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
+    scanf("%c", &op);
     getchar();
 }
 
@@ -674,11 +654,8 @@ void credito(void){
     printf("|                                                                         |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
-    scanf("%c", &op);
-    getchar();
-    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
+    scanf("%c", &op);
     getchar();
 }
 
@@ -702,11 +679,8 @@ void debito(void){
     printf("|                                                                         |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
-    scanf("%c", &op);
-    getchar();
-    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
+    scanf("%c", &op);
     getchar();
 }
 
@@ -730,11 +704,8 @@ void convenio(void){
     printf("|                                                                         |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
-    scanf("%c", &op);
-    getchar();
-    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
+    scanf("%c", &op);
     getchar();
 }
 
@@ -758,10 +729,7 @@ void boleto(void){
     printf("|                                                                         |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
-    scanf("%c", &op);
-    getchar();
-    printf("|                                                                         |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("\n");
+    scanf("%c", &op);
     getchar();
 }
