@@ -59,18 +59,15 @@ int main(void) {
                 if (oppaciente == '1'){
                     cadastrarpaciente();
                 }
-                if (oppaciente == '2'){
+                else if (oppaciente == '2'){
                     editarpaciente();
                 }
-                if (oppaciente == '3'){
+                else if (oppaciente == '3'){
                     deletarpaciente();
                 }
-                //if (oppaciente == '0'){
-                //    menu();
-                //}
             } while (oppaciente != '0');
         }
-        if (opmenu == '2'){
+        else if (opmenu == '2'){
             char opprofissional;
             do {
                 profissionais();
@@ -79,38 +76,39 @@ int main(void) {
                 if (opprofissional == '1'){
                     cadastrarprofissional();
                 }
-                if (opprofissional == '2'){
+                else if (opprofissional == '2'){
                     editarprofissional();
                 }
-                if (opprofissional == '3'){
+                else if (opprofissional == '3'){
                     deletarprofissional();
                 }
             } while (opprofissional != '0');
             
         }
-        if (opmenu == '3'){
+        else if (opmenu == '3'){
             servicos();
         }
-        if (opmenu == '4'){
+        else if (opmenu == '4'){
             horario();
         }
-        if (opmenu == '5'){
+        else if (opmenu == '5'){
             char opagendamento;
-            agendamento();
-            scanf("%c", &opagendamento);
-            getchar();
-            if (opagendamento == '1'){
-                agendar();
-            }
-            if (opagendamento == '2'){
-                remarcar();
-            }
-            if (opagendamento == '3'){
-                cancelar();
-            }
-
+            do{
+                agendamento();
+                scanf("%c", &opagendamento);
+                getchar();
+                if (opagendamento == '1'){
+                    agendar();
+                }
+                if (opagendamento == '2'){
+                    remarcar();
+                }
+                if (opagendamento == '3'){
+                    cancelar();
+                }
+            } while (opagendamento != '0');
         }
-        if (opmenu == '6'){
+        else if (opmenu == '6'){
             char opacesso_online;
             acesso_online();
             scanf("%c", &opacesso_online);
@@ -118,29 +116,31 @@ int main(void) {
             if (opacesso_online == '1'){
                 printf("Pacientes cadastrados:");
             }
-            if (opacesso_online == '2'){
+            else if (opacesso_online == '2'){
                 printf("Consultas cadastradas:");
             }
-            if (opacesso_online == '3'){
+            else if (opacesso_online == '3'){
                 char oppagamento;
-                pagamento();
-                scanf("%c", &oppagamento);
-                getchar();
-                if (oppagamento == '1'){
-                    pix();
-                }
-                if (oppagamento == '2'){
-                    debito();
-                }
-                if (oppagamento == '3'){
-                    credito();
-                }
-                 if (oppagamento == '1'){
-                    boleto();
-                }
-                if (oppagamento == '2'){
-                    convenio();
-                }
+                do{
+                    pagamento();
+                    scanf("%c", &oppagamento);
+                    getchar();
+                    if (oppagamento == '1'){
+                        pix();
+                    }
+                    else if (oppagamento == '2'){
+                        debito();
+                    }
+                    else if (oppagamento == '3'){
+                        credito();
+                    }
+                    else if (oppagamento == '4'){
+                        boleto();
+                    }
+                    else if (oppagamento == '5'){
+                        convenio();
+                    }
+                }while (oppagamento != '0');
             }
         }
         menu();
@@ -307,8 +307,6 @@ void pagamento(void){
     printf("| 0-Sair                                                                  |\n");
     printf("| Escolha uma das opções:                                                 |\n");
     printf("|_________________________________________________________________________|\n");
-    printf("Aperte ENTER para continuar\n");
-    getchar();
 }
 
 // Horário
@@ -494,7 +492,6 @@ void deletarprofissional(void){
 }
 
 void agendamento(void){
-    char op;
     system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
@@ -513,8 +510,6 @@ void agendamento(void){
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
     printf("|_________________________________________________________________________|\n");
-    scanf("%c", &op);
-    getchar();
 }
 
 
@@ -594,7 +589,6 @@ void cancelar(void){
 }
 
 void acesso_online(void){
-    char op;
     system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
@@ -613,8 +607,6 @@ void acesso_online(void){
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
     printf("|_________________________________________________________________________|\n");
-    scanf("%c", &op);
-    getchar();
 }
 
 void pix(void){
