@@ -43,13 +43,15 @@ void debito(void);
 void credito(void); 
 void convenio(void); 
 void boleto(void);
-void consulta(void);
+char consulta(void);
 
 //  Programa principal
 int main(void) {
     char opmenu;
     char oppaciente;
     char opprofissional;
+    char opconsulta;
+    char opagendamento;
     do{
         opmenu = menu();
         switch (opmenu){
@@ -88,7 +90,15 @@ int main(void) {
                 }
                 break;
             case '3':
-                consulta();
+                opconsulta = consulta();
+                switch (opconsulta){
+                    case '1':
+                        agendamento();
+                        break;
+                    case '2':
+                        pagamento();
+                        break;
+                }   
                 break;
             case '4':
                 acesso_online();
@@ -420,6 +430,7 @@ void consulta(void){
     printf("|_________________________________________________________________________|\n");
     scanf("%c",&opconsulta);
     getchar();
+    return opconsulta;
 }
 
 void agendamento(void){
@@ -437,6 +448,7 @@ void agendamento(void){
     printf("|_________________________________________________________________________|\n");
     scanf("%c",&opagendamento);
     getchar();
+    return opagendamento;
 }
 
 
