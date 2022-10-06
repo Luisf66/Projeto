@@ -20,7 +20,7 @@
 void menu(void); 
 void info(void); 
 void equipe(void); 
-void paciente(void); 
+char paciente(void); 
 void profissionais(void); 
 void servicos(void); 
 void pagamento(void); 
@@ -45,34 +45,42 @@ void convenio(void);
 void boleto(void);
 void consulta(void);
 // variavel global
-int oppaciente,opprofissional,oppagamento;
-int opcadastropaciente,opcadastroprofissional;
-int editarcpfpa,editarcpfpro;
-int deletarcpfpa,deletarcpfpro;
-int buscarcpfpa,buscarcpfpro;
-int opconsulta,opagendamento,op,opacesso_online;
 
 //  Programa principal
 int main(void) {
     char opmenu;
+    char oppaciente;
     do{
         menu();
         scanf("%c", &opmenu);
         getchar();
-        switch (opmenu)
-        {
-        case '1':
-            paciente();
-            break;
-        case '2':
-            profissionais();
-            break;
-        case '3':
-            consulta();
-            break;
-        case '4':
-            acesso_online();
-            break;
+        switch (opmenu){
+            case '1':
+                oppaciente = paciente();
+                switch (oppaciente){
+                    case '1':
+                        cadastrarpaciente();
+                        break;
+                    case '2':
+                        editarpaciente();
+                        break;
+                    case '3':
+                        deletarpaciente();
+                        break;
+                    case '4':
+                        buscarpaciente();
+                        break;
+                }
+                break;
+            case '2':
+                profissionais();
+                break;
+            case '3':
+                consulta();
+                break;
+            case '4':
+                acesso_online();
+                break;
         }
     } while (opmenu != '0'); 
 }
@@ -144,7 +152,7 @@ void equipe(void){
 
 // Página seguinte
 
-void paciente(void){
+char paciente(void){
     char oppaciente;
     system("clear||cls");
     printf("\n");
@@ -160,6 +168,7 @@ void paciente(void){
     printf("|_________________________________________________________________________|\n");
     scanf("%c",&oppaciente);
     getchar();
+    return oppaciente;
 }
 
 void profissionais(void){
