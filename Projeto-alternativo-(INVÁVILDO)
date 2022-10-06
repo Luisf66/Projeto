@@ -297,12 +297,12 @@ void horario(void){
 // CADASTRO
 char cadastrarpaciente(void){
     char opcadastropaciente;
-    char nome[20];
-    float CPF;
-    float celular;
-    float data;
-    char email;
-    char tipo;
+    char nome[40];
+    char CPF[15];
+    char celular[14];
+    char data[11];
+    char email[50];
+    char tipo[4];
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -311,15 +311,15 @@ char cadastrarpaciente(void){
     printf("| Nome:                                                                   |\n");
     scanf("%[A-Z a-z]", nome);
     printf("| CPF: (123.456.789-01)                                                   |\n");
-    scanf("%f[0-9 .-]", &CPF);
+    scanf("%[0-9.-]", &CPF);
     printf("| Celular: (11 91234-5678)                                                |\n");
-    scanf("%f[0-9 -]", &celular);
+    scanf("%[0- 9-]", &celular);
     printf("| E-mail:                                                                 |\n");
-    scanf("%[A-Z a-z 0-9,@.]", email);
-    printf("| Nascimento: (dd/mm/aa)                                                  |\n");
-    scanf("%f[0-9/]", &data);
+    scanf("%[A-Za-z0-9,@.]", email);
+    printf("| Nascimento: (dd/mm/aaaa)                                                |\n");
+    scanf("%[0-9/]", &data);
     printf("| Tipo sanguíneo:                                                         |\n");
-    scanf("%c[A-Z a-z +-]", tipo);
+    scanf("%c[A-B+-]", tipo);
     printf("| 0-voltar                                                                |\n");                                    
     printf("|_________________________________________________________________________|\n");
     scanf("%c", &opcadastropaciente);
