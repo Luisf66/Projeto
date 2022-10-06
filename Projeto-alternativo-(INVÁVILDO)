@@ -17,11 +17,11 @@
 //#include <validata>
 
 //  Assinatura das funções
-void menu(void); 
+char menu(void); 
 void info(void); 
 void equipe(void); 
 char paciente(void); 
-void profissionais(void); 
+char profissionais(void); 
 void servicos(void); 
 void pagamento(void); 
 void horario(void); 
@@ -44,16 +44,14 @@ void credito(void);
 void convenio(void); 
 void boleto(void);
 void consulta(void);
-// variavel global
 
 //  Programa principal
 int main(void) {
     char opmenu;
     char oppaciente;
+    char opprofissional;
     do{
-        menu();
-        scanf("%c", &opmenu);
-        getchar();
+        opmenu = menu();
         switch (opmenu){
             case '1':
                 oppaciente = paciente();
@@ -73,7 +71,21 @@ int main(void) {
                 }
                 break;
             case '2':
-                profissionais();
+                opprofissional = profissionais();
+                switch (opprofissional){
+                    case '1':
+                        cadastrarprofissional();
+                        break;
+                    case '2':
+                        editarprofissional();
+                        break;
+                    case '3':
+                        deletarprofissional();
+                        break;
+                    case '4':
+                        buscarprofissional();
+                        break;
+                }
                 break;
             case '3':
                 consulta();
@@ -87,7 +99,8 @@ int main(void) {
 
 
 //  Funções
-void menu(void){
+char menu(void){
+    char opmenu;
     system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
@@ -106,6 +119,9 @@ void menu(void){
     printf("| 0-Sair                                                                  |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                                 
     printf("|_________________________________________________________________________|\n");
+    scanf("%c",&opmenu);
+    getchar();
+    return opmenu;
 }
 
 void info(void){
@@ -187,6 +203,7 @@ void profissionais(void){
     printf("|_________________________________________________________________________|\n");
     scanf("%c",&opprofissional);
     getchar();
+    return opprofissional;
 }
 
 void servicos(void){
