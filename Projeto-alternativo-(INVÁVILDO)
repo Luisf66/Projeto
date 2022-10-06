@@ -25,7 +25,7 @@ char profissionais(void);
 void servicos(void); 
 void pagamento(void); 
 void horario(void); 
-void cadastrarpaciente(void);
+char cadastrarpaciente(void);
 void cadastrarprofissional(void);
 void editarpaciente(void); 
 void editarprofissional(void);
@@ -33,11 +33,11 @@ void deletarpaciente(void);
 void deletarprofissional(void); 
 void buscarpaciente(void);
 void buscarprofissional(void);
-void agendamento(void); 
+char agendamento(void); 
 void agendar(void); 
 void remarcar(void); 
 void cancelar(void); 
-void acesso_online(void); 
+char acesso_online(void); 
 void pix(void);
 void debito(void);
 void credito(void); 
@@ -52,6 +52,7 @@ int main(void) {
     char opprofissional;
     char opconsulta;
     char opagendamento;
+    char opacesso_online;
     do{
         opmenu = menu();
         switch (opmenu){
@@ -101,7 +102,21 @@ int main(void) {
                 }   
                 break;
             case '4':
-                acesso_online();
+                opacesso_online = acesso_online();
+                switch (opacesso_online){
+                    case '1':
+                        printf("Pacientes cadastrados:");
+                        break;
+                    case '2':
+                        printf("Consultas cadastradas:");
+                        break;
+                    case '3':
+                        servicos();
+                        break;
+                    case '4':
+                        horario();
+                        break;
+                }
                 break;
         }
     } while (opmenu != '0'); 
@@ -197,7 +212,7 @@ char paciente(void){
     return oppaciente;
 }
 
-void profissionais(void){
+char profissionais(void){
     char opprofissional;
     system("clear||cls");
     printf("\n");
@@ -280,28 +295,36 @@ void horario(void){
 }
 
 // CADASTRO
-void cadastrarpaciente(void){
+char cadastrarpaciente(void){
     char opcadastropaciente;
-   // char nome[20];
-   // char CPF,Celular,data;
-  //  char email;
-  //  char tipo;
+    char nome[20];
+    float CPF;
+    float celular;
+    float data;
+    char email;
+    char tipo;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                           Cadastrar paciente                            |\n");              
     printf("| Nome:                                                                   |\n");
+    scanf("%[A-Z a-z]", nome);
     printf("| CPF: (123.456.789-01)                                                   |\n");
+    scanf("%f[0-9 .-]", &CPF);
     printf("| Celular: (11 91234-5678)                                                |\n");
+    scanf("%f[0-9 -]", &celular);
     printf("| E-mail:                                                                 |\n");
+    scanf("%[A-Z a-z 0-9,@.]", email);
     printf("| Nascimento: (dd/mm/aa)                                                  |\n");
+    scanf("%f[0-9/]", &data);
     printf("| Tipo sanguíneo:                                                         |\n");
-    printf("| 0-voltar                                                                |\n");
-    //scanf("%[A-Za-z]", nome);                                               
+    scanf("%c[A-Z a-z +-]", tipo);
+    printf("| 0-voltar                                                                |\n");                                    
     printf("|_________________________________________________________________________|\n");
     scanf("%c", &opcadastropaciente);
     getchar();
+    return opcadastropaciente;
 }
 
 void cadastrarprofissional(void){
@@ -416,7 +439,7 @@ void buscarprofissional(void){
     getchar();
 }
 
-void consulta(void){
+char consulta(void){
     char opconsulta;
     system("clear||cls");
     printf("\n");
@@ -433,7 +456,7 @@ void consulta(void){
     return opconsulta;
 }
 
-void agendamento(void){
+char agendamento(void){
     char opagendamento;
     system("clear||cls");
     printf("\n");
@@ -512,7 +535,7 @@ void cancelar(void){
     getchar();
 }
 
-void acesso_online(void){
+char acesso_online(void){
     char opacesso_online;
     system("clear||cls");
     printf("\n");
@@ -528,6 +551,7 @@ void acesso_online(void){
     printf("|_________________________________________________________________________|\n");
     scanf("%c", &opacesso_online);
     getchar();
+    return opacesso_online;
 }
 
 void pix(void){
