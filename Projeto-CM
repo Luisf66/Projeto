@@ -17,15 +17,15 @@
 //#include <validata>
 
 //  Assinatura das funções
-void menu(void); 
+char menu(void); 
 void info(void); 
 void equipe(void); 
-void paciente(void); 
-void profissionais(void); 
+char paciente(void); 
+char profissionais(void); 
 void servicos(void); 
-void pagamento(void); 
+char pagamento(void); 
 void horario(void); 
-void cadastrarpaciente(void);
+char cadastrarpaciente(void);
 void cadastrarprofissional(void);
 void editarpaciente(void); 
 void editarprofissional(void);
@@ -33,107 +33,128 @@ void deletarpaciente(void);
 void deletarprofissional(void); 
 void buscarpaciente(void);
 void buscarprofissional(void);
-void agendamento(void); 
-void consulta();
+char agendamento(void); 
 void agendar(void); 
 void remarcar(void); 
 void cancelar(void); 
-void acesso_online(void); 
+char acesso_online(void); 
 void pix(void);
 void debito(void);
 void credito(void); 
 void convenio(void); 
 void boleto(void);
-
+char consulta(void);
 
 //  Programa principal
 int main(void) {
     char opmenu;
-    menu();
-    scanf("%c", &opmenu);
-    getchar();
-    while (opmenu != '0'){
-        if (opmenu == '1'){
-            char oppaciente;
-            do {
-                paciente();
-                scanf("%c", &oppaciente);
-                getchar();
-                if (oppaciente == '1'){
-                    cadastrarpaciente();
+    char oppaciente;
+    char opprofissional;
+    char opconsulta;
+    char opagendamento;
+    char opacesso_online;
+    char oppagamento;
+    do{
+        opmenu = menu();
+        switch (opmenu){
+            case '1':
+                oppaciente = paciente();
+                switch (oppaciente){
+                    case '1':
+                        cadastrarpaciente();
+                        break;
+                    case '2':
+                        editarpaciente();
+                        break;
+                    case '3':
+                        deletarpaciente();
+                        break;
+                    case '4':
+                        buscarpaciente();
+                        break;
                 }
-                else if (oppaciente == '2'){
-                    editarpaciente();
+                break;
+            case '2':
+                opprofissional = profissionais();
+                switch (opprofissional){
+                    case '1':
+                        cadastrarprofissional();
+                        break;
+                    case '2':
+                        editarprofissional();
+                        break;
+                    case '3':
+                        deletarprofissional();
+                        break;
+                    case '4':
+                        buscarprofissional();
+                        break;
                 }
-                else if (oppaciente == '3'){
-                    deletarpaciente();
+                break;
+            case '3':
+                opconsulta = consulta();
+                switch (opconsulta){
+                    case '1':
+                        opagendamento = agendamento();
+                        switch (opagendamento){
+                            case '1':
+                                agendar();
+                                break;
+                            case '2':
+                                remarcar();
+                                break;
+                            case '3':
+                                cancelar();
+                                break;
+                        }
+                            break;
+                    case '2':
+                        oppagamento = pagamento();
+                        switch (oppagamento){
+                            case '1':
+                                pix();
+                                break;
+                            case '2':
+                                debito();
+                                break;
+                            case '3':
+                                credito();
+                                break;
+                            case '4':
+                                boleto();
+                                break;
+                           case '5':
+                                convenio();
+                                break;
+                        }
+                        break;
+                    }   
+                    break;
+            case '4':
+                opacesso_online = acesso_online();
+                switch (opacesso_online){
+                    case '1':
+                        printf("Pacientes cadastrados:");
+                        break;
+                    case '2':
+                        printf("Consultas cadastradas:");
+                        break;
+                    case '3':
+                        servicos();
+                        break;
+                    case '4':
+                        horario();
+                        break;
                 }
-                else if (oppaciente == '4'){
-                    buscarpaciente();
-                }
-            } while (oppaciente != '0');
+                break;
         }
-        else if (opmenu == '2'){
-            char opprofissional;
-            do {
-                profissionais();
-                scanf("%c", &opprofissional);
-                getchar();
-                if (opprofissional == '1'){
-                    cadastrarprofissional();
-                }
-                else if (opprofissional == '2'){
-                    editarprofissional();
-                }
-                else if (opprofissional == '3'){
-                    deletarprofissional();
-                }
-                else if (opprofissional == '4'){
-                    buscarprofissional();
-                }
-            } while (opprofissional != '0'); 
-        }
-        else if (opmenu == '3'){
-            char opconsulta;
-            do {
-                consulta();
-                scanf("%c", &opconsulta);   
-                getchar();
-                if (opconsulta == '1'){
-                    agendamento();
-                }
-                else if (opconsulta == '2'){
-                    pagamento();
-                }
-            } while (opconsulta != '0');
-        }
-        else if (opmenu == '4'){
-            char opacesso_online;
-            acesso_online();
-            scanf("%c", &opacesso_online);
-            getchar();
-            if (opacesso_online == '1'){
-                printf("Pacientes cadastrados:");
-            }
-            else if (opacesso_online == '2'){
-                printf("Consultas cadastradas:");
-            }
-            else if (opacesso_online == '3'){
-                servicos();
-            }
-            else if (opacesso_online == '4'){
-                horario();
-            }
-        }
-        menu();
-        scanf("%c", &opmenu);
-        getchar();
-    }
+    } while (opmenu != '0'); 
 }
 
 
 //  Funções
-void menu(void){
+char menu(void){
+    char opmenu;
     system("clear||cls");
     printf("\n");
     printf("__________________________________________________________________________\n");
@@ -152,6 +173,9 @@ void menu(void){
     printf("| 0-Sair                                                                  |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                                 
     printf("|_________________________________________________________________________|\n");
+    scanf("%c",&opmenu);
+    getchar();
+    return opmenu;
 }
 
 void info(void){
@@ -193,11 +217,13 @@ void equipe(void){
     printf("|                 Git: https://github.com/Luisf66/Projeto                 |\n"); 
     printf("|_________________________________________________________________________|\n");
     getchar();
+    
 }
 
 // Página seguinte
 
-void paciente(void){
+char paciente(void){
+    char oppaciente;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -210,9 +236,13 @@ void paciente(void){
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");
     printf("|_________________________________________________________________________|\n");
+    scanf("%c",&oppaciente);
+    getchar();
+    return oppaciente;
 }
 
-void profissionais(void){
+char profissionais(void){
+    char opprofissional;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -225,6 +255,9 @@ void profissionais(void){
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");
     printf("|_________________________________________________________________________|\n");
+    scanf("%c",&opprofissional);
+    getchar();
+    return opprofissional;
 }
 
 void servicos(void){
@@ -245,7 +278,8 @@ void servicos(void){
     getchar();
 }
 
-void pagamento(void){
+char pagamento(void){
+    char oppagamento;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -259,6 +293,9 @@ void pagamento(void){
     printf("| 0-Sair                                                                  |\n");
     printf("| Escolha uma das opções:                                                 |\n");
     printf("|_________________________________________________________________________|\n");
+    scanf("%c",&oppagamento);
+    getchar();
+    return oppagamento;
 }
 
 // Horário
@@ -288,32 +325,40 @@ void horario(void){
 }
 
 // CADASTRO
-void cadastrarpaciente(void){
-    char opcadastro;
-   // char nome[20];
-   // char CPF,Celular,data;
-  //  char email;
-  //  char tipo;
+char cadastrarpaciente(void){
+    char opcadastropaciente;
+    char nome[40];
+    char CPF[15];
+    char celular[14];
+    char data[11];
+    char email[50];
+    char tipo[4];
     system("clear||cls");
     printf("\n");
-    printf("__________________________________________________________________________\n");
+    printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                           Cadastrar paciente                            |\n");              
     printf("| Nome:                                                                   |\n");
+    scanf("%[A-Za-z ]", nome);
     printf("| CPF: (123.456.789-01)                                                   |\n");
+    scanf("%[0-9.-]", CPF);
     printf("| Celular: (11 91234-5678)                                                |\n");
+    scanf("%[0- 9-]", celular);
     printf("| E-mail:                                                                 |\n");
-    printf("| Nascimento: (dd/mm/aa)                                                  |\n");
+    scanf("%[A-Za-z0-9,@.]", email);
+    printf("| Nascimento: (dd/mm/aaaa)                                                |\n");
+    scanf("%[0-9/]", data);
     printf("| Tipo sanguíneo:                                                         |\n");
-    printf("| 0-voltar                                                                |\n");
-    //scanf("%[A-Za-z]", nome);                                               
+    scanf("%[A-B+-]", tipo);
+    printf("| 0-voltar                                                                |\n");                                    
     printf("|_________________________________________________________________________|\n");
-    scanf("%c", &opcadastro);
+    scanf("%c", &opcadastropaciente);
     getchar();
+    return opcadastropaciente;
 }
 
 void cadastrarprofissional(void){
-   char opcadastroprofissional;
+    char opcadastroprofissional;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -423,7 +468,9 @@ void buscarprofissional(void){
     scanf("%c", &buscarcpfpro);
     getchar();
 }
-void consulta(void){
+
+char consulta(void){
+    char opconsulta;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -434,9 +481,13 @@ void consulta(void){
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
     printf("|_________________________________________________________________________|\n");
+    scanf("%c",&opconsulta);
+    getchar();
+    return opconsulta;
 }
 
-void agendamento(void){
+char agendamento(void){
+    char opagendamento;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -448,6 +499,9 @@ void agendamento(void){
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
     printf("|_________________________________________________________________________|\n");
+    scanf("%c",&opagendamento);
+    getchar();
+    return opagendamento;
 }
 
 
@@ -461,7 +515,7 @@ void agendar(void){
     printf("| CPF: (123.456.789-01)                                                   |\n");             
     printf("| Data desejada: (dd/mm/aa)                                               |\n");
     printf("| Horário desejado: (7h~17h)                                              |\n");
-    printf("| Profissional desejado:                                                  |\n");
+    printf("| Serviço desejado:                                                       |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
     printf("|_________________________________________________________________________|\n");
@@ -479,7 +533,7 @@ void remarcar(void){
     printf("| CPF: (123.456.789-01)                                                   |\n");          
     printf("| Nova data desejada: (dd/mm/aa)                                          |\n");
     printf("| Novo horário desejado: (7h~17h)                                         |\n");
-    printf("| Profissional desejado:                                                  |\n");
+    printf("| Serviço desejado:                                                       |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
     printf("|_________________________________________________________________________|\n");
@@ -488,24 +542,31 @@ void remarcar(void){
 }
 
 void cancelar(void){
+  //  char cpf,data,horario;
+  //  char servico;
     char op;
     system("clear||cls");
     printf("\n");
-    printf("__________________________________________________________________________\n");
+    printf("___________________________________________________________________________\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                 Cancelar                                |\n");    
     printf("| CPF: (123.456.789-01)                                                   |\n");          
     printf("| Data cadastrada: (dd/mm/aa)                                             |\n");
-    printf("| Horário cadastrado: (7h~17h)                                            |\n");
+    printf("| Horário cadastrado: (7~17)                                              |\n");
     printf("| Serviço cadastrado:                                                     |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
     printf("|_________________________________________________________________________|\n");
+ //   scanf("%[.-0-9]", cpf);
+ //   scanf("%[A-Z a-z /0-9]", data);
+ //   scanf("%[0-9]", horario);
+ //   scanf("%[A-Z a-z]", servico);
     scanf("%c", &op);
     getchar();
 }
 
-void acesso_online(void){
+char acesso_online(void){
+    char opacesso_online;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -518,6 +579,9 @@ void acesso_online(void){
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
     printf("|_________________________________________________________________________|\n");
+    scanf("%c", &opacesso_online);
+    getchar();
+    return opacesso_online;
 }
 
 void pix(void){
@@ -546,9 +610,10 @@ void credito(void){
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                 Crédito                                 |\n");              
     printf("|                                                                         |\n");
-    printf("| CPF: (123.456.789-01)                                                   |\n");
-    printf("| Data cadastrada: (dd/mm/aa)                                             |\n");
-    printf("| Horário cadastrado: (7~17)                                              |\n");
+    printf("| Valor:                                                                  |\n");
+    printf("| Número do cartão:                                                       |\n");
+    printf("| Validade:                                                               |\n");
+    printf("| CVV:                                                                    |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
     printf("|_________________________________________________________________________|\n");
@@ -564,9 +629,10 @@ void debito(void){
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                  Débito                                 |\n");   
     printf("|                                                                         |\n");           
-    printf("| CPF: (123.456.789-01)                                                   |\n");
-    printf("| Data cadastrada: (dd/mm/aa)                                             |\n");
-    printf("| Horário cadastrado: (7~17)                                              |\n");
+    printf("| Valor:                                                                  |\n");
+    printf("| Número do cartão:                                                       |\n");
+    printf("| Validade:                                                               |\n");
+    printf("| CVV:                                                                    |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
     printf("|_________________________________________________________________________|\n");
