@@ -60,7 +60,6 @@ int main(void) {
         opmenu = menu();
         switch (opmenu){
             case '1':
-                do{
                 oppaciente = paciente();
                 switch (oppaciente){
                     case '1':
@@ -77,9 +76,7 @@ int main(void) {
                         break;
                 }
                 break;
-                } while (oppaciente =! '0');
             case '2':
-                do{
                 opprofissional = profissionais();
                 switch (opprofissional){
                     case '1':
@@ -96,13 +93,10 @@ int main(void) {
                         break;
                 }
                 break;
-                } while (opprofissional =! '0');
             case '3':
-                do{
                 opconsulta = consulta();
                 switch (opconsulta){
                     case '1':
-                        do{
                         opagendamento = agendamento();
                         switch (opagendamento){
                             case '1':
@@ -116,9 +110,7 @@ int main(void) {
                                 break;
                         }
                         break;
-                        } while (opagendamento =! '0');
                     case '2':
-                        do{
                         oppagamento = pagamento();
                         switch (oppagamento){
                             case '1':
@@ -138,12 +130,9 @@ int main(void) {
                                 break;
                         }
                         break;
-                        } while (oppagamento =! '0');
                     }   
                     break;
-                } while (opconsulta =! '0');
             case '4':
-                do{
                 opacesso_online = acesso_online();
                 switch (opacesso_online){
                     case '1':
@@ -160,7 +149,6 @@ int main(void) {
                         break;
                 }
                 break;
-                } while (opacesso_online =! '0');
         }
     } while (opmenu != '0'); 
 }

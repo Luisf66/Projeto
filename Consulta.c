@@ -1,4 +1,6 @@
 // Consulta
+#include <stdio.h>
+#include <stdlib.h>
 
 char agendamento(void){
     char opagendamento;

@@ -1,4 +1,6 @@
 // Pagamento 
+#include <stdio.h>
+#include <stdlib.h>
 
 char pagamento(void){
     char oppagamento;

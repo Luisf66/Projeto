@@ -1,4 +1,6 @@
 // Cliente
+#include <stdio.h>
+#include <stdlib.h>
 
 char paciente(void){
     char oppaciente;

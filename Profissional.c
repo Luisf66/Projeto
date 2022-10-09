@@ -1,4 +1,6 @@
 // Profissional
+#include <stdio.h>
+#include <stdlib.h>
 
 char profissionais(void){
     char opprofissional;
