@@ -13,8 +13,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-//#include <time.h>
-//#include <validata>
+#include "Paciente.h"
+#include "Profissional.h"
+#include "Pagamento.h"
+#include "Consulta.h"
 
 //  Assinatura das funções
 char menu(void); 
@@ -107,7 +109,7 @@ int main(void) {
                                 cancelar();
                                 break;
                         }
-                            break;
+                        break;
                     case '2':
                         oppagamento = pagamento();
                         switch (oppagamento){
@@ -220,46 +222,6 @@ void equipe(void){
     
 }
 
-// Página seguinte
-
-char paciente(void){
-    char oppaciente;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                         Informações do paciente                         |\n");              
-    printf("| 1-Cadastrar paciente                                                    |\n");
-    printf("| 2-Alterar dados do paciente                                             |\n");
-    printf("| 3-Remover paciente                                                      |\n");
-    printf("| 4-Buscar paciente                                                       |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c",&oppaciente);
-    getchar();
-    return oppaciente;
-}
-
-char profissionais(void){
-    char opprofissional;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                       Informações do profissional                       |\n");              
-    printf("| 1-Cadastrar                                                             |\n");
-    printf("| 2-Alterar dados do profissional                                         |\n");
-    printf("| 3-Excluir profissional                                                  |\n");
-    printf("| 4-Buscar profissional                                                   |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c",&opprofissional);
-    getchar();
-    return opprofissional;
-}
-
 void servicos(void){
     system("clear||cls");
     printf("\n");
@@ -276,26 +238,6 @@ void servicos(void){
     printf("|_________________________________|_______________________________________|\n");
     printf("Aperte ENTER para continuar\n");
     getchar();
-}
-
-char pagamento(void){
-    char oppagamento;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                                Pagamento                                |\n");              
-    printf("| 1-Pix                                                                   |\n");
-    printf("| 2-Débito                                                                |\n");
-    printf("| 3-Crédito                                                               |\n");
-    printf("| 4-Boleto                                                                |\n");
-    printf("| 5-Convênio                                                              |\n");
-    printf("| 0-Sair                                                                  |\n");
-    printf("| Escolha uma das opções:                                                 |\n");
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c",&oppagamento);
-    getchar();
-    return oppagamento;
 }
 
 // Horário
@@ -324,151 +266,6 @@ void horario(void){
     getchar();
 }
 
-// CADASTRO
-char cadastrarpaciente(void){
-    char opcadastropaciente;
-    char nome[40];
-    char CPF[15];
-    char celular[14];
-    char data[11];
-    char email[50];
-    char tipo[4];
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                           Cadastrar paciente                            |\n");              
-    printf("| Nome:                                                                   |\n");
-    scanf("%[A-Za-z ]", nome);
-    printf("| CPF: (123.456.789-01)                                                   |\n");
-    scanf("%[0-9.-]", CPF);
-    printf("| Celular: (11 91234-5678)                                                |\n");
-    scanf("%[0- 9-]", celular);
-    printf("| E-mail:                                                                 |\n");
-    scanf("%[A-Za-z0-9,@.]", email);
-    printf("| Nascimento: (dd/mm/aaaa)                                                |\n");
-    scanf("%[0-9/]", data);
-    printf("| Tipo sanguíneo:                                                         |\n");
-    scanf("%[A-B+-]", tipo);
-    printf("| 0-voltar                                                                |\n");                                    
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &opcadastropaciente);
-    getchar();
-    return opcadastropaciente;
-}
-
-void cadastrarprofissional(void){
-    char opcadastroprofissional;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                          Cadastrar profissional                         |\n");              
-    printf("| Nome:                                                                   |\n");
-    printf("| CPF: (123.456.789-01)                                                   |\n");
-    printf("| Celular: (11 91234-5678)                                                |\n");
-    printf("| E-mail:                                                                 |\n");
-    printf("| Nascimento: (dd/mm/aa)                                                  |\n");
-    printf("| 0-voltar                                                                |\n");                                        
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &opcadastroprofissional);
-    getchar();
-}
-
-// EDITAR
-
-void editarpaciente(void){
-    char editarcpfpa;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                        Alterar dados do paciente                        |\n");              
-    printf("| CPF:                                                                    |\n");
-    printf("|                                                                         |\n");
-    printf("| 0-voltar                                                                |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &editarcpfpa);
-    getchar();
-}
-
-void editarprofissional(void){
-    char editarcpfpro;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                      Alterar dados do profissional                      |\n");              
-    printf("| CPF:                                                                    |\n");
-    printf("|                                                                         |\n");
-    printf("| 0-voltar                                                                |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &editarcpfpro);
-    getchar();
-}
-
-// DELETAR
-
-void deletarpaciente(void){
-    char deletarcpfpa;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                             Remover paciente                            |\n");              
-    printf("| CPF:                                                                    |\n");
-    printf("|                                                                         |\n");
-    printf("| 0-voltar                                                                |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &deletarcpfpa);
-    getchar();
-}
-
-void deletarprofissional(void){
-    char deletarcpfpro;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                            Remover profissional                         |\n");              
-    printf("| CPF:                                                                    |\n");
-    printf("|                                                                         |\n");
-    printf("| 0-voltar                                                                |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &deletarcpfpro);
-    getchar();
-}
-
-void buscarpaciente(void){
-    char buscarcpfpa;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                             Buscar paciente                             |\n");              
-    printf("| CPF:                                                                    |\n");
-    printf("|                                                                         |\n");
-    printf("| 0-voltar                                                                |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &buscarcpfpa);
-    getchar();
-}
-
-void buscarprofissional(void){
-    char buscarcpfpro;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                          Buscar profissional                            |\n");              
-    printf("| CPF:                                                                    |\n");
-    printf("|                                                                         |\n");
-    printf("| 0-voltar                                                                |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &buscarcpfpro);
-    getchar();
-}
-
 char consulta(void){
     char opconsulta;
     system("clear||cls");
@@ -484,85 +281,6 @@ char consulta(void){
     scanf("%c",&opconsulta);
     getchar();
     return opconsulta;
-}
-
-char agendamento(void){
-    char opagendamento;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                               Agendamento                               |\n");              
-    printf("| 1-Agendar                                                               |\n");
-    printf("| 2-Remarcar                                                              |\n");
-    printf("| 3-Cancelar                                                              |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c",&opagendamento);
-    getchar();
-    return opagendamento;
-}
-
-
-void agendar(void){
-    char op;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                                 Agendar                                 |\n"); 
-    printf("| CPF: (123.456.789-01)                                                   |\n");             
-    printf("| Data desejada: (dd/mm/aa)                                               |\n");
-    printf("| Horário desejado: (7h~17h)                                              |\n");
-    printf("| Serviço desejado:                                                       |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &op);
-    getchar();
-}
-
-void remarcar(void){
-    char op;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                                 Remarcar                                |\n");    
-    printf("| CPF: (123.456.789-01)                                                   |\n");          
-    printf("| Nova data desejada: (dd/mm/aa)                                          |\n");
-    printf("| Novo horário desejado: (7h~17h)                                         |\n");
-    printf("| Serviço desejado:                                                       |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &op);
-    getchar();
-}
-
-void cancelar(void){
-  //  char cpf,data,horario;
-  //  char servico;
-    char op;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                                 Cancelar                                |\n");    
-    printf("| CPF: (123.456.789-01)                                                   |\n");          
-    printf("| Data cadastrada: (dd/mm/aa)                                             |\n");
-    printf("| Horário cadastrado: (7~17)                                              |\n");
-    printf("| Serviço cadastrado:                                                     |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");                                               
-    printf("|_________________________________________________________________________|\n");
- //   scanf("%[.-0-9]", cpf);
- //   scanf("%[A-Z a-z /0-9]", data);
- //   scanf("%[0-9]", horario);
- //   scanf("%[A-Z a-z]", servico);
-    scanf("%c", &op);
-    getchar();
 }
 
 char acesso_online(void){
@@ -582,96 +300,4 @@ char acesso_online(void){
     scanf("%c", &opacesso_online);
     getchar();
     return opacesso_online;
-}
-
-void pix(void){
-    char op;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                                   Pix                                   |\n");              
-    printf("| CPF:                                                                    |\n");
-    printf("| CNPJ:                                                                   |\n");
-    printf("| Celular:                                                                |\n");
-    printf("| E-mail:                                                                 |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &op);
-    getchar();
-}
-
-void credito(void){
-    char op;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                                 Crédito                                 |\n");              
-    printf("|                                                                         |\n");
-    printf("| Valor:                                                                  |\n");
-    printf("| Número do cartão:                                                       |\n");
-    printf("| Validade:                                                               |\n");
-    printf("| CVV:                                                                    |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &op);
-    getchar();
-}
-
-void debito(void){
-    char op;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                                  Débito                                 |\n");   
-    printf("|                                                                         |\n");           
-    printf("| Valor:                                                                  |\n");
-    printf("| Número do cartão:                                                       |\n");
-    printf("| Validade:                                                               |\n");
-    printf("| CVV:                                                                    |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &op);
-    getchar();
-}
-
-void convenio(void){
-    char op;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                                Convênio                                 |\n");              
-    printf("|                                                                         |\n");
-    printf("|                                                                         |\n");
-    printf("|                                                                         |\n");
-    printf("|                                                                         |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &op);
-    getchar();
-}
-
-void boleto(void){
-    char op;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                                  Boleto                                 |\n");              
-    printf("|                                                                         |\n");
-    printf("|                                                                         |\n");
-    printf("|                                                                         |\n");
-    printf("|                                                                         |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &op);
-    getchar();
 }
