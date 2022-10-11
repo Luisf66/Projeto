@@ -8,12 +8,11 @@
 //|     Projeto -- Sistema de Agendamento para Clínicas Médicas     |
 //|            Developed by @Luisf66 - since Ago , 2022             |
 //|-----------------------------------------------------------------|
-//|                             Semana 5                            |
+//|                             Semana 7                            |
 //|_________________________________________________________________|
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "Paciente.h"
 #include "Profissional.h"
 #include "Pagamento.h"
 #include "Consulta.h"

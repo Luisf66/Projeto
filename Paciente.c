@@ -1,6 +1,7 @@
 // Cliente
 #include <stdio.h>
 #include <stdlib.h>
+#include "Paciente.h"
 
 char paciente(void){
     char oppaciente;
@@ -37,21 +38,24 @@ char cadastrarpaciente(void){
     printf("|                           Cadastrar paciente                            |\n");              
     printf("| Nome:                                                                   |\n");
     scanf("%[A-Za-z ]", nome);
+    getchar();
     printf("| CPF: (123.456.789-01)                                                   |\n");
     scanf("%[0-9.-]", CPF);
+    getchar();
     printf("| Celular: (11 91234-5678)                                                |\n");
     scanf("%[0- 9-]", celular);
+    getchar();
     printf("| E-mail:                                                                 |\n");
     scanf("%[A-Za-z0-9,@.]", email);
+    getchar();
     printf("| Nascimento: (dd/mm/aaaa)                                                |\n");
     scanf("%[0-9/]", data);
+    getchar();
     printf("| Tipo sanguíneo:                                                         |\n");
     scanf("%[A-B+-]", tipo);
+    getchar();
     printf("| 0-voltar                                                                |\n");                                    
     printf("|_________________________________________________________________________|\n");
-    scanf("%c", &opcadastropaciente);
-    getchar();
-    return opcadastropaciente;
 }
 
 void editarpaciente(void){
