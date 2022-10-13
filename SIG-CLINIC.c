@@ -13,9 +13,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "Profissional.h"
-#include "Pagamento.h"
-#include "Consulta.h"
 
 //  Assinatura das funções
 char menu(void); 
@@ -26,7 +23,7 @@ char profissionais(void);
 void servicos(void); 
 char pagamento(void); 
 void horario(void); 
-char cadastrarpaciente(void);
+void cadastrarpaciente(void);
 void cadastrarprofissional(void);
 void editarpaciente(void); 
 void editarprofissional(void);
