@@ -60,7 +60,7 @@ void cadastrarpaciente(void){
 }
 
 void editarpaciente(void){
-    char cpf;
+    char cpf[15];
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -110,7 +110,7 @@ void alterardadospaciente(void){
 
 
 void deletarpaciente(void){
-    char cpf;
+    char cpf[15];
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -125,7 +125,7 @@ void deletarpaciente(void){
 }
 
 void buscarpaciente(void){
-    char cpf;
+    char cpf[15];
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
