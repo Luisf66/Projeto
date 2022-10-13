@@ -1,6 +1,7 @@
 // Pagamento 
 #include <stdio.h>
 #include <stdlib.h>
+#include "Pagamento.h"
 
 char pagamento(void){
     char oppagamento;
@@ -23,25 +24,24 @@ char pagamento(void){
 }
 
 void pix(void){
-    char op;
+    char cpf;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                   Pix                                   |\n");              
     printf("| CPF:                                                                    |\n");
+    scanf("%[0-9.-]", cpf);    
+    getchar();
     printf("| CNPJ:                                                                   |\n");
     printf("| Celular:                                                                |\n");
     printf("| E-mail:                                                                 |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");                                               
+    printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
-    scanf("%c", &op);
-    getchar();
 }
 
 void credito(void){
-    char op;
+    char cpf;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -49,15 +49,15 @@ void credito(void){
     printf("|                                 Crédito                                 |\n");              
     printf("|                                                                         |\n");
     printf("| CPF:                                                                    |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &op);
+    scanf("%[0-9.-]", cpf);    
     getchar();
+    printf("|                                                                         |\n");  
+    printf("| 0-voltar                                                                |\n");                                               
+    printf("|_________________________________________________________________________|\n");
 }
 
 void debito(void){
-    char op;
+    char cpf;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -65,11 +65,11 @@ void debito(void){
     printf("|                                  Débito                                 |\n");   
     printf("|                                                                         |\n");           
     printf("| CPF:                                                                    |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &op);
+    scanf("%[0-9.-]", cpf);    
     getchar();
+    printf("|                                                                         |\n");  
+    printf("| 0-voltar                                                                |\n");                                             
+    printf("|_________________________________________________________________________|\n");
 }
 
 void convenio(void){
