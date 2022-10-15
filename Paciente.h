@@ -2,7 +2,9 @@
 
 char paciente(void);
 
-char cadastrarpaciente(void);
+void cadastrarpaciente(void);
+
+void alterardadospaciente(void);
 
 void editarpaciente(void);
 

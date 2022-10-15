@@ -1,6 +1,7 @@
 // Pagamento 
 #include <stdio.h>
 #include <stdlib.h>
+#include "Pagamento.h"
 
 char pagamento(void){
     char oppagamento;
@@ -23,25 +24,35 @@ char pagamento(void){
 }
 
 void pix(void){
-    char op;
+    char cpf[15];
+    char cnpj[19];
+    char celular[14];
+    char email[40];
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                   Pix                                   |\n");              
     printf("| CPF:                                                                    |\n");
+    scanf("%[0-9.-]", cpf);    
+    getchar();
     printf("| CNPJ:                                                                   |\n");
+    scanf("%[0-9.-]", cnpj);    
+    getchar();
     printf("| Celular:                                                                |\n");
+    scanf("%[0-9.-]", celular);    
+    getchar();
     printf("| E-mail:                                                                 |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");                                               
+    scanf("%[0-9.-]", email);    
+    getchar();
+    printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
-    scanf("%c", &op);
+    printf("Tecle ENTER para continuar...\n");
     getchar();
 }
 
 void credito(void){
-    char op;
+    char cpf[15];
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -49,15 +60,17 @@ void credito(void){
     printf("|                                 Crédito                                 |\n");              
     printf("|                                                                         |\n");
     printf("| CPF:                                                                    |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");                                               
+    scanf("%[0-9.-]", cpf);    
+    getchar();
+    printf("|                                                                         |\n");  
+    printf("| 0-voltar                                                                |\n");                                               
     printf("|_________________________________________________________________________|\n");
-    scanf("%c", &op);
+    printf("Tecle ENTER para continuar...\n");
     getchar();
 }
 
 void debito(void){
-    char op;
+    char cpf[15];
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -65,10 +78,12 @@ void debito(void){
     printf("|                                  Débito                                 |\n");   
     printf("|                                                                         |\n");           
     printf("| CPF:                                                                    |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");                                               
+    scanf("%[0-9.-]", cpf);    
+    getchar();
+    printf("|                                                                         |\n");  
+    printf("| 0-voltar                                                                |\n");                                             
     printf("|_________________________________________________________________________|\n");
-    scanf("%c", &op);
+    printf("Tecle ENTER para continuar...\n");
     getchar();
 }
 
