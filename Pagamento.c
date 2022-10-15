@@ -24,14 +24,10 @@ char pagamento(void){
 }
 
 void pix(void){
-<<<<<<< HEAD
     char cpf[15];
     char cnpj[19];
     char celular[14];
     char email[40];
-=======
-    char cpf;
->>>>>>> 909f93efe6a6564b3ebab407c5d01e883d46c95e
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -47,7 +43,6 @@ void pix(void){
     scanf("%[0-9.-]", celular);    
     getchar();
     printf("| E-mail:                                                                 |\n");
-<<<<<<< HEAD
     scanf("%[0-9.-]", email);    
     getchar();
     printf("| 0-voltar                                                                |\n");                                              
@@ -58,62 +53,38 @@ void pix(void){
 
 void credito(void){
     char cpf[15];
-=======
-    printf("| 0-voltar                                                                |\n");                                              
-    printf("|_________________________________________________________________________|\n");
-}
-
-void credito(void){
-    char cpf;
->>>>>>> 909f93efe6a6564b3ebab407c5d01e883d46c95e
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                 Crédito                                 |\n");              
     printf("|                                                                         |\n");
-    printf("| CPF:                                                                    |\n");
+    printf("| CPF: (123.456.789-00)                                                   |\n");
     scanf("%[0-9.-]", cpf);    
-<<<<<<< HEAD
     getchar();
     printf("|                                                                         |\n");  
     printf("| 0-voltar                                                                |\n");                                               
     printf("|_________________________________________________________________________|\n");
     printf("Tecle ENTER para continuar...\n");
-=======
->>>>>>> 909f93efe6a6564b3ebab407c5d01e883d46c95e
     getchar();
-    printf("|                                                                         |\n");  
-    printf("| 0-voltar                                                                |\n");                                               
-    printf("|_________________________________________________________________________|\n");
 }
 
 void debito(void){
-<<<<<<< HEAD
     char cpf[15];
-=======
-    char cpf;
->>>>>>> 909f93efe6a6564b3ebab407c5d01e883d46c95e
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                  Débito                                 |\n");   
     printf("|                                                                         |\n");           
-    printf("| CPF:                                                                    |\n");
+    printf("| CPF: (123.456.789-00)                                                   |\n");
     scanf("%[0-9.-]", cpf);    
-<<<<<<< HEAD
     getchar();
     printf("|                                                                         |\n");  
     printf("| 0-voltar                                                                |\n");                                             
     printf("|_________________________________________________________________________|\n");
     printf("Tecle ENTER para continuar...\n");
-=======
->>>>>>> 909f93efe6a6564b3ebab407c5d01e883d46c95e
     getchar();
-    printf("|                                                                         |\n");  
-    printf("| 0-voltar                                                                |\n");                                             
-    printf("|_________________________________________________________________________|\n");
 }
 
 void convenio(void){
