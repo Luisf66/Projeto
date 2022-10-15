@@ -1,7 +1,6 @@
 // Consulta
 #include <stdio.h>
 #include <stdlib.h>
-#include "Consulta.h"
 
 char agendamento(void){
     char opagendamento;
@@ -23,85 +22,61 @@ char agendamento(void){
 
 
 void agendar(void){
-    char cpf[15];
-    char data[9];
-    char hora[3];
-    char medico[40];
+    char op;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                 Agendar                                 |\n"); 
-    printf("| CPF: (123.456.789-01)                                                   |\n");
-    scanf("%[0-9.-]", cpf);    
-    getchar();         
-    printf("| Data desejada: (dd/mm/aaaa)                                             |\n");
-    scanf("%[0-9/]", data);
-    getchar();
+    printf("| CPF: (123.456.789-01)                                                   |\n");             
+    printf("| Data desejada: (dd/mm/aa)                                               |\n");
     printf("| Horário desejado: (7h~17h)                                              |\n");
-    scanf("%[0-9]", hora);
-    getchar();
-    printf("| Médico desejado:                                                        |\n");
-    scanf("%[a-zA-Z ]", medico);
-    getchar();
-    printf("| 0-voltar                                                                |\n");                                             
+    printf("| Serviço desejado:                                                       |\n");
+    printf("| 0-voltar                                                                |\n");
+    printf("| Escolha uma das opções:                                                 |\n");                                               
     printf("|_________________________________________________________________________|\n");
-    printf("Tecle ENTER para continuar...\n");
+    scanf("%c", &op);
     getchar();
 }
 
 void remarcar(void){
-    char cpf[15];
-    char data[9];
-    char hora[3];
-    char medico[40];
+    char op;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                 Remarcar                                |\n");    
-    printf("| CPF: (123.456.789-01)                                                   |\n"); 
-    scanf("%[0-9.-]", cpf);    
-    getchar();         
-    printf("| Nova data desejada: (dd/mm/aaaa)                                        |\n");
-    scanf("%[0-9/]", data);    
-    getchar();
+    printf("| CPF: (123.456.789-01)                                                   |\n");          
+    printf("| Nova data desejada: (dd/mm/aa)                                          |\n");
     printf("| Novo horário desejado: (7h~17h)                                         |\n");
-    scanf("%[0-9]", hora);    
-    getchar();
-    printf("| Médico desejado:                                                        |\n");
-    scanf("%[a-zA-Z ]", medico);    
-    getchar();
-    printf("| 0-voltar                                                                |\n");                                              
+    printf("| Serviço desejado:                                                       |\n");
+    printf("| 0-voltar                                                                |\n");
+    printf("| Escolha uma das opções:                                                 |\n");                                               
     printf("|_________________________________________________________________________|\n");
-    printf("Tecle ENTER para continuar...\n");
+    scanf("%c", &op);
     getchar();
 }
 
 void cancelar(void){
-    char cpf[15];
-    char data[9];
-    char hora[3];
-    char medico[40];
+  //  char cpf,data,horario;
+  //  char servico;
+    char op;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                 Cancelar                                |\n");    
-    printf("| CPF: (123.456.789-01)                                                   |\n");     
-    scanf("%[0-9.-]", cpf);    
-    getchar();
-    printf("| Data cadastrada: (dd/mm/aaaa)                                           |\n");
-    scanf("%[0-9/]", data);    
-    getchar();
+    printf("| CPF: (123.456.789-01)                                                   |\n");          
+    printf("| Data cadastrada: (dd/mm/aa)                                             |\n");
     printf("| Horário cadastrado: (7~17)                                              |\n");
-    scanf("%[0-9]", hora);    
-    getchar();
-    printf("| Médico cadastrado:                                                      |\n");
-    scanf("%[a-zA-Z ]", medico);    
-    getchar();
-    printf("| 0-voltar                                                                |\n");                                             
+    printf("| Serviço cadastrado:                                                     |\n");
+    printf("| 0-voltar                                                                |\n");
+    printf("| Escolha uma das opções:                                                 |\n");                                               
     printf("|_________________________________________________________________________|\n");
-    printf("Tecle ENTER para continuar...\n");
+ //   scanf("%[.-0-9]", cpf);
+ //   scanf("%[A-Z a-z /0-9]", data);
+ //   scanf("%[0-9]", horario);
+ //   scanf("%[A-Z a-z]", servico);
+    scanf("%c", &op);
     getchar();
 }

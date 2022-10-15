@@ -38,11 +38,19 @@ void cadastrarpaciente(void){
     printf("| Nome:                                                                   |\n");
     scanf("%[A-Za-z ]", nome);
     getchar();
+<<<<<<< HEAD
     printf("| CPF: (123.456.789-00)                                                   |\n");
     scanf("%[0-9.-]", CPF);
     getchar();
     printf("| Celular: (00 91234-5678)                                                |\n");
     scanf("%[0-9- ]", celular);
+=======
+    printf("| CPF: (999.999.999-99)                                                   |\n");
+    scanf("%[0-9.-]", CPF);
+    getchar();
+    printf("| Celular: (11 91234-5678)                                                |\n");
+    scanf("%[0-9 -]", celular);
+>>>>>>> 909f93efe6a6564b3ebab407c5d01e883d46c95e
     getchar();
     printf("| E-mail:                                                                 |\n");
     scanf("%[A-Za-z0-9,@.]", email);
@@ -72,8 +80,11 @@ void editarpaciente(void){
     printf("|                                                                         |\n");
     printf("| 0-voltar                                                                |\n");                                               
     printf("|_________________________________________________________________________|\n");
+<<<<<<< HEAD
     printf("Tecle ENTER para continuar...\n");
     getchar();
+=======
+>>>>>>> 909f93efe6a6564b3ebab407c5d01e883d46c95e
 }
 
 void alterardadospaciente(void){
@@ -91,10 +102,17 @@ void alterardadospaciente(void){
     printf("| Nome:                                                                   |\n");
     scanf("%[A-Za-z ]", nome);
     getchar();
+<<<<<<< HEAD
     printf("| CPF: (123.456.789-00)                                                   |\n");
     scanf("%[0-9.-]", CPF);
     getchar();
     printf("| Celular: (00 91234-5678)                                                |\n");
+=======
+    printf("| CPF: (999.999.999-99)                                                   |\n");
+    scanf("%[0-9.-]", CPF);
+    getchar();
+    printf("| Celular: (11 91234-5678)                                                |\n");
+>>>>>>> 909f93efe6a6564b3ebab407c5d01e883d46c95e
     scanf("%[0-9 -]", celular);
     getchar();
     printf("| E-mail:                                                                 |\n");
@@ -107,9 +125,13 @@ void alterardadospaciente(void){
     scanf("%[A-B+-]", tipo);
     getchar();
     printf("| 0-voltar                                                                |\n");                                    
+<<<<<<< HEAD
     printf("|_________________________________________________________________________|\n");
     printf("Tecle ENTER para continuar...\n");
     getchar();
+=======
+    printf("|_________________________________________________________________________|\n");;
+>>>>>>> 909f93efe6a6564b3ebab407c5d01e883d46c95e
 }
 
 
@@ -126,8 +148,11 @@ void deletarpaciente(void){
     printf("|                                                                         |\n");
     printf("| 0-voltar                                                                |\n");                                               
     printf("|_________________________________________________________________________|\n");
+<<<<<<< HEAD
     printf("Tecle ENTER para continuar...\n");
     getchar();
+=======
+>>>>>>> 909f93efe6a6564b3ebab407c5d01e883d46c95e
 }
 
 void buscarpaciente(void){
@@ -143,7 +168,10 @@ void buscarpaciente(void){
     printf("|                                                                         |\n");
     printf("| 0-voltar                                                                |\n");                                               
     printf("|_________________________________________________________________________|\n");
+<<<<<<< HEAD
     printf("Tecle ENTER para continuar...\n");
     getchar();
+=======
+>>>>>>> 909f93efe6a6564b3ebab407c5d01e883d46c95e
 }
 
