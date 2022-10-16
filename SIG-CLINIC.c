@@ -63,6 +63,7 @@ int main(void) {
                         break;
                     case '2':
                         editarpaciente();
+                        alterardadospaciente();
                         break;
                     case '3':
                         deletarpaciente();
@@ -80,6 +81,7 @@ int main(void) {
                         break;
                     case '2':
                         editarprofissional();
+                        alterardadosprofissional();
                         break;
                     case '3':
                         deletarprofissional();

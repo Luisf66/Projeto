@@ -35,7 +35,7 @@ void agendar(void){
     printf("| CPF: (123.456.789-01)                                                   |\n");  
     scanf("%[0-9.-]", cpf);    
     getchar();       
-    printf("| Data desejada: (dd/mm/aa)                                               |\n");
+    printf("| Data desejada: (dd/mm/aaaa)                                             |\n");
     scanf("%[0-9/]", data);    
     getchar();
     printf("| Horário desejado: (7~17)                                                |\n");
@@ -61,7 +61,7 @@ void remarcar(void){
     printf("| CPF: (123.456.789-01)                                                   |\n");  
     scanf("%[0-9.-]", cpf);    
     getchar();       
-    printf("| Nova data desejada: (dd/mm/aa)                                          |\n");
+    printf("| Nova data desejada: (dd/mm/aaaa)                                        |\n");
     scanf("%[0-9/]", data);    
     getchar();
     printf("| Novo horário desejado: (7~17)                                           |\n");
@@ -87,7 +87,7 @@ void cancelar(void){
     printf("| CPF: (123.456.789-01)                                                   |\n");  
     scanf("%[0-9.-]", cpf);    
     getchar();       
-    printf("| Data cadastrada: (dd/mm/aa)                                             |\n");
+    printf("| Data cadastrada: (dd/mm/aaaa)                                           |\n");
     scanf("%[0-9/]", data);    
     getchar();
     printf("| Horário cadastrado: (7~17)                                              |\n");

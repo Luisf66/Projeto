@@ -40,10 +40,10 @@ void pix(void){
     scanf("%[0-9.-]", cnpj);    
     getchar();
     printf("| Celular:                                                                |\n");
-    scanf("%[0-9.-]", celular);    
+    scanf("%[0-9/ ]", celular);    
     getchar();
     printf("| E-mail:                                                                 |\n");
-    scanf("%[0-9.-]", email);    
+    scanf("%[a-zA-Z0-9@./ ]", email);    
     getchar();
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
