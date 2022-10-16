@@ -24,7 +24,9 @@ char agendamento(void){
 
 void agendar(void){
     char cpf[15];
-    char data[9];
+    char dd[3];
+    char mm[3];
+    char aaaa[5];
     char hora[3];
     char medico[40];
     system("clear||cls");
@@ -35,10 +37,16 @@ void agendar(void){
     printf("| CPF: (123.456.789-01)                                                   |\n");  
     scanf("%[0-9.-]", cpf);    
     getchar();       
-    printf("| Data desejada: (dd/mm/aaaa)                                             |\n");
-    scanf("%[0-9/]", data);    
+    printf("| Dia:                                                                    |\n");
+    scanf("%[0-9]", dd);    
     getchar();
-    printf("| Horário desejado: (7~17)                                                |\n");
+    printf("| Mês:                                                                    |\n");
+    scanf("%[0-9]", mm);    
+    getchar();
+    printf("| Ano:                                                                    |\n");
+    scanf("%[0-9]", aaaa);    
+    getchar();
+    printf("| Horário desejado: (0~24)                                                |\n");
     scanf("%[0-9]", hora);    
     getchar();
     printf("| Médico desejado:                                                        |\n");
@@ -46,11 +54,15 @@ void agendar(void){
     getchar();
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
+    return cpf;
+    return dd,mm,aaaa;
 }
 
 void remarcar(void){
     char cpf[15];
-    char data[9];
+    char dd[3];
+    char mm[3];
+    char aaaa[5];
     char hora[3];
     char medico[40];
     system("clear||cls");
@@ -61,10 +73,16 @@ void remarcar(void){
     printf("| CPF: (123.456.789-01)                                                   |\n");  
     scanf("%[0-9.-]", cpf);    
     getchar();       
-    printf("| Nova data desejada: (dd/mm/aaaa)                                        |\n");
-    scanf("%[0-9/]", data);    
+    printf("| Dia:                                                                    |\n");
+    scanf("%[0-9]", dd);    
     getchar();
-    printf("| Novo horário desejado: (7~17)                                           |\n");
+    printf("| Mês:                                                                    |\n");
+    scanf("%[0-9]", mm);    
+    getchar();
+    printf("| Ano:                                                                    |\n");
+    scanf("%[0-9]", aaaa);    
+    getchar();
+    printf("| Horário desejado: (0~24)                                                |\n");
     scanf("%[0-9]", hora);    
     getchar();
     printf("| Médico desejado:                                                        |\n");
@@ -72,11 +90,15 @@ void remarcar(void){
     getchar();
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
+    return cpf;
+    return dd,mm,aaaa;
 }
 
 void cancelar(void){
     char cpf[15];
-    char data[9];
+    char dd[3];
+    char mm[3];
+    char aaaa[5];
     char hora[3];
     char medico[40];
     system("clear||cls");
@@ -87,15 +109,23 @@ void cancelar(void){
     printf("| CPF: (123.456.789-01)                                                   |\n");  
     scanf("%[0-9.-]", cpf);    
     getchar();       
-    printf("| Data cadastrada: (dd/mm/aaaa)                                           |\n");
-    scanf("%[0-9/]", data);    
+    printf("| Dia:                                                                    |\n");
+    scanf("%[0-9]", dd);    
     getchar();
-    printf("| Horário cadastrado: (7~17)                                              |\n");
+    printf("| Mês:                                                                    |\n");
+    scanf("%[0-9]", mm);    
+    getchar();
+    printf("| Ano:                                                                    |\n");
+    scanf("%[0-9]", aaaa);    
+    getchar();
+    printf("| Horário cadastrado: (0~24)                                              |\n");
     scanf("%[0-9]", hora);    
     getchar();
-    printf("| Médico desejado:                                                        |\n");
+    printf("| Médico cadastrado:                                                      |\n");
     scanf("%[a-zA-Z ]", medico);    
     getchar();
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
+    return cpf;
+    return dd,mm,aaaa;
 }

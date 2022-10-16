@@ -1,5 +1,9 @@
 // validações
 
+#include <stdio.h>
+#include <stdlib.h>
+#include "Validações.h"
+
 // DATA
 char bissexto(char aaaa){
     if ((aaaa % 100 != '0') && (aaaa % 4 == '0')){
