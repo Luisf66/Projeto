@@ -25,7 +25,7 @@ char paciente(void){
 
 void cadastrarpaciente(void){
     char nome[40];
-    char CPF[15];
+    char cpf[15];
     char celular[14];
     char data[11];
     char email[50];
@@ -39,7 +39,7 @@ void cadastrarpaciente(void){
     scanf("%[A-Za-z ]", nome);
     getchar();
     printf("| CPF: (123.456.789-00)                                                   |\n");
-    scanf("%[0-9.-]", CPF);
+    scanf("%[0-9.-]", cpf);
     getchar();
     printf("| Celular: (00 91234-5678)                                                |\n");
     scanf("%[0-9- ]", celular);

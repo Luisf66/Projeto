@@ -101,6 +101,14 @@ char CPF(char *cpf,char resultado,char resultado_dois){
     resultado_dois - '0';
     resultado = (cpf[0]*10) + (cpf[1]*9) + (cpf[2]*8) + (cpf[4]*7) + (cpf[5]*6) + (cpf[6]*5) + (cpf[8]*4) + (cpf[9]*3) + (cpf[10]*2); 
     resultado = (resultado * 10) % 11;
+
+    //scanf("%[0-9.-]", cpf);
+    //getchar();
+    //return cpf;
+
+
+
+
     if (resultado == 10){
         resultado = 0;
     }
