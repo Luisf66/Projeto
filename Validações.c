@@ -6,6 +6,7 @@
 
 // DATA
 char bissexto(char aaaa){
+    char aaaa[4];
     aaaa - '0';
     if ((aaaa % 100 != 0) && (aaaa % 4 == 0)){
         return 1;
@@ -25,6 +26,7 @@ char data(char dd, char mm, char aaaa){
     dd - '0';
     mm - '0';
     aaaa - '0';
+
     if (aaaa > 0 && aaaa <= 2050){
         return 1;
     }
@@ -96,6 +98,7 @@ char CPF(char *cpf,char resultado,char resultado_dois){
     char *cpf[14];
     char resultado[4];
     char resultado_dois[4];
+
     *cpf - '0';
     resultado - '0';
     resultado_dois - '0';
@@ -131,18 +134,21 @@ char CPF(char *cpf,char resultado,char resultado_dois){
 // CNPJ
 
 char CNPJ(char *cnpj,char resultado, char resto,char resultado_dois, char resto_dois){
-    *cnpj - '0';
-    resultado - '0';
-    resto - '0';
-    resultado_dois - '0';
-    resto_dois - '0';
+
     char cnpj[18];
     char resultado[4];
     char resto[3];
     char resultado_dois[4];
     char resto_dois[3];
+
+    *cnpj - '0';
+    resultado - '0';
+    resto - '0';
+    resultado_dois - '0';
+    resto_dois - '0';
     resultado = (cnpj[0]*5) + (cnpj[1]*4) + (cnpj[3]*3) + (cnpj[4]*2) + (cnpj[5]*9) + (cnpj[7]*8) + (cnpj[8]*7) + (cnpj[9]*6) + (cnpj[11]*5) + (cnpj[12]*4) + (cnpj[13]*3) + (cnpj[14]*2);
     resto = (resultado % 11);
+
     if( resto >= 2 && resto <= 10){
         resto = 11 - resto;
     }
