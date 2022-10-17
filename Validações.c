@@ -87,6 +87,8 @@ char data(char dd, char mm, char aaaa){
 // CPF
 
 char CPF(char *cpf,char resultado,char resultado_dois){
+    // vetor cpf: 0 1 2 3 4 5 6 7 8 9 10 11 12 13
+    // numer cpf: 1 2 3 . 4 5 6 . 7 8 9  -  0  1
     char *cpf[14];
     char resultado[4];
     char resultao_dois[4];
@@ -143,5 +145,6 @@ char CNPJ(char *cnpj,char resultado, char resto,char resultado_dois, char resto_
     }
 }
 
-
 // CELULAR
+
+
