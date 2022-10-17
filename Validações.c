@@ -6,7 +6,8 @@
 
 // DATA
 char bissexto(char aaaa){
-    if ((aaaa % 100 != '0') && (aaaa % 4 == '0')){
+    aaaa - '0';
+    if ((aaaa % 100 != 0) && (aaaa % 4 == 0)){
         return 1;
     }
     else{
@@ -21,64 +22,67 @@ char bissexto(char aaaa){
 }
 char data(char dd, char mm, char aaaa){
     char diamax;
-    if (aaaa > '0' && aaaa <= '2050'){
+    dd - '0';
+    mm - '0';
+    aaaa - '0';
+    if (aaaa > 0 && aaaa <= 2050){
         return 1;
     }
     else{
         return 0;
     }
-    if (dd >= '1' && dd <='31'){
+    if (dd >= 1 && dd <=31){
         return 1;
     }
     else{
         return 0;
     }
-    if (mm >= '1' && mm <= '12'){
+    if (mm >= 1 && mm <= 12){
         return 1;
     }
     else{
         return 0;
     }
-    if ((mm == '2') && (bissexto(aaaa))){
+    if ((mm == 2) && (bissexto(aaaa))){
         diamax = 29;
     }
     else{
         diamax = 28;
     }
     switch (mm){
-        case '4':
+        case 4:
             diamax = 30;
             break;
-        case '6':
+        case 6:
             diamax = 30;
             break;
-        case '9':
+        case 9:
             diamax = 30;
             break;
-        case '11':
+        case 11:
             diamax = 30;
             break;
     }
     switch (mm){
-        case '1':
+        case 1:
             diamax = 31;
             break;
-        case '3':
+        case 3:
             diamax = 31;
             break;
-        case '5':
+        case 5:
             diamax = 31;
             break;
-        case '7':
+        case 7:
             diamax = 31;
             break;
-        case '8':
+        case 8:
             diamax = 31;
             break;
-        case '10':
+        case 10:
             diamax = 31;
             break;
-        case '12':
+        case 12:
             diamax = 31;
             break;
     }
@@ -91,7 +95,10 @@ char CPF(char *cpf,char resultado,char resultado_dois){
     // numer cpf: 1 2 3 . 4 5 6 . 7 8 9  -  0  1
     char *cpf[14];
     char resultado[4];
-    char resultao_dois[4];
+    char resultado_dois[4];
+    *cpf - '0';
+    resultado - '0';
+    resultado_dois - '0';
     resultado = (cpf[0]*10) + (cpf[1]*9) + (cpf[2]*8) + (cpf[4]*7) + (cpf[5]*6) + (cpf[6]*5) + (cpf[8]*4) + (cpf[9]*3) + (cpf[10]*2); 
     resultado = (resultado * 10) % 11;
     if (resultado == 10){
@@ -116,6 +123,11 @@ char CPF(char *cpf,char resultado,char resultado_dois){
 // CNPJ
 
 char CNPJ(char *cnpj,char resultado, char resto,char resultado_dois, char resto_dois){
+    *cnpj - '0';
+    resultado - '0';
+    resto - '0';
+    resultado_dois - '0';
+    resto_dois - '0';
     char cnpj[18];
     char resultado[4];
     char resto[3];
