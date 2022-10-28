@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Paciente.h"
+#include "Estruturas.h"
 
 char paciente(void){
     char oppaciente;
@@ -24,34 +25,29 @@ char paciente(void){
 
 
 void cadastrarpaciente(void){
-    char nome[40];
-    char cpf[15];
-    char celular[14];
-    char data[11];
-    char email[50];
-    char tipo[4];
+    struct paciente cliente;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                           Cadastrar paciente                            |\n");              
     printf("| Nome:                                                                   |\n");
-    scanf("%[A-Za-z ]", nome);
+    scanf("%[A-Za-z ]", cliente.nome);
     getchar();
     printf("| CPF: (123.456.789-00)                                                   |\n");
-    scanf("%[0-9.-]", cpf);
+    scanf("%[0-9.-]", cliente.cpf);
     getchar();
     printf("| Celular: (00 91234-5678)                                                |\n");
-    scanf("%[0-9- ]", celular);
+    scanf("%[0-9- ]", cliente.celular);
     getchar();
     printf("| E-mail:                                                                 |\n");
-    scanf("%[A-Za-z0-9,@.]", email);
+    scanf("%[A-Za-z0-9,@.]", cliente.email);
     getchar();
     printf("| Nascimento: (dd/mm/aaaa)                                                |\n");
-    scanf("%[0-9/]", data);
+    scanf("%[0-9/]", cliente.data);
     getchar();
     printf("| Tipo sanguíneo:                                                         |\n");
-    scanf("%[A-B+-]", tipo);
+    scanf("%[A-B+-]", cliente.tipo);
     getchar();
     printf("| 0-voltar                                                                |\n");                                    
     printf("|_________________________________________________________________________|\n");
@@ -77,34 +73,29 @@ void editarpaciente(void){
 }
 
 void alterardadospaciente(void){
-    char nome[40];
-    char CPF[15];
-    char celular[14];
-    char data[11];
-    char email[50];
-    char tipo[4];
+    struct paciente cliente;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                        Alterar dados do paciente                        |\n");              
     printf("| Nome:                                                                   |\n");
-    scanf("%[A-Za-z ]", nome);
+    scanf("%[A-Za-z ]", cliente.nome);
     getchar();
     printf("| CPF: (123.456.789-00)                                                   |\n");
-    scanf("%[0-9.-]", CPF);
+    scanf("%[0-9.-]", cliente.cpf);
     getchar();
     printf("| Celular: (00 91234-5678)                                                |\n");
-    scanf("%[0-9 -]", celular);
+    scanf("%[0-9 -]", cliente.celular);
     getchar();
     printf("| E-mail:                                                                 |\n");
-    scanf("%[A-Za-z0-9,@.]", email);
+    scanf("%[A-Za-z0-9,@.]", cliente.email);
     getchar();
     printf("| Nascimento: (dd/mm/aaaa)                                                |\n");
-    scanf("%[0-9/]", data);
+    scanf("%[0-9/]", cliente.data);
     getchar();
     printf("| Tipo sanguíneo:                                                         |\n");
-    scanf("%[A-B+-]", tipo);
+    scanf("%[A-B+-]", cliente.tipo);
     getchar();
     printf("| 0-voltar                                                                |\n");                                    
     printf("|_________________________________________________________________________|\n");

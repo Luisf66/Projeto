@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include"Profissional.h"
+#include "Estruturas.h"
 
 char profissionais(void){
     char opprofissional;
@@ -24,30 +25,26 @@ char profissionais(void){
 
 
 void cadastrarprofissional(void){
-    char nome[40];
-    char cpf[15];
-    char celular[14];
-    char data[11];
-    char email[50];
+    struct profissional funcionario;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                          Cadastrar profissional                         |\n");              
     printf("| Nome:                                                                   |\n");
-    scanf("%[a-zA-Z ]", nome);    
+    scanf("%[a-zA-Z ]", funcionario.nome);    
     getchar();
     printf("| CPF: (123.456.789-01)                                                   |\n");
-    scanf("%[0-9.-]", cpf);    
+    scanf("%[0-9.-]", funcionario.cpf);    
     getchar();
     printf("| Celular: (00 91234-5678)                                                |\n");
-    scanf("%[0-9- ]", celular);    
+    scanf("%[0-9- ]", funcionario.celular);    
     getchar();
     printf("| E-mail:                                                                 |\n");
-    scanf("%[a-zA-Z0-9@ ]", email);    
+    scanf("%[a-zA-Z0-9@ ]", funcionario.email);    
     getchar();
     printf("| Nascimento: (dd/mm/aa)                                                  |\n");
-    scanf("%[0-9/]", data);    
+    scanf("%[0-9/]", funcionario.data);    
     getchar();
     printf("| 0-voltar                                                                |\n");                                        
     printf("|_________________________________________________________________________|\n");
@@ -73,30 +70,26 @@ void editarprofissional(void){
 }
 
 void alterardadosprofissional(void){
-    char nome[40];
-    char cpf[15];
-    char celular[14];
-    char data[11];
-    char email[50];
+    struct profissional funcionario;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                          Cadastrar profissional                         |\n");              
     printf("| Nome:                                                                   |\n");
-    scanf("%[a-zA-Z ]", nome);    
+    scanf("%[a-zA-Z ]", funcionario.nome);    
     getchar();
     printf("| CPF: (123.456.789-00)                                                   |\n");
-    scanf("%[0-9.-]", cpf);    
+    scanf("%[0-9.-]", funcionario.cpf);    
     getchar();
     printf("| Celular: (00 91234-5678)                                                |\n");
-    scanf("%[0-9.- ]", celular);    
+    scanf("%[0-9.- ]", funcionario.celular);    
     getchar();
     printf("| E-mail:                                                                 |\n");
-    scanf("%[a-zA-Z0-9@ ]", email);    
+    scanf("%[a-zA-Z0-9@ ]", funcionario.email);    
     getchar();
     printf("| Nascimento: (dd/mm/aa)                                                  |\n");
-    scanf("%[0-9/]", data);    
+    scanf("%[0-9/]", funcionario.data);    
     getchar();
     printf("| 0-voltar                                                                |\n");                                        
     printf("|_________________________________________________________________________|\n");

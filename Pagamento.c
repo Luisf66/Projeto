@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Pagamento.h"
+#include "Estruturas.h"
 
 char pagamento(void){
     char oppagamento;
@@ -24,26 +25,23 @@ char pagamento(void){
 }
 
 void pix(void){
-    char cpf[15];
-    char cnpj[19];
-    char celular[14];
-    char email[40];
+    struct pagamento pix;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                   Pix                                   |\n");              
     printf("| CPF:                                                                    |\n");
-    scanf("%[0-9.-]", cpf);    
+    scanf("%[0-9.-]",pix.cpf);    
     getchar();
     printf("| CNPJ:                                                                   |\n");
-    scanf("%[0-9.-]", cnpj);    
+    scanf("%[0-9.-]", pix.cnpj);    
     getchar();
     printf("| Celular:                                                                |\n");
-    scanf("%[0-9/ ]", celular);    
+    scanf("%[0-9/ ]", pix.celular);    
     getchar();
     printf("| E-mail:                                                                 |\n");
-    scanf("%[a-zA-Z0-9@./ ]", email);    
+    scanf("%[a-zA-Z0-9@./ ]", pix.email);    
     getchar();
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");

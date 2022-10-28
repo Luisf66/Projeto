@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Consulta.h"
+#include "Estruturas.h"
 
 char agendamento(void){
     char opagendamento;
@@ -23,109 +24,100 @@ char agendamento(void){
 
 
 void agendar(void){
-    char cpf[15];
-    char dd[3];
-    char mm[3];
-    char aaaa[5];
-    char hora[3];
-    char medico[40];
+    struct consulta consulta;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                 Agendar                                 |\n"); 
     printf("| CPF: (123.456.789-01)                                                   |\n");  
-    scanf("%[0-9.-]", cpf);    
+    scanf("%[0-9.-]", consulta.cpf);    
     getchar();       
     printf("| Dia:                                                                    |\n");
-    scanf("%[0-9]", dd);    
+    scanf("%[0-9]", consulta.dd);    
     getchar();
     printf("| Mês:                                                                    |\n");
-    scanf("%[0-9]", mm);    
+    scanf("%[0-9]", consulta.mm);    
     getchar();
     printf("| Ano:                                                                    |\n");
-    scanf("%[0-9]", aaaa);    
+    scanf("%[0-9]", consulta.aaaa);    
     getchar();
     printf("| Horário desejado: (0~24)                                                |\n");
-    scanf("%[0-9]", hora);    
+    scanf("%[0-9]", consulta.hora);    
     getchar();
     printf("| Médico desejado:                                                        |\n");
-    scanf("%[a-zA-Z ]", medico);    
+    scanf("%[a-zA-Z ]", consulta.medico);    
     getchar();
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
-    return cpf;
-    return dd,mm,aaaa;
+    return consulta.cpf;
+    return consulta.dd;
+    return consulta.mm;
+    return consulta.aaaa;
 }
 
 void remarcar(void){
-    char cpf[15];
-    char dd[3];
-    char mm[3];
-    char aaaa[5];
-    char hora[3];
-    char medico[40];
+    struct consulta consulta;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                Remarcar                                 |\n"); 
     printf("| CPF: (123.456.789-01)                                                   |\n");  
-    scanf("%[0-9.-]", cpf);    
+    scanf("%[0-9.-]", consulta.cpf);    
     getchar();       
     printf("| Dia:                                                                    |\n");
-    scanf("%[0-9]", dd);    
+    scanf("%[0-9]", consulta.dd);    
     getchar();
     printf("| Mês:                                                                    |\n");
-    scanf("%[0-9]", mm);    
+    scanf("%[0-9]", consulta.mm);    
     getchar();
     printf("| Ano:                                                                    |\n");
-    scanf("%[0-9]", aaaa);    
+    scanf("%[0-9]", consulta.aaaa);    
     getchar();
     printf("| Horário desejado: (0~24)                                                |\n");
-    scanf("%[0-9]", hora);    
+    scanf("%[0-9]", consulta.hora);    
     getchar();
     printf("| Médico desejado:                                                        |\n");
-    scanf("%[a-zA-Z ]", medico);    
+    scanf("%[a-zA-Z ]", consulta.medico);    
     getchar();
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
-    return cpf;
-    return dd,mm,aaaa;
+    return consulta.cpf;
+    return consulta.dd;
+    return consulta.mm;
+    return consulta.aaaa;
 }
 
 void cancelar(void){
-    char cpf[15];
-    char dd[3];
-    char mm[3];
-    char aaaa[5];
-    char hora[3];
-    char medico[40];
+    struct consulta consulta;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                Cancelar                                 |\n"); 
     printf("| CPF: (123.456.789-01)                                                   |\n");  
-    scanf("%[0-9.-]", cpf);    
+    scanf("%[0-9.-]", consulta.cpf);    
     getchar();       
     printf("| Dia:                                                                    |\n");
-    scanf("%[0-9]", dd);    
+    scanf("%[0-9]", consulta.dd);    
     getchar();
     printf("| Mês:                                                                    |\n");
-    scanf("%[0-9]", mm);    
+    scanf("%[0-9]", consulta.mm);    
     getchar();
     printf("| Ano:                                                                    |\n");
-    scanf("%[0-9]", aaaa);    
+    scanf("%[0-9]", consulta.aaaa);    
     getchar();
     printf("| Horário cadastrado: (0~24)                                              |\n");
-    scanf("%[0-9]", hora);    
+    scanf("%[0-9]", consulta.hora);    
     getchar();
     printf("| Médico cadastrado:                                                      |\n");
-    scanf("%[a-zA-Z ]", medico);    
+    scanf("%[a-zA-Z ]", consulta.medico);    
     getchar();
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
-    return cpf;
-    return dd,mm,aaaa;
+    return consulta.cpf;
+    return consulta.dd;
+    return consulta.mm;
+    return consulta.aaaa;
 }

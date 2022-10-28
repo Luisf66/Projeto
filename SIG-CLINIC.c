@@ -1,5 +1,5 @@
-// gcc -c -Wall projeto.c
-// gcc projeto.c -o projeto
+// gcc -c -Wall SIG-CLINIC.c
+// gcc SIG-CLINIC.c -o SIG-CLINIC
 //___________________________________________________________________
 //|       UFRN- Universidade Federal do Rio Grande do Norte         |
 //|             Centro de Ensino Superior do Seridó                 |
