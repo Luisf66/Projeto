@@ -24,36 +24,33 @@ char agendamento(void){
 
 
 void agendar(void){
-    struct consulta consulta;
+    Consulta *con;
+    con = (Consulta*)malloc(sizeof(Consulta));
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                 Agendar                                 |\n"); 
     printf("| CPF: (123.456.789-01)                                                   |\n");  
-    scanf("%[0-9.-]", consulta.cpf);    
+    scanf("%[0-9.-]", con->cpf);    
     getchar();       
     printf("| Dia:                                                                    |\n");
-    scanf("%[0-9]", consulta.dd);    
+    scanf("%[0-9]", con->dd);    
     getchar();
     printf("| Mês:                                                                    |\n");
-    scanf("%[0-9]", consulta.mm);    
+    scanf("%[0-9]", con->mm);    
     getchar();
     printf("| Ano:                                                                    |\n");
-    scanf("%[0-9]", consulta.aaaa);    
+    scanf("%[0-9]", con->aaaa);    
     getchar();
     printf("| Horário desejado: (0~24)                                                |\n");
-    scanf("%[0-9]", consulta.hora);    
+    scanf("%[0-9]", con->hora);    
     getchar();
     printf("| Médico desejado:                                                        |\n");
-    scanf("%[a-zA-Z ]", consulta.medico);    
+    scanf("%[a-zA-Z ]", con->medico);    
     getchar();
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
-    return consulta.cpf;
-    return consulta.dd;
-    return consulta.mm;
-    return consulta.aaaa;
 }
 
 void remarcar(void){
