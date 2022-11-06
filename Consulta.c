@@ -24,7 +24,7 @@ char agendamento(void){
 
 
 void agendar(void){
-    Consulta *con;
+    Consulta* con;
     con = (Consulta*)malloc(sizeof(Consulta));
     system("clear||cls");
     printf("\n");
@@ -40,8 +40,37 @@ void agendar(void){
     printf("| Mês:                                                                    |\n");
     scanf("%[0-9]", con->mm);    
     getchar();
-    printf("| Ano:                                                                    |\n");
-    scanf("%[0-9]", con->aaaa);    
+    printf("| Horário desejado: (0~24)                                                |\n");
+    scanf("%[0-9]", con->hora);    
+    getchar();
+    printf("| Médico desejado:                                                        |\n");
+    scanf("%[a-zA-Z ]", con->medico);    
+    getchar();
+    printf("| 0-voltar                                                                |\n");                                              
+    printf("|_________________________________________________________________________|\n");
+    mostrarconsulta(con);
+    getchar();
+    gravarconsulta(con);
+    getchar();
+    free(con);
+}
+
+void remarcar(void){
+    Consulta *con;
+    con = (Consulta*)malloc(sizeof(Consulta));
+    system("clear||cls");
+    printf("\n");
+    printf("___________________________________________________________________________\n");
+    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
+    printf("|                                Remarcar                                 |\n"); 
+    printf("| CPF: (123.456.789-01)                                                   |\n");  
+    scanf("%[0-9.-]", con->cpf);    
+    getchar();       
+    printf("| Dia:                                                                    |\n");
+    scanf("%[0-9]", con->dd);    
+    getchar();
+    printf("| Mês:                                                                    |\n");
+    scanf("%[0-9]", con->mm);    
     getchar();
     printf("| Horário desejado: (0~24)                                                |\n");
     scanf("%[0-9]", con->hora);    
@@ -51,39 +80,8 @@ void agendar(void){
     getchar();
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
-}
-
-void remarcar(void){
-    struct consulta consulta;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                                Remarcar                                 |\n"); 
-    printf("| CPF: (123.456.789-01)                                                   |\n");  
-    scanf("%[0-9.-]", consulta.cpf);    
-    getchar();       
-    printf("| Dia:                                                                    |\n");
-    scanf("%[0-9]", consulta.dd);    
-    getchar();
-    printf("| Mês:                                                                    |\n");
-    scanf("%[0-9]", consulta.mm);    
-    getchar();
-    printf("| Ano:                                                                    |\n");
-    scanf("%[0-9]", consulta.aaaa);    
-    getchar();
-    printf("| Horário desejado: (0~24)                                                |\n");
-    scanf("%[0-9]", consulta.hora);    
-    getchar();
-    printf("| Médico desejado:                                                        |\n");
-    scanf("%[a-zA-Z ]", consulta.medico);    
-    getchar();
-    printf("| 0-voltar                                                                |\n");                                              
-    printf("|_________________________________________________________________________|\n");
-    return consulta.cpf;
-    return consulta.dd;
-    return consulta.mm;
-    return consulta.aaaa;
+    gravarconsulta(con);
+    free(con);
 }
 
 void cancelar(void){
@@ -101,10 +99,7 @@ void cancelar(void){
     getchar();
     printf("| Mês:                                                                    |\n");
     scanf("%[0-9]", consulta.mm);    
-    getchar();
-    printf("| Ano:                                                                    |\n");
-    scanf("%[0-9]", consulta.aaaa);    
-    getchar();
+    getchar();    
     printf("| Horário cadastrado: (0~24)                                              |\n");
     scanf("%[0-9]", consulta.hora);    
     getchar();
@@ -113,8 +108,25 @@ void cancelar(void){
     getchar();
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
-    return consulta.cpf;
-    return consulta.dd;
-    return consulta.mm;
-    return consulta.aaaa;
+}
+
+void gravarconsulta (Consulta* con){
+    FILE* gc;
+    gc = fopen("Consulta.dat","ab");
+    if (gc == NULL){
+        printf("Impossível abrir o arquivo");
+        printf("Programa encerrando...");
+        exit(1);
+    }
+    fwrite(con, sizeof(Consulta),1,gc);
+    fclose(gc);
+}
+
+void mostrarconsulta (Consulta* con){
+    printf("| CPF: %s\n", con->cpf);
+    printf("| Dia: %s\n", con->dd);
+    printf("| Mês: %s\n",con->mm);
+    printf("| Horário cadastrado: %s\n",con->hora);
+    printf("| Médico cadastrado: %s\n",con->medico);
+    printf("|_________________________________________________________________________|\n");
 }

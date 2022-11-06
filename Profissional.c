@@ -25,31 +25,45 @@ char profissionais(void){
 
 
 void cadastrarprofissional(void){
-    struct profissional funcionario;
+    Profissional* funcionario;
+    funcionario = (Profissional*)malloc(sizeof(Profissional));
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                          Cadastrar profissional                         |\n");              
     printf("| Nome:                                                                   |\n");
-    scanf("%[a-zA-Z ]", funcionario.nome);    
+    scanf("%[a-zA-Z ]", funcionario->nome);    
     getchar();
     printf("| CPF: (123.456.789-01)                                                   |\n");
-    scanf("%[0-9.-]", funcionario.cpf);    
+    scanf("%[0-9.-]", funcionario->cpf);    
     getchar();
     printf("| Celular: (00 91234-5678)                                                |\n");
-    scanf("%[0-9- ]", funcionario.celular);    
+    scanf("%[0-9- ]", funcionario->celular);    
     getchar();
     printf("| E-mail:                                                                 |\n");
-    scanf("%[a-zA-Z0-9@ ]", funcionario.email);    
+    scanf("%[a-zA-Z0-9@ ]", funcionario->email);    
     getchar();
-    printf("| Nascimento: (dd/mm/aa)                                                  |\n");
-    scanf("%[0-9/]", funcionario.data);    
+    printf("| Nascimento Dia:                                                         |\n");
+    scanf("%[0-9]", funcionario->dd);    
+    getchar();
+    printf("| Nascimento Mês:                                                         |\n");
+    scanf("%[0-9]", funcionario->mm);    
+    getchar();
+    printf("| Nascimento Ano:                                                         |\n");
+    scanf("%[0-9]", funcionario->aaaa);    
     getchar();
     printf("| 0-voltar                                                                |\n");                                        
     printf("|_________________________________________________________________________|\n");
-    printf("Tecle ENTER para continuar...\n");
+    printf("Tecle enter para cadastrar");
     getchar();
+    mostrarfuncionario(funcionario);
+    printf("Tecle enter para cadastrar");
+    getchar();
+    gravarfuncionario(funcionario);
+    printf("Cadastro realizado");
+    getchar();
+    free(funcionario);
 }
 
 void editarprofissional(void){
@@ -70,31 +84,42 @@ void editarprofissional(void){
 }
 
 void alterardadosprofissional(void){
-    struct profissional funcionario;
+    Profissional* funcionario;
+    funcionario = (Profissional*)malloc(sizeof(Profissional));
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                          Cadastrar profissional                         |\n");              
     printf("| Nome:                                                                   |\n");
-    scanf("%[a-zA-Z ]", funcionario.nome);    
+    scanf("%[a-zA-Z ]", funcionario->nome);    
     getchar();
     printf("| CPF: (123.456.789-00)                                                   |\n");
-    scanf("%[0-9.-]", funcionario.cpf);    
+    scanf("%[0-9.-]", funcionario->cpf);    
     getchar();
     printf("| Celular: (00 91234-5678)                                                |\n");
-    scanf("%[0-9.- ]", funcionario.celular);    
+    scanf("%[0-9.- ]", funcionario->celular);    
     getchar();
     printf("| E-mail:                                                                 |\n");
-    scanf("%[a-zA-Z0-9@ ]", funcionario.email);    
+    scanf("%[a-zA-Z0-9@ ]", funcionario->email);    
     getchar();
-    printf("| Nascimento: (dd/mm/aa)                                                  |\n");
-    scanf("%[0-9/]", funcionario.data);    
+    printf("| Nascimento Dia:                                                         |\n");
+    scanf("%[0-9]", funcionario->dd);    
+    getchar();
+    printf("| Nascimento Mês:                                                         |\n");
+    scanf("%[0-9]", funcionario->mm);    
+    getchar();
+    printf("| Nascimento Ano:                                                         |\n");
+    scanf("%[0-9]", funcionario->aaaa);    
     getchar();
     printf("| 0-voltar                                                                |\n");                                        
     printf("|_________________________________________________________________________|\n");
-    printf("Tecle ENTER para continuar...\n");
+    printf("Tecle enter para cadastrar os novos dados");
     getchar();
+    gravarfuncionario(funcionario);
+    printf("Cadastro realizado");
+    getchar();
+    free(funcionario);
 }
 
 void deletarprofissional(void){
@@ -129,4 +154,27 @@ void buscarprofissional(void){
     printf("|_________________________________________________________________________|\n");
     printf("Tecle ENTER para continuar...\n");
     getchar();
+}
+
+void gravarfuncionario (Profissional* funcionario){
+    FILE* gfun;
+    gfun = fopen("Funcionario.dat","ab");
+    if (gfun == NULL){
+        printf("Impossível abrir o arquivo");
+        printf("Programa encerrando...");
+        exit(1);
+    }
+    fwrite(funcionario, sizeof(Profissional),1,gfun);
+    fclose(gfun);
+}
+
+void mostrarfuncionario (Profissional* funcionario){
+    printf("| Nome: %s\n", funcionario->nome);
+    printf("| CPF: %s\n", funcionario->cpf);
+    printf("| Celular: %s\n", funcionario->celular);
+    printf("| E-mail: %s\n", funcionario->email);
+    printf("| Dia: %s\n", funcionario->dd);
+    printf("| Mês: %s\n",funcionario->mm);
+    printf("| Ano: %s\n",funcionario->aaaa);
+    printf("|_________________________________________________________________________|\n");
 }

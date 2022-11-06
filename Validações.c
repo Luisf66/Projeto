@@ -3,11 +3,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Validações.h"
+#include "Estruturas.h"
 
 // DATA
 char bissexto(char aaaa){
     char aaaa[4];
-    aaaa - '0';
+    int atoi (const char *aaaa);
+    //aaaa - '0';
     if ((aaaa % 100 != 0) && (aaaa % 4 == 0)){
         return 1;
     }
@@ -22,95 +24,93 @@ char bissexto(char aaaa){
     }
 }
 char data(char dd, char mm, char aaaa){
-    char diamax;
-    dd - '0';
-    mm - '0';
-    aaaa - '0';
-
-    if (aaaa > 0 && aaaa <= 2050){
+    char dia_max;
+    struct consulta consulta;
+    printf("| Dia:                                                                    |\n");
+    scanf("%[0-9]", consulta.dd);    
+    getchar();
+    printf("| Mês:                                                                    |\n");
+    scanf("%[0-9]", consulta.mm);    
+    getchar();
+    printf("| Ano:                                                                    |\n");
+    scanf("%[0-9]", consulta.aaaa);
+    int atoi (const char *aaaa);
+    int atoi (const char *mm);
+    int atoi (const char *dd);
+    int atoi (const char *dia_max);
+    // FAIXA DE DATAS VALIDAS
+    if ( dd > 0 && dd < 32){
         return 1;
     }
     else{
         return 0;
     }
-    if (dd >= 1 && dd <=31){
+    if ( mm > 0 && mm < 13){
         return 1;
     }
     else{
         return 0;
     }
-    if (mm >= 1 && mm <= 12){
+    if ( aaaa > 1900 && aaaa < 2077){
         return 1;
     }
     else{
         return 0;
     }
-    if ((mm == 2) && (bissexto(aaaa))){
-        diamax = 29;
+    //DIAS VALIDOS NO MES
+    if ( mm == 4 || mm == 6 || mm == 9 || mm == 11){
+        dia_max = 30;
+        if ( dd > dia_max){
+            return 0;
+        }
+        else{
+            return 1;
+        }
+    }
+    if ( mm == 1 || mm == 3 || mm == 5 || mm == 7 || mm == 8 || mm == 10 || mm == 12){
+        dia_max = 31;
+        if ( dd > dia_max){
+            return 0;
+        }
+        else{
+            return 1;
+        }
+    }
+    if ( mm == 2 && bissexto){
+        dia_max = 29;
+        if ( dd > dia_max){
+            return 0;
+        }
+        else{
+            return 1;
+        }
     }
     else{
-        diamax = 28;
-    }
-    switch (mm){
-        case 4:
-            diamax = 30;
-            break;
-        case 6:
-            diamax = 30;
-            break;
-        case 9:
-            diamax = 30;
-            break;
-        case 11:
-            diamax = 30;
-            break;
-    }
-    switch (mm){
-        case 1:
-            diamax = 31;
-            break;
-        case 3:
-            diamax = 31;
-            break;
-        case 5:
-            diamax = 31;
-            break;
-        case 7:
-            diamax = 31;
-            break;
-        case 8:
-            diamax = 31;
-            break;
-        case 10:
-            diamax = 31;
-            break;
-        case 12:
-            diamax = 31;
-            break;
+        dia_max = 28;
+        if ( dd > dia_max){
+            return 0;
+        }
+        else{
+            return 1;
+        }
     }
 }
 
 // CPF
 
-char CPF(char *cpf,char resultado,char resultado_dois){
+char CPF(char *cpf,int resultado,int resultado_dois){
     // vetor cpf: 0 1 2 3 4 5 6 7 8 9 10 11 12 13
     // numer cpf: 1 2 3 . 4 5 6 . 7 8 9  -  0  1
-    char *cpf[14];
-    char resultado[4];
-    char resultado_dois[4];
+    struct paciente cliente;
+    printf("| CPF: (123.456.789-00)                                                   |\n");
+    scanf("%[0-9.-]", cliente.cpf);
+    getchar();
+    int resultado;
+    int resultado_dois;
+    int atoi (const char *cpf);
 
-    *cpf - '0';
-    resultado - '0';
-    resultado_dois - '0';
     resultado = (cpf[0]*10) + (cpf[1]*9) + (cpf[2]*8) + (cpf[4]*7) + (cpf[5]*6) + (cpf[6]*5) + (cpf[8]*4) + (cpf[9]*3) + (cpf[10]*2); 
     resultado = (resultado * 10) % 11;
-
-    //scanf("%[0-9.-]", cpf);
-    //getchar();
-    //return cpf;
-
-
-
 
     if (resultado == 10){
         resultado = 0;
