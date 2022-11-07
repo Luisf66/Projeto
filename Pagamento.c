@@ -25,23 +25,23 @@ char pagamento(void){
 }
 
 void pix(void){
-    struct pagamento pix;
+    Pagamento* pix;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                   Pix                                   |\n");              
     printf("| CPF:                                                                    |\n");
-    scanf("%[0-9.-]",pix.cpf);    
+    scanf("%[0-9.-]",pix->cpf);    
     getchar();
     printf("| CNPJ:                                                                   |\n");
-    scanf("%[0-9.-]", pix.cnpj);    
+    scanf("%[0-9.-]", pix->cnpj);    
     getchar();
     printf("| Celular:                                                                |\n");
-    scanf("%[0-9/ ]", pix.celular);    
+    scanf("%[0-9/ ]", pix->celular);    
     getchar();
     printf("| E-mail:                                                                 |\n");
-    scanf("%[a-zA-Z0-9@./ ]", pix.email);    
+    scanf("%[a-zA-Z0-9@./ ]", pix->email);    
     getchar();
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
