@@ -61,7 +61,7 @@ void cadastrarpaciente(void){
     printf("Tecle enter para cadastrar");
     getchar();
     mostrarclientes(cliente);
-    printf("Tecle enter para cadastrar");
+    printf("Tecle enter para finalizar o cadastro");
     getchar();
     gravarcliente(cliente);
     printf("Cadastro realizado");
@@ -176,6 +176,7 @@ void gravarcliente (Paciente* cliente){
 }
 
 void mostrarclientes (Paciente* cliente){
+    printf("---------------------------------------------------------------------------\n");
     printf("| Nome: %s\n", cliente->nome);
     printf("| CPF: %s\n", cliente->cpf);
     printf("| Celular: %s\n", cliente->celular);
