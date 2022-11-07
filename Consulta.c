@@ -80,31 +80,33 @@ void remarcar(void){
     getchar();
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
+    mostrarconsulta(con);
+    getchar();
     gravarconsulta(con);
     free(con);
 }
 
 void cancelar(void){
-    struct consulta consulta;
+    Consulta* con;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                Cancelar                                 |\n"); 
     printf("| CPF: (123.456.789-01)                                                   |\n");  
-    scanf("%[0-9.-]", consulta.cpf);    
+    scanf("%[0-9.-]", con->cpf);    
     getchar();       
     printf("| Dia:                                                                    |\n");
-    scanf("%[0-9]", consulta.dd);    
+    scanf("%[0-9]", con->dd);    
     getchar();
     printf("| Mês:                                                                    |\n");
-    scanf("%[0-9]", consulta.mm);    
+    scanf("%[0-9]", con->mm);    
     getchar();    
     printf("| Horário cadastrado: (0~24)                                              |\n");
-    scanf("%[0-9]", consulta.hora);    
+    scanf("%[0-9]", con->hora);    
     getchar();
     printf("| Médico cadastrado:                                                      |\n");
-    scanf("%[a-zA-Z ]", consulta.medico);    
+    scanf("%[a-zA-Z ]", con->medico);    
     getchar();
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
