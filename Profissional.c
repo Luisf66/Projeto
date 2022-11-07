@@ -58,7 +58,7 @@ void cadastrarprofissional(void){
     printf("Tecle enter para cadastrar");
     getchar();
     mostrarfuncionario(funcionario);
-    printf("Tecle enter para cadastrar");
+    printf("Tecle enter para finalizar o cadastro");
     getchar();
     gravarfuncionario(funcionario);
     printf("Cadastro realizado");
@@ -169,6 +169,7 @@ void gravarfuncionario (Profissional* funcionario){
 }
 
 void mostrarfuncionario (Profissional* funcionario){
+    printf("---------------------------------------------------------------------------\n");
     printf("| Nome: %s\n", funcionario->nome);
     printf("| CPF: %s\n", funcionario->cpf);
     printf("| Celular: %s\n", funcionario->celular);
