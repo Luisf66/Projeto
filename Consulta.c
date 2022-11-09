@@ -132,3 +132,38 @@ void mostrarconsulta (Consulta* con){
     printf("| Médico cadastrado: %s\n",con->medico);
     printf("|_________________________________________________________________________|\n");
 }
+
+void buscarconsulta (Consulta* con){
+    FILE* bc;
+    Consulta* con;
+    int enc;
+    char buscacpf[15];
+    char diacon[3];
+    bc = fopen("Consulta.dat","rb");
+    enc = 0;
+    if (bc == NULL){
+        printf("Consulta não cadastrada");
+        exit(1);
+    };
+    printf("Digite o cpf e o dia da consulta");
+    scanf("%[0-9.-]", buscacpf);
+    getchar();
+    printf("| Dia:                                                                    |\n");
+    scanf("%[0-9]", diacon);
+    getchar();
+    con = (Consulta *)malloc(sizeof(Consulta));
+    while ((!enc) && (fread(con, sizeof(Consulta), 1, bc))){
+        if ((strcmp(con->cpf) == 0) && (con->status == '1')){
+            enc = 1;
+        }
+    }
+    fclose(bc);
+    if (enc){
+        mostrarconsulta(con);
+    }
+    else{
+        printf("A consulta %s não foi encontrado...\n", buscacpf);
+    }
+    free(con);
+}
+
