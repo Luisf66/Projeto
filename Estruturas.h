@@ -11,6 +11,7 @@ struct paciente{
     char aaaa[5];
     char email[50];
     char tipo[4];
+    char status;
 };
 
 typedef struct profissional Profissional;
@@ -22,6 +23,7 @@ struct profissional{
     char mm[3];
     char aaaa[5];
     char email[50];
+    char status;
 };
 
 typedef struct consulta Consulta;
@@ -31,6 +33,7 @@ struct consulta{
     char mm[3];
     char hora[3];
     char medico[40];
+    char status;
 };
 
 typedef struct pagamento Pagamento;
