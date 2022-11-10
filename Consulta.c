@@ -32,20 +32,17 @@ void agendar(void){
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                 Agendar                                 |\n"); 
     printf("| CPF: (123.456.789-01)                                                   |\n");  
-    scanf("%[0-9.-]", con->cpf);    
-    getchar();       
-    printf("| Dia:                                                                    |\n");
-    scanf("%[0-9]", con->dd);    
-    getchar();
-    printf("| Mês:                                                                    |\n");
-    scanf("%[0-9]", con->mm);    
-    getchar();
+    //scanf("%[0-9.-]", con->cpf);    
+    //getchar();  
+    fgets(con->cpf,14,stdin);    
+    printf("| Dia:                                                                    |\n");    
+    fgets(con->dd,3,stdin);
+    printf("| Mês:                                                                    |\n");    
+    fgets(con->mm,3,stdin);
     printf("| Horário desejado: (0~24)                                                |\n");
-    scanf("%[0-9]", con->hora);    
-    getchar();
+    fgets(con->hora,3,stdin);
     printf("| Médico desejado:                                                        |\n");
-    scanf("%[a-zA-Z ]", con->medico);    
-    getchar();
+    fgets(con->medico,40,stdin);
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
     mostrarconsulta(con);
@@ -125,6 +122,7 @@ void gravarconsulta (Consulta* con){
 }
 
 void mostrarconsulta (Consulta* con){
+    printf("---------------------------------------------------------------------------\n");
     printf("| CPF: %s\n", con->cpf);
     printf("| Dia: %s\n", con->dd);
     printf("| Mês: %s\n",con->mm);
@@ -133,9 +131,9 @@ void mostrarconsulta (Consulta* con){
     printf("|_________________________________________________________________________|\n");
 }
 
-void buscarconsulta (Consulta* con){
+void buscarconsulta (Consulta *con){
     FILE* bc;
-    Consulta* con;
+    Consulta *con;
     int enc;
     char buscacpf[15];
     char diacon[3];
@@ -148,7 +146,7 @@ void buscarconsulta (Consulta* con){
     printf("Digite o cpf e o dia da consulta");
     scanf("%[0-9.-]", buscacpf);
     getchar();
-    printf("| Dia:                                                                    |\n");
+    printf("Dia:");
     scanf("%[0-9]", diacon);
     getchar();
     con = (Consulta *)malloc(sizeof(Consulta));
@@ -166,4 +164,3 @@ void buscarconsulta (Consulta* con){
     }
     free(con);
 }
-
