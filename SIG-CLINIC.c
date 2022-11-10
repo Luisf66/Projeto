@@ -143,6 +143,7 @@ int main(void) {
                         break;
                     case '2':
                         printf("Consultas cadastradas:");
+                        buscarconsulta();
                         break;
                     case '3':
                         servicos();
