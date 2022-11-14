@@ -4,14 +4,14 @@
 typedef struct paciente Paciente;
 struct paciente{
     char nome[40];
-    char cpf[14];
-    char celular[14];
-    char dd[3];
-    char mm[3];
-    char aaaa[5];
+    char cpf[15];
+    char celular[15];
+    char dd[4];
+    char mm[4];
+    char aaaa[6];
     char email[50];
-    char tipo[4];
-    char status;
+    char tipo[5];
+    char status[3];
 };
 
 typedef struct profissional Profissional;
@@ -28,10 +28,10 @@ struct profissional{
 
 typedef struct consulta Consulta;
 struct consulta{
-    char cpf[14];
-    char dd[3];
-    char mm[3];
-    char hora[3];
+    char cpf[15];
+    char dd[4];
+    char mm[4];
+    char hora[4];
     char medico[40];
     char status;
 };
