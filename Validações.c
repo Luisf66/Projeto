@@ -26,14 +26,14 @@ char bissexto(char aaaa){
 char data(char dd, char mm, char aaaa){
     char dia_max;
     struct consulta consulta;
-    printf("| Dia:                                                                    |\n");
-    scanf("%[0-9]", consulta.dd);    
-    getchar();
-    printf("| Mês:                                                                    |\n");
-    scanf("%[0-9]", consulta.mm);    
-    getchar();
-    printf("| Ano:                                                                    |\n");
-    scanf("%[0-9]", consulta.aaaa);
+   // printf("| Dia:                                                                    |\n");
+   // scanf("%[0-9]", consulta.dd);    
+   // getchar();
+   // printf("| Mês:                                                                    |\n");
+   // scanf("%[0-9]", consulta.mm);    
+   // getchar();
+   // printf("| Ano:                                                                    |\n");
+   // scanf("%[0-9]", consulta.aaaa);
     int atoi (const char *aaaa);
     int atoi (const char *mm);
     int atoi (const char *dd);
