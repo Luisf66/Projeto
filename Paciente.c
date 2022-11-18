@@ -26,7 +26,6 @@ char paciente(void){
 
 void cadastrarpaciente(void){
     Paciente* cliente;
-    char entrada[255];
     cliente = (Paciente*)malloc(sizeof(Paciente));
     system("clear||cls");
     printf("\n");
@@ -36,37 +35,45 @@ void cadastrarpaciente(void){
     printf("| Nome:                                                                   |\n");
     fgets(cliente->nome,40,stdin); 
     strtok(cliente->nome, "\n");
-    //strcpy(, entrada);
-    //getchar();
-    //
-    printf("Nome lido: |%s|\n", cliente->nome);
-    printf("| CPF: (123.456.789-00)                                                   |\n");
-    fgets(cliente->cpf,15,stdin);    
     getchar();
-    strtok(cliente->cpf, '\n');
+    //strcpy(, entrada);
+    //printf("Nome lido: |%s|\n", cliente->nome);
+    
+    printf("| CPF: (123.456.789-00)                                                   |\n");
+    fgets(cliente->cpf,15,stdin); 
+    strtok(cliente->cpf, "\n");   
+    getchar();
+
     printf("| Celular: (00 91234-5678)                                                |\n");
     fgets(cliente->celular,15,stdin);    
+    strtok(cliente->celular, "\n");
     getchar();
-    strtok(cliente->celular, '\n');
+
     printf("| E-mail:                                                                 |\n");
     fgets(cliente->email,50,stdin);    
+    strtok(cliente->email, "\n");
     getchar();
-    strtok(cliente->email, '\n');
+
     printf("| Nascimento Dia:                                                         |\n");
     fgets(cliente->dd,4,stdin);    
+    strtok(cliente->dd, "\n");
     getchar();
-    strtok(cliente->dd, '\n');
+
     printf("| Nascimento Mês:                                                         |\n");
     fgets(cliente->mm,4,stdin);    
+    strtok(cliente->mm, "\n");
     getchar();
-    strtok(cliente->mm, '\n');
+
     printf("| Nascimento Ano:                                                         |\n");
     fgets(cliente->aaaa,6,stdin);    
+    strtok(cliente->aaaa, "\n");
     getchar();
-    strtok(cliente->aaaa, '\n');
+
     printf("| Tipo sanguíneo:                                                         |\n");
     fgets(cliente->tipo,4,stdin); 
-    strtok(cliente->tipo, '\n');
+    strtok(cliente->tipo, "\n");
+    getchar();
+
     cliente->status = '1';   
     printf("| 0-voltar                                                                |\n");                                    
     printf("|_________________________________________________________________________|\n");
