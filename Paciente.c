@@ -25,6 +25,7 @@ char paciente(void){
 
 
 void cadastrarpaciente(void){
+    //strcpy(, entrada);
     Paciente* cliente;
     cliente = (Paciente*)malloc(sizeof(Paciente));
     system("clear||cls");
@@ -36,44 +37,42 @@ void cadastrarpaciente(void){
     fgets(cliente->nome,40,stdin); 
     strtok(cliente->nome, "\n");
     getchar();
-    //strcpy(, entrada);
-    //printf("Nome lido: |%s|\n", cliente->nome);
-    
+    //
     printf("| CPF: (123.456.789-00)                                                   |\n");
     fgets(cliente->cpf,15,stdin); 
     strtok(cliente->cpf, "\n");   
     getchar();
-
+    //
     printf("| Celular: (00 91234-5678)                                                |\n");
     fgets(cliente->celular,15,stdin);    
     strtok(cliente->celular, "\n");
     getchar();
-
+    //
     printf("| E-mail:                                                                 |\n");
     fgets(cliente->email,50,stdin);    
     strtok(cliente->email, "\n");
     getchar();
-
+    //
     printf("| Nascimento Dia:                                                         |\n");
     fgets(cliente->dd,4,stdin);    
     strtok(cliente->dd, "\n");
     getchar();
-
+    //
     printf("| Nascimento Mês:                                                         |\n");
     fgets(cliente->mm,4,stdin);    
     strtok(cliente->mm, "\n");
     getchar();
-
+    //
     printf("| Nascimento Ano:                                                         |\n");
     fgets(cliente->aaaa,6,stdin);    
     strtok(cliente->aaaa, "\n");
     getchar();
-
+    //
     printf("| Tipo sanguíneo:                                                         |\n");
     fgets(cliente->tipo,4,stdin); 
     strtok(cliente->tipo, "\n");
     getchar();
-
+    //
     cliente->status = '1';   
     printf("| 0-voltar                                                                |\n");                                    
     printf("|_________________________________________________________________________|\n");
@@ -145,41 +144,6 @@ void alterardadospaciente(void){
     free(cliente);
 }
 
-
-void deletarpaciente(void){
-    char cpf[15];
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                             Remover paciente                            |\n");              
-    printf("| CPF: (123.456.789-00)                                                   |\n");
-    scanf("%[0-9.-]", cpf);    
-    getchar();
-    printf("|                                                                         |\n");
-    printf("| 0-voltar                                                                |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    printf("Tecle ENTER para continuar...\n");
-    getchar();
-}
-
-void buscarpaciente(void){
-    char cpf[15];
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                             Buscar paciente                             |\n");              
-    printf("| CPF: (123.456.789-00)                                                   |\n");
-    scanf("%[0-9.-]", cpf);    
-    getchar();
-    printf("|                                                                         |\n");
-    printf("| 0-voltar                                                                |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    printf("Tecle ENTER para continuar...\n");
-    getchar();
-}
-
 void gravarcliente (Paciente* cliente){
     FILE* gcli;
     gcli = fopen("Clientes.dat","ab");
@@ -216,8 +180,14 @@ void buscarcliente (void){
         printf("Cliente não cadastrada");
         exit(1);
     };
-    printf("Digite o cpf:");
-    fgets(buscacpf,15,gcli);
+    printf("___________________________________________________________________________\n");
+    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+    printf("|                             Buscar paciente                             |\n");              
+    printf("| CPF: (123.456.789-00)                                                   |\n");
+    printf("| Digite o cpf:                                                           |\n");
+    printf("|_________________________________________________________________________|\n");
+    fgets(cliente->cpf,15,gcli); 
+    strtok(cliente->cpf, "\n");   
     getchar();
     cliente = (Paciente *)malloc(sizeof(Paciente));
     enc = 0;
@@ -247,8 +217,14 @@ void deletarcliente(void){
         printf("Paciente não cadastrado");
         exit(1);
     }
-    printf("Digite o cpf:");
-    fgets(buscacpf,15,gcli);
+    printf("___________________________________________________________________________\n");
+    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+    printf("|                             Remover paciente                            |\n");              
+    printf("| CPF: (123.456.789-00)                                                   |\n");
+    printf("| Digite o cpf:                                                           |\n");
+    printf("|_________________________________________________________________________|\n");
+    fgets(cliente->cpf,15,gcli); 
+    strtok(cliente->cpf, "\n");   
     getchar();
     cliente = (Paciente*)malloc(sizeof(Paciente));
     enc = 0;
