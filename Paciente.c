@@ -188,7 +188,7 @@ void gravarcliente (Paciente* cliente){
         printf("Programa encerrando...");
         exit(1);
     }
-    fwrite(cliente, sizeof(Consulta),1,gcli);
+    fwrite(cliente, sizeof(Paciente),1,gcli);
     fclose(gcli);
 }
 
@@ -204,4 +204,78 @@ void mostrarclientes (Paciente* cliente){
     printf("| Tipo sanguíneo: %s\n",cliente->tipo);
     printf("| Status: %s\n",cliente->status);
     printf("|_________________________________________________________________________|\n");
+}
+
+void buscarcliente (void){
+    FILE* gcli;
+    Paciente *cliente;
+    int enc;
+    char buscacpf[15];
+    gcli = fopen("Clientes.dat","rb");
+    if (gcli == NULL){
+        printf("Cliente não cadastrada");
+        exit(1);
+    };
+    printf("Digite o cpf:");
+    fgets(buscacpf,15,gcli);
+    getchar();
+    cliente = (Paciente *)malloc(sizeof(Paciente));
+    enc = 0;
+    while ((!enc) && (fread(cliente, sizeof(Paciente), 1, gcli))){
+        if ((strcmp(cliente->cpf,buscacpf) == 0)){
+            enc = 1;
+        }
+    }
+    fclose(gcli);
+    if (enc){
+        mostrarclientes(cliente);
+    }
+    else{
+        printf("O paciente %s não foi encontrado...\n", buscacpf);
+    }
+    free(cliente);
+}
+
+void deletarcliente(void){
+    FILE* gcli;
+    Paciente* cliente;
+    int enc;
+    char buscacpf[15];
+    char resp;
+    gcli = fopen("Clientes.dat", "r+b");
+    if(gcli == NULL){
+        printf("Paciente não cadastrado");
+        exit(1);
+    }
+    printf("Digite o cpf:");
+    fgets(buscacpf,15,gcli);
+    getchar();
+    cliente = (Paciente*)malloc(sizeof(Paciente));
+    enc = 0;
+    while ((!enc) && (fread(cliente, sizeof(Paciente), 1, gcli))){
+        if ((strcmp(cliente->cpf,buscacpf) == 0)){
+            enc = 1;
+        }
+    }
+    if (enc == 1){
+        mostrarclientes(cliente);
+        getchar();
+        printf("Deseja deletar este paciente? (S ou N):");
+        scanf("%c", &resp);
+        if (resp == 's' || resp == 'S') {
+        cliente->status = '0';
+        getchar();
+        fseek(gcli, (-1)*sizeof(Paciente), SEEK_CUR);
+        fwrite(cliente, sizeof(Paciente), 1, gcli);
+        printf("\nPaciente deletado\n");
+        }
+    else {
+        printf("\nOk, os dados não foram alterados\n");
+    }
+    }
+    else {
+    printf("O Paciente %s não foi encontrada...\n", buscacpf);
+    }
+    free(cliente);
+    fclose(gcli);   
 }
