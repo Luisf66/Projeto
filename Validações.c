@@ -173,4 +173,3 @@ char CNPJ(char *cnpj,char resultado, char resto,char resultado_dois, char resto_
 
 // CELULAR
 
-
