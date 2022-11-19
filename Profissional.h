@@ -1,3 +1,4 @@
+typedef struct profissional Profissional;
 
 char profissionais(void);
 
@@ -7,6 +8,10 @@ void editarprofissional(void);
 
 void alterardadosprofissional(void);
 
-void deletarprofissional(void);
+void gravarfuncionario (Profissional*);
 
-void buscarprofissional(void);
+void mostrarfuncionario (Profissional*);
+
+void buscarfuncionario (void);
+
+void deletarfuncionario(void);
