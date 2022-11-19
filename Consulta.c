@@ -33,23 +33,38 @@ void agendar(void){
     printf("|                                 Agendar                                 |\n"); 
     printf("| CPF: (123.456.789-01)                                                   |\n");  
     fgets(con->cpf,15,stdin);    
+    strtok(con->cpf, "\n");
     getchar();
+    //
     printf("| Dia:                                                                    |\n");    
     fgets(con->dd,4,stdin);
+    strtok(con->dd, "\n");
     getchar();
+    //
     printf("| Mês:                                                                    |\n");    
     fgets(con->mm,4,stdin);
+    strtok(con->mm, "\n");
     getchar();
+    //
     printf("| Horário desejado: (0~24)                                                |\n");
     fgets(con->hora,4,stdin);
+    strtok(con->hora, "\n");
     getchar();
+    //
     printf("| Médico desejado:                                                        |\n");
     fgets(con->medico,40,stdin);
+    strtok(con->medico, "\n");
+    getchar();
+    //
+    con->status = '1';
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
+    printf("Tecle enter para cadastrar");
     mostrarconsulta(con);
+    printf("Tecle enter para finalizar o cadastro");
     getchar();
     gravarconsulta(con);
+    printf("Cadastro realizado");
     getchar();
     free(con);
 }
@@ -84,36 +99,11 @@ void remarcar(void){
     free(con);
 }
 
-void cancelar(void){
-    Consulta* con;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                                Cancelar                                 |\n"); 
-    printf("| CPF: (123.456.789-01)                                                   |\n");  
-    fgets(con->cpf,15,stdin);    
-    getchar();       
-    printf("| Dia:                                                                    |\n");
-    fgets(con->dd,4,stdin);   
-    getchar();
-    printf("| Mês:                                                                    |\n");
-    fgets(con->mm,4,stdin);   
-    getchar();    
-    printf("| Horário cadastrado: (0~24)                                              |\n");
-    fgets(con->hora,4,stdin);    
-    getchar();
-    printf("| Médico cadastrado:                                                      |\n");
-    fgets(con->medico,40,stdin);
-    printf("| 0-voltar                                                                |\n");                                              
-    printf("|_________________________________________________________________________|\n");
-}
-
 void gravarconsulta (Consulta* con){
     FILE* gc;
     gc = fopen("Consulta.dat","ab");
     if (gc == NULL){
-        printf("Impossível abrir o arquivo");
+        printf("Arquivo inexistente");
         printf("Programa encerrando...");
         exit(1);
     }
@@ -128,6 +118,7 @@ void mostrarconsulta (Consulta* con){
     printf("| Mês: %s\n",con->mm);
     printf("| Horário cadastrado: %s\n",con->hora);
     printf("| Médico cadastrado: %s\n",con->medico);
+    printf("| Status: %s\n",con->status);
     printf("|_________________________________________________________________________|\n");
 }
 
@@ -139,10 +130,16 @@ void buscarconsulta (void){
     gc = fopen("Consulta.dat","rb");
     if (gc == NULL){
         printf("Consulta não cadastrada");
-        menu();
+        exit(1);
     };
-    printf("Digite o cpf:");
-    fgets(buscacpf,15,gc);
+    printf("___________________________________________________________________________\n");
+    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+    printf("|                             Buscar consulta                             |\n");              
+    printf("| CPF: (123.456.789-00)                                                   |\n");
+    printf("| Digite o cpf:                                                           |\n");
+    printf("|_________________________________________________________________________|\n");
+    fgets(con->cpf,15,gc); 
+    strtok(con->cpf, "\n");   
     getchar();
     con = (Consulta *)malloc(sizeof(Consulta));
     enc = 0;
@@ -170,10 +167,16 @@ void eliminarconsulta(void){
     gc = fopen("Consultas.dat", "r+b");
     if(gc == NULL){
         printf("Consulta não cadastrada");
-        menu();
+        exit(1);
     }
-    printf("Digite o cpf:");
-    fgets(buscacpf,15,gc);
+    printf("___________________________________________________________________________\n");
+    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+    printf("|                             Deletar consulta                            |\n");              
+    printf("| CPF: (123.456.789-00)                                                   |\n");
+    printf("| Digite o cpf:                                                           |\n");
+    printf("|_________________________________________________________________________|\n");
+    fgets(con->cpf,15,gc); 
+    strtok(con->cpf, "\n");   
     getchar();
     con = (Consulta*)malloc(sizeof(Consulta));
     enc = 0;
