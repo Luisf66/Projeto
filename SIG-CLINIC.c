@@ -1,5 +1,6 @@
 // gcc -c -Wall SIG-CLINIC.c
 // gcc SIG-CLINIC.c -o SIG-CLINIC
+// Validações desativadas
 //___________________________________________________________________
 //|       UFRN- Universidade Federal do Rio Grande do Norte         |
 //|             Centro de Ensino Superior do Seridó                 |
@@ -8,7 +9,7 @@
 //|     Projeto -- Sistema de Agendamento para Clínicas Médicas     |
 //|            Developed by @Luisf66 - since Ago , 2022             |
 //|-----------------------------------------------------------------|
-//|                             Semana 8                            |
+//|                            Semana 11                            |
 //|_________________________________________________________________|
 
 #include <stdio.h>
@@ -46,6 +47,9 @@ char bissexto(char aaaa);
 char data(char dd, char mm, char aaaa);
 char CPF(char *cpf,char resultado,char resultado_dois);
 char CNPJ(char *cnpj,char resultado, char resto,char resultado_dois, char resto_dois);
+void buscarconsulta (void);
+void alterardadospaciente(void);
+void alterardadosprofissional(void);
 
 
 //  Programa principal
