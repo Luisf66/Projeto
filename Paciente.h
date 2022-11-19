@@ -1,3 +1,4 @@
+typedef struct paciente Paciente;
 
 char paciente(void);
 
@@ -7,6 +8,10 @@ void editarpaciente(void);
 
 void alterardadospaciente(void);
 
-void deletarpaciente(void);
+void gravarcliente (Paciente*);
 
-void buscarpaciente(void);
+void mostrarclientes (Paciente*);
+
+void buscarcliente (void);
+
+void deletarcliente(void);
