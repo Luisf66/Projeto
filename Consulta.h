@@ -7,8 +7,6 @@ void agendar(void);
 
 void remarcar(void);
 
-void cancelar(void);
-
 void gravarconsulta (Consulta*);
 
 void mostrarconsulta (Consulta*);
