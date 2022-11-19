@@ -32,16 +32,25 @@ void pix(void){
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                                   Pix                                   |\n");              
     printf("| CPF:                                                                    |\n");
-    fgets(pix->cpf,15,stdin);    
+    fgets(pix->cpf,15,stdin); 
+    strtok(pix->cpf, "\n");   
     getchar();
+    //
     printf("| CNPJ:                                                                   |\n");
     fgets(pix->cnpj,20,stdin);    
+    strtok(pix->cnpj, "\n");   
     getchar();
+    //
     printf("| Celular:                                                                |\n");
-   fgets(pix->celular,15,stdin);    
+    fgets(pix->celular,15,stdin);    
+    strtok(pix->celular, "\n");   
     getchar();
+    //
     printf("| E-mail:                                                                 |\n");
     fgets(pix->email,40,stdin);
+    strtok(pix->email, "\n");   
+    getchar();
+    //
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
     printf("Tecle ENTER para continuar...\n");
