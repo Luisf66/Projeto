@@ -148,7 +148,7 @@ void gravarcliente (Paciente* cliente){
     FILE* gcli;
     gcli = fopen("Clientes.dat","ab");
     if (gcli == NULL){
-        printf("Impossível abrir o arquivo");
+        printf("Arquivo inexistente");
         printf("Programa encerrando...");
         exit(1);
     }
@@ -177,7 +177,7 @@ void buscarcliente (void){
     char buscacpf[15];
     gcli = fopen("Clientes.dat","rb");
     if (gcli == NULL){
-        printf("Cliente não cadastrada");
+        printf("Cliente não cadastrado");
         exit(1);
     };
     printf("___________________________________________________________________________\n");
@@ -219,7 +219,7 @@ void deletarcliente(void){
     }
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                             Remover paciente                            |\n");              
+    printf("|                             Deletar paciente                            |\n");              
     printf("| CPF: (123.456.789-00)                                                   |\n");
     printf("| Digite o cpf:                                                           |\n");
     printf("|_________________________________________________________________________|\n");
