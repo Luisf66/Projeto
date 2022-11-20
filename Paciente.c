@@ -1,6 +1,7 @@
 // Cliente
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "Paciente.h"
 #include "Estruturas.h"
 

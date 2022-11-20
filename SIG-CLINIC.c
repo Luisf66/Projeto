@@ -14,42 +14,19 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "Consulta.h"
+#include "Paciente.h"
+#include "Pagamento.h"
+#include "Profissional.h"
 
-//  Assinatura das funções
-char menu(void); 
-void info(void); 
-void equipe(void); 
-char paciente(void); 
-char profissionais(void); 
-void servicos(void); 
-char pagamento(void); 
-void horario(void); 
-void cadastrarpaciente(void);
-void cadastrarprofissional(void);
-void editarpaciente(void); 
-void editarprofissional(void);
-void deletarpaciente(void); 
-void deletarprofissional(void); 
-void buscarpaciente(void);
-void buscarprofissional(void);
-char agendamento(void); 
-void agendar(void); 
-void remarcar(void); 
-void cancelar(void); 
-char acesso_online(void); 
-void pix(void);
-void debito(void);
-void credito(void); 
-void convenio(void); 
-void boleto(void);
+//  Assinatura das funções SIG
+char menu(void);
+void info(void);
+void equipe(void);
+void servicos(void);
+void horario(void);
 char consulta(void);
-char bissexto(char aaaa);
-char data(char dd, char mm, char aaaa);
-char CPF(char *cpf,char resultado,char resultado_dois);
-char CNPJ(char *cnpj,char resultado, char resto,char resultado_dois, char resto_dois);
-void buscarconsulta (void);
-void alterardadospaciente(void);
-void alterardadosprofissional(void);
+char acesso_online(void);
 
 
 //  Programa principal
@@ -75,10 +52,10 @@ int main(void) {
                         alterardadospaciente();
                         break;
                     case '3':
-                        deletarpaciente();
+                        deletarcliente();
                         break;
                     case '4':
-                        buscarpaciente();
+                        buscarcliente();
                         break;
                 }
                 break;
@@ -93,10 +70,10 @@ int main(void) {
                         alterardadosprofissional();
                         break;
                     case '3':
-                        deletarprofissional();
+                        deletarfuncionario();
                         break;
                     case '4':
-                        buscarprofissional();
+                        buscarfuncionario();
                         break;
                 }
                 break;
@@ -113,7 +90,7 @@ int main(void) {
                                 remarcar();
                                 break;
                             case '3':
-                                cancelar();
+                                eliminarconsulta();
                                 break;
                         }
                         break;
