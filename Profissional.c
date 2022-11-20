@@ -81,64 +81,9 @@ void cadastrarprofissional(void){
     free(funcionario);
 }
 
-void editarprofissional(void){
-    char cpf[15];
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                      Alterar dados do profissional                      |\n");              
-    printf("| CPF: (123.456.789-00)                                                   |\n");
-    scanf("%[0-9.-]", cpf);    
-    getchar();
-    printf("|                                                                         |\n");
-    printf("| 0-voltar                                                                |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    printf("Tecle ENTER para continuar...\n");
-    getchar();
-}
-
-void alterardadosprofissional(void){
-    Profissional* funcionario;
-    funcionario = (Profissional*)malloc(sizeof(Profissional));
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                           Alterar profissional                          |\n");              
-    printf("| Nome:                                                                   |\n");
-    fgets(funcionario->nome,40,stdin);    
-    getchar();
-    printf("| CPF: (123.456.789-01)                                                   |\n");
-    fgets(funcionario->cpf,15,stdin);    
-    getchar();
-    printf("| Celular: (00 91234-5678)                                                |\n");
-    fgets(funcionario->celular,15,stdin);    
-    getchar();
-    printf("| E-mail:                                                                 |\n");
-    fgets(funcionario->email,50,stdin);    
-    getchar();
-    printf("| Nascimento Dia:                                                         |\n");
-    fgets(funcionario->dd,4,stdin);    
-    getchar();
-    printf("| Nascimento Mês:                                                         |\n");
-    fgets(funcionario->mm,4,stdin);    
-    getchar();
-    printf("| Nascimento Ano:                                                         |\n");
-    fgets(funcionario->aaaa,6,stdin);    
-    printf("| 0-voltar                                                                |\n");                                        
-    printf("|_________________________________________________________________________|\n");
-    printf("Tecle enter para cadastrar os novos dados");
-    getchar();
-    gravarfuncionario(funcionario);
-    printf("Cadastro realizado");
-    getchar();
-    free(funcionario);
-}
-
 void gravarfuncionario (Profissional* funcionario){
     FILE* gfun;
-    gfun = fopen("Funcionario.dat","ab");
+    gfun = fopen("Funcionarios.dat","ab");
     if (gfun == NULL){
         printf("Arquivo inexistente");
         printf("Programa encerrando...");
@@ -166,7 +111,7 @@ void buscarfuncionario (void){
     Profissional* funcionario;
     int enc;
     char buscacpf[15];
-    gfun = fopen("Funcionario.dat","rb");
+    gfun = fopen("Funcionarios.dat","rb");
     if (gfun == NULL){
         printf("Funcionário não cadastrado");
         exit(1);
@@ -203,7 +148,7 @@ void deletarfuncionario(void){
     int enc;
     char buscacpf[15];
     char resp;
-    gfun = fopen("funcionarios.dat", "r+b");
+    gfun = fopen("Funcionarios.dat", "r+b");
     if(gfun == NULL){
         printf("Profissional não cadastrado");
         exit(1);
@@ -245,4 +190,97 @@ void deletarfuncionario(void){
     }
     free(funcionario);
     fclose(gfun);   
+}
+
+void editarfuncionario(void){
+    FILE* gfun;
+    Profissional* funcionario;
+    int enc;
+    char resp;
+    char buscacpf[15];
+    gfun = fopen("Funcionarios.dat", "r+b");
+    if (gfun == NULL){
+        printf("Profissional não cadastrado\n");
+        printf("Programa encerrando...\n");
+        exit(1);
+    }
+    printf("___________________________________________________________________________\n");
+    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+    printf("|                        Alterar dados do Profissional                    |\n");              
+    printf("| CPF: (123.456.789-00)                                                   |\n");
+    printf("| 0-voltar                                                                |\n");                                               
+    printf("|_________________________________________________________________________|\n");
+    fgets(funcionario->cpf,15,gfun); 
+    strtok(funcionario->cpf, "\n");   
+    getchar();
+    funcionario = (Profissional*) malloc(sizeof(Profissional));
+    enc = 0;
+    while((!enc) && (fread(funcionario, sizeof(Profissional), 1, gfun))) {
+    if ((strcmp(funcionario->cpf, buscacpf) == 0) && (funcionario->status == '1')) {
+        enc = 1;
+    }
+  }
+    if (enc) {
+        mostrarfuncionario(funcionario);
+        getchar();
+        printf("Deseja realmente editar este Profissional S ou N? ");
+        scanf("%c", &resp);
+        if (resp == 's' || resp == 'S'){
+            printf("___________________________________________________________________________\n");
+            printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+            printf("|                           Cadastrar Profissional                            |\n");              
+            printf("| Nome:                                                                   |\n");
+            fgets(funcionario->nome,40,stdin); 
+            strtok(funcionario->nome, "\n");
+            getchar();
+            //
+            printf("| CPF: (123.456.789-00)                                                   |\n");
+            fgets(funcionario->cpf,15,stdin); 
+            strtok(funcionario->cpf, "\n");   
+            getchar();
+            //
+            printf("| Celular: (00 91234-5678)                                                |\n");
+            fgets(funcionario->celular,15,stdin);    
+            strtok(funcionario->celular, "\n");
+            getchar();
+            //
+            printf("| E-mail:                                                                 |\n");
+            fgets(funcionario->email,50,stdin);    
+            strtok(funcionario->email, "\n");
+            getchar();
+            //
+            printf("| Nascimento Dia:                                                         |\n");
+            fgets(funcionario->dd,4,stdin);    
+            strtok(funcionario->dd, "\n");
+            getchar();
+            //
+            printf("| Nascimento Mês:                                                         |\n");
+            fgets(funcionario->mm,4,stdin);    
+            strtok(funcionario->mm, "\n");
+            getchar();
+            //
+            printf("| Nascimento Ano:                                                         |\n");
+            fgets(funcionario->aaaa,6,stdin);    
+            strtok(funcionario->aaaa, "\n");
+            getchar();
+            //
+            funcionario->status = '1';   
+            printf("| 0-voltar                                                                |\n");                                    
+            printf("|_________________________________________________________________________|\n");
+            printf("Tecle enter para cadastrar");
+            fseek(gfun, (-1)*sizeof(Profissional), SEEK_CUR);
+            fwrite(funcionario, sizeof(Profissional), 1, gfun);
+            printf("Tecle enter para cadastrar os novos dados");
+            mostrarfuncionario(funcionario);
+            printf("Tecle enter para finalizar o cadastro");
+            getchar();
+            printf("\nProfissional editado com sucesso\n");
+        } else{
+        printf("\nOk, os dados não foram alterados\n");
+        }
+        } else{
+            printf("O cpf %s não foi encontrado...\n", buscacpf);
+        }
+        free(funcionario);
+        fclose(gfun);
 }

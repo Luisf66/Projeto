@@ -48,8 +48,7 @@ int main(void) {
                         cadastrarpaciente();
                         break;
                     case '2':
-                        editarpaciente();
-                        alterardadospaciente();
+                        editarcliente();
                         break;
                     case '3':
                         deletarcliente();
@@ -66,8 +65,7 @@ int main(void) {
                         cadastrarprofissional();
                         break;
                     case '2':
-                        editarprofissional();
-                        alterardadosprofissional();
+                        editarfuncionario();
                         break;
                     case '3':
                         deletarfuncionario();
@@ -87,7 +85,7 @@ int main(void) {
                                 agendar();
                                 break;
                             case '2':
-                                remarcar();
+                                editarconsulta();
                                 break;
                             case '3':
                                 eliminarconsulta();

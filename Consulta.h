@@ -5,8 +5,6 @@ char agendamento(void);
 
 void agendar(void);
 
-void remarcar(void);
-
 void gravarconsulta (Consulta*);
 
 void mostrarconsulta (Consulta*);
@@ -14,3 +12,5 @@ void mostrarconsulta (Consulta*);
 void buscarconsulta (void);
 
 void eliminarconsulta(void);
+
+void editarconsulta(void);

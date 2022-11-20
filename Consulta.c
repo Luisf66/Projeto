@@ -70,36 +70,6 @@ void agendar(void){
     free(con);
 }
 
-void remarcar(void){
-    Consulta *con;
-    con = (Consulta*)malloc(sizeof(Consulta));
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                                Remarcar                                 |\n"); 
-    printf("| CPF: (123.456.789-01)                                                   |\n");  
-    fgets(con->cpf,15,stdin);     
-    getchar();       
-    printf("| Dia:                                                                    |\n");
-    fgets(con->dd,4,stdin);     
-    getchar();
-    printf("| Mês:                                                                    |\n");
-    fgets(con->mm,4,stdin);   
-    getchar();
-    printf("| Horário desejado: (0~24)                                                |\n");
-    fgets(con->hora,4,stdin);    
-    getchar();
-    printf("| Médico desejado:                                                        |\n");
-    fgets(con->medico,40,stdin);    
-    printf("| 0-voltar                                                                |\n");                                              
-    printf("|_________________________________________________________________________|\n");
-    mostrarconsulta(con);
-    getchar();
-    gravarconsulta(con);
-    free(con);
-}
-
 void gravarconsulta (Consulta* con){
     FILE* gc;
     gc = fopen("Consulta.dat","ab");
@@ -207,4 +177,86 @@ void eliminarconsulta(void){
     }
     free(con);
     fclose(gc);   
+}
+
+void editarconsulta(void){
+  FILE* gc;
+  Consulta* con;
+  int enc;
+  char resp;
+  char buscacpf[15];
+  gc = fopen("Consulta.dat", "r+b");
+  if (gc == NULL){
+
+    printf("Consulta não cadastrada\n");
+    printf("Programa encerrando...\n");
+    exit(1);
+  }
+    printf("___________________________________________________________________________\n");
+    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+    printf("|                            Remarcar consulta                            |\n");              
+    printf("| CPF: (123.456.789-00)                                                   |\n");
+    printf("| Digite o cpf:                                                           |\n");
+    printf("|_________________________________________________________________________|\n");
+    fgets(con->cpf,15,gc); 
+    strtok(con->cpf, "\n");   
+    getchar();
+  con = (Consulta*) malloc(sizeof(Consulta));
+  enc = 0;
+  while((!enc) && (fread(con, sizeof(Consulta), 1, gc))) {
+   if ((strcmp(con->cpf, buscacpf) == 0) && (con->status == '1')) {
+     enc = 1;
+   }
+  }
+  if (enc) {
+    mostrarconsulta(con);
+    getchar();
+    printf("Deseja realmente editar esta consulta S ou N? ");
+    scanf("%c", &resp);
+    if (resp == 's' || resp == 'S'){
+        printf("___________________________________________________________________________\n");
+        printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
+        printf("|                                Remarcar                                 |\n");
+        fgets(con->cpf,15,stdin);    
+        strtok(con->cpf, "\n");
+        getchar();
+        //
+        printf("| Dia:                                                                    |\n");    
+        fgets(con->dd,4,stdin);
+        strtok(con->dd, "\n");
+        getchar();
+        //
+        printf("| Mês:                                                                    |\n");    
+        fgets(con->mm,4,stdin);
+        strtok(con->mm, "\n");
+        getchar();
+        //
+        printf("| Horário desejado: (0~24)                                                |\n");
+        fgets(con->hora,4,stdin);
+        strtok(con->hora, "\n");
+        getchar();
+        //
+        printf("| Médico desejado:                                                        |\n");
+        fgets(con->medico,40,stdin);
+        strtok(con->medico, "\n");
+        getchar();
+        //
+        con->status = '1';
+        printf("| 0-voltar                                                                |\n");                                              
+        printf("|_________________________________________________________________________|\n");
+        fseek(gc, (-1)*sizeof(Consulta), SEEK_CUR);
+        fwrite(con, sizeof(Consulta), 1, gc);
+        printf("Tecle enter para cadastrar os novos dados");
+        mostrarconsulta(con);
+        printf("Tecle enter para finalizar o cadastro");
+        getchar();
+        printf("\nConsulta remarcada com sucesso\n");
+    } else {
+      printf("\nOk, os dados não foram alterados\n");
+    }
+    } else {
+        printf("O cpf %s não foi encontrado...\n", buscacpf);
+    }
+    free(con);
+    fclose(gc);
 }
