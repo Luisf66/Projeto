@@ -4,13 +4,13 @@
 typedef struct paciente Paciente;
 struct paciente{
     char nome[40];
-    char cpf[16];
-    char celular[16];
-    char dd[5];
-    char mm[5];
-    char aaaa[7];
+    char cpf[15];
+    char celular[14];
+    char dd[4];
+    char mm[4];
+    char aaaa[6];
     char email[51];
-    char tipo[6];
+    char tipo[5];
     char status;
 };
 
@@ -32,7 +32,7 @@ struct consulta{
     char dd[4];
     char mm[4];
     char hora[4];
-    char medico[40];
+    char medico[41];
     char aaaa[6];
     char status;
 };
