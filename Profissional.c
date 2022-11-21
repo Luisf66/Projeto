@@ -107,25 +107,25 @@ void mostrarfuncionario (Profissional* funcionario){
 }
 
 void buscarfuncionario (void){
-    FILE* gfun;
     Profissional* funcionario;
     funcionario = (Profissional *)malloc(sizeof(Profissional));
+    FILE* gfun;
     int enc;
     char buscacpf[15];
     gfun = fopen("Funcionarios.dat","rb");
     if (gfun == NULL){
         printf("Funcionário não cadastrado");
         exit(1);
-    };
+    }
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                          Buscar profissional                            |\n");              
     printf("| CPF: (123.456.789-00)                                                   |\n");
     printf("| Digite o cpf:                                                           |\n");
     printf("|_________________________________________________________________________|\n");
-    fgets(funcionario->cpf,15,gfun); 
-    strtok(funcionario->cpf, "\n");   
-    getchar();
+    fgets(buscacpf,15,stdin); 
+    strtok(buscacpf, "\n"); 
+    getchar();   
     enc = 0;
     while ((!enc) && (fread(funcionario, sizeof(Profissional), 1, gfun))){
         if ((strcmp(funcionario->cpf,buscacpf) == 0)){
@@ -133,12 +133,16 @@ void buscarfuncionario (void){
         }
     }
     fclose(gfun);
-    if (enc){
+    if (enc == 1){
+        printf("\n");
+        printf("Funcionário encontrado com sucesso");
+        printf("\n");
         mostrarfuncionario(funcionario);
     }
     else{
         printf("O funcionário %s não foi encontrado...\n", buscacpf);
     }
+    getchar();
     free(funcionario);
 }
 
@@ -211,9 +215,8 @@ void editarfuncionario(void){
     printf("| CPF: (123.456.789-00)                                                   |\n");
     printf("| 0-voltar                                                                |\n");                                               
     printf("|_________________________________________________________________________|\n");
-    fgets(funcionario->cpf,15,gfun); 
-    strtok(funcionario->cpf, "\n");   
-    getchar();
+    fgets(buscacpf,15,gfun); 
+    strtok(buscacpf, "\n");   
     enc = 0;
     while((!enc) && (fread(funcionario, sizeof(Profissional), 1, gfun))) {
     if ((strcmp(funcionario->cpf, buscacpf) == 0) && (funcionario->status == 1)) {

@@ -35,32 +35,28 @@ void agendar(void){
     printf("| CPF: (123.456.789-01)                                                   |\n");  
     fgets(con->cpf,16,stdin);    
     strtok(con->cpf, "\n");
-    getchar();
     //
     printf("| Dia:                                                                    |\n");    
     fgets(con->dd,5,stdin);
     strtok(con->dd, "\n");
-    getchar();
     //
     printf("| Mês:                                                                    |\n");    
     fgets(con->mm,5,stdin);
     strtok(con->mm, "\n");
-    getchar();
     //
     printf("| Horário desejado: (0~24)                                                |\n");
     fgets(con->hora,5,stdin);
     strtok(con->hora, "\n");
-    getchar();
     //
     printf("| Médico desejado:                                                        |\n");
     fgets(con->medico,41,stdin);
     strtok(con->medico, "\n");
-    getchar();
     //
     con->status = 1;
     printf("| 0-voltar                                                                |\n");                                              
     printf("|_________________________________________________________________________|\n");
     printf("Tecle enter para cadastrar");
+    printf("\n");
     mostrarconsulta(con);
     printf("Tecle enter para finalizar o cadastro");
     getchar();
@@ -110,8 +106,8 @@ void buscarconsulta (void){
     printf("| CPF: (123.456.789-00)                                                   |\n");
     printf("| Digite o cpf:                                                           |\n");
     printf("|_________________________________________________________________________|\n");
-    fgets(con->cpf,16,stdin);    
-    strtok(con->cpf, "\n");
+    fgets(buscacpf,15,stdin);    
+    strtok(buscacpf, "\n");
     getchar();
     enc = 0;
     while ((!enc) && (fread(con, sizeof(Consulta), 1, gc))){
@@ -120,10 +116,14 @@ void buscarconsulta (void){
         }
     }
     fclose(gc);
-    if (enc){
+    if (enc == 1){
+        printf("\n");
+        printf("Consulta encontrada com sucesso");
+        printf("\n");
         mostrarconsulta(con);
     }
     else{
+        printf("\n");
         printf("A consulta %s não foi encontrado...\n", buscacpf);
     }
     getchar();
@@ -220,27 +220,22 @@ void editarconsulta(void){
         printf("|                                Remarcar                                 |\n");
         fgets(con->cpf,15,stdin);    
         strtok(con->cpf, "\n");
-        getchar();
         //
         printf("| Dia:                                                                    |\n");    
         fgets(con->dd,4,stdin);
         strtok(con->dd, "\n");
-        getchar();
         //
         printf("| Mês:                                                                    |\n");    
         fgets(con->mm,4,stdin);
         strtok(con->mm, "\n");
-        getchar();
         //
         printf("| Horário desejado: (0~24)                                                |\n");
         fgets(con->hora,4,stdin);
         strtok(con->hora, "\n");
-        getchar();
         //
         printf("| Médico desejado:                                                        |\n");
         fgets(con->medico,40,stdin);
         strtok(con->medico, "\n");
-        getchar();
         //
         con->status = 1;
         printf("| 0-voltar                                                                |\n");                                              

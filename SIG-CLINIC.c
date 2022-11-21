@@ -119,9 +119,11 @@ int main(void) {
                 switch (opacesso_online){
                     case '1':
                         printf("Pacientes cadastrados:");
+                        printf("\n");
                         break;
                     case '2':
                         printf("Consultas cadastradas:");
+                        printf("\n");
                         buscarconsulta();
                         break;
                     case '3':
