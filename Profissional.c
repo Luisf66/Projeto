@@ -67,7 +67,7 @@ void cadastrarprofissional(void){
     fgets(funcionario->aaaa,6,stdin);   
     strtok(funcionario->aaaa, "\n");   
     getchar();
-    funcionario->status = '1'; 
+    funcionario->status = 1; 
     printf("| 0-voltar                                                                |\n");                                        
     printf("|_________________________________________________________________________|\n");
     printf("Tecle enter para cadastrar");
@@ -102,13 +102,14 @@ void mostrarfuncionario (Profissional* funcionario){
     printf("| Dia: %s\n", funcionario->dd);
     printf("| Mês: %s\n",funcionario->mm);
     printf("| Ano: %s\n",funcionario->aaaa);
-    printf("| Status: %s\n",funcionario->status);
+    printf("| Status: %i\n",funcionario->status);
     printf("|_________________________________________________________________________|\n");
 }
 
 void buscarfuncionario (void){
     FILE* gfun;
     Profissional* funcionario;
+    funcionario = (Profissional *)malloc(sizeof(Profissional));
     int enc;
     char buscacpf[15];
     gfun = fopen("Funcionarios.dat","rb");
@@ -125,7 +126,6 @@ void buscarfuncionario (void){
     fgets(funcionario->cpf,15,gfun); 
     strtok(funcionario->cpf, "\n");   
     getchar();
-    funcionario = (Profissional *)malloc(sizeof(Profissional));
     enc = 0;
     while ((!enc) && (fread(funcionario, sizeof(Profissional), 1, gfun))){
         if ((strcmp(funcionario->cpf,buscacpf) == 0)){
@@ -145,6 +145,7 @@ void buscarfuncionario (void){
 void deletarfuncionario(void){
     FILE* gfun;
     Profissional* funcionario;
+    funcionario = (Profissional*)malloc(sizeof(Profissional));
     int enc;
     char buscacpf[15];
     char resp;
@@ -162,7 +163,6 @@ void deletarfuncionario(void){
     fgets(funcionario->cpf,15,gfun); 
     strtok(funcionario->cpf, "\n");   
     getchar();
-    funcionario = (Profissional*)malloc(sizeof(Profissional));
     enc = 0;
     while ((!enc) && (fread(funcionario, sizeof(Profissional), 1, gfun))){
         if ((strcmp(funcionario->cpf,buscacpf) == 0)){
@@ -175,7 +175,7 @@ void deletarfuncionario(void){
         printf("Deseja deletar este Funcionário? (S ou N):");
         scanf("%c", &resp);
         if (resp == 's' || resp == 'S') {
-        funcionario->status = '0';
+        funcionario->status = 0;
         getchar();
         fseek(gfun, (-1)*sizeof(Profissional), SEEK_CUR);
         fwrite(funcionario, sizeof(Profissional), 1, gfun);
@@ -195,6 +195,7 @@ void deletarfuncionario(void){
 void editarfuncionario(void){
     FILE* gfun;
     Profissional* funcionario;
+    funcionario = (Profissional*) malloc(sizeof(Profissional));
     int enc;
     char resp;
     char buscacpf[15];
@@ -213,10 +214,9 @@ void editarfuncionario(void){
     fgets(funcionario->cpf,15,gfun); 
     strtok(funcionario->cpf, "\n");   
     getchar();
-    funcionario = (Profissional*) malloc(sizeof(Profissional));
     enc = 0;
     while((!enc) && (fread(funcionario, sizeof(Profissional), 1, gfun))) {
-    if ((strcmp(funcionario->cpf, buscacpf) == 0) && (funcionario->status == '1')) {
+    if ((strcmp(funcionario->cpf, buscacpf) == 0) && (funcionario->status == 1)) {
         enc = 1;
     }
   }
@@ -264,7 +264,7 @@ void editarfuncionario(void){
             strtok(funcionario->aaaa, "\n");
             getchar();
             //
-            funcionario->status = '1';   
+            funcionario->status = 1;   
             printf("| 0-voltar                                                                |\n");                                    
             printf("|_________________________________________________________________________|\n");
             printf("Tecle enter para cadastrar");
