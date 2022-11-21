@@ -74,7 +74,7 @@ void cadastrarpaciente(void){
     strtok(cliente->tipo, "\n");
     getchar();
     //
-    cliente->status = '1';   
+    cliente->status = 1;   
     printf("| 0-voltar                                                                |\n");                                    
     printf("|_________________________________________________________________________|\n");
     printf("Tecle enter para cadastrar");
@@ -109,13 +109,14 @@ void mostrarclientes (Paciente* cliente){
     printf("| Mês: %s\n",cliente->mm);
     printf("| Ano: %s\n",cliente->aaaa);
     printf("| Tipo sanguíneo: %s\n",cliente->tipo);
-    printf("| Status: %s\n",cliente->status);
+    printf("| Status: %i\n",cliente->status);
     printf("|_________________________________________________________________________|\n");
 }
 
 void buscarcliente (void){
     FILE* gcli;
     Paciente *cliente;
+    cliente = (Paciente *)malloc(sizeof(Paciente));
     int enc;
     char buscacpf[15];
     gcli = fopen("Clientes.dat","rb");
@@ -132,7 +133,7 @@ void buscarcliente (void){
     fgets(cliente->cpf,15,gcli); 
     strtok(cliente->cpf, "\n");   
     getchar();
-    cliente = (Paciente *)malloc(sizeof(Paciente));
+    
     enc = 0;
     while ((!enc) && (fread(cliente, sizeof(Paciente), 1, gcli))){
         if ((strcmp(cliente->cpf,buscacpf) == 0)){
@@ -152,6 +153,7 @@ void buscarcliente (void){
 void deletarcliente(void){
     FILE* gcli;
     Paciente* cliente;
+    cliente = (Paciente*)malloc(sizeof(Paciente));
     int enc;
     char buscacpf[15];
     char resp;
@@ -169,7 +171,7 @@ void deletarcliente(void){
     fgets(cliente->cpf,15,gcli); 
     strtok(cliente->cpf, "\n");   
     getchar();
-    cliente = (Paciente*)malloc(sizeof(Paciente));
+    
     enc = 0;
     while ((!enc) && (fread(cliente, sizeof(Paciente), 1, gcli))){
         if ((strcmp(cliente->cpf,buscacpf) == 0)){
@@ -182,7 +184,7 @@ void deletarcliente(void){
         printf("Deseja deletar este paciente? (S ou N):");
         scanf("%c", &resp);
         if (resp == 's' || resp == 'S') {
-        cliente->status = '0';
+        cliente->status = 0;
         getchar();
         fseek(gcli, (-1)*sizeof(Paciente), SEEK_CUR);
         fwrite(cliente, sizeof(Paciente), 1, gcli);
@@ -200,17 +202,18 @@ void deletarcliente(void){
 }
 
 void editarcliente(void){
-  FILE* gcli;
-  Paciente* cliente;
-  int enc;
-  char resp;
-  char buscacpf[15];
-  gcli = fopen("Clientes.dat", "r+b");
-  if (gcli == NULL){
-    printf("Paciente não cadastrado\n");
-    printf("Programa encerrando...\n");
-    exit(1);
-  }
+    FILE* gcli;
+    Paciente* cliente;
+    cliente = (Paciente*) malloc(sizeof(Paciente));
+    int enc;
+    char resp;
+    char buscacpf[15];
+    gcli = fopen("Clientes.dat", "r+b");
+     if (gcli == NULL){
+        printf("Paciente não cadastrado\n");
+        printf("Programa encerrando...\n");
+        exit(1);
+    }
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                        Alterar dados do paciente                        |\n");              
@@ -220,10 +223,10 @@ void editarcliente(void){
     fgets(cliente->cpf,15,gcli); 
     strtok(cliente->cpf, "\n");   
     getchar();
-    cliente = (Paciente*) malloc(sizeof(Paciente));
+    
     enc = 0;
     while((!enc) && (fread(cliente, sizeof(Paciente), 1, gcli))) {
-    if ((strcmp(cliente->cpf, buscacpf) == 0) && (cliente->status == '1')) {
+    if ((strcmp(cliente->cpf, buscacpf) == 0) && (cliente->status == 1)) {
         enc = 1;
     }
   }
@@ -276,7 +279,7 @@ void editarcliente(void){
         strtok(cliente->tipo, "\n");
         getchar();
         //
-        cliente->status = '1';   
+        cliente->status = 1;   
         printf("| 0-voltar                                                                |\n");                                    
         printf("|_________________________________________________________________________|\n");
         printf("Tecle enter para cadastrar");
