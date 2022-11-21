@@ -148,9 +148,9 @@ void buscarcliente (void){
 }
 
 void deletarcliente(void){
-    FILE* gcli;
     Paciente* cliente;
     cliente = (Paciente*)malloc(sizeof(Paciente));
+    FILE* gcli;
     int enc;
     char buscacpf[15];
     char resp;
@@ -165,7 +165,7 @@ void deletarcliente(void){
     printf("| CPF: (123.456.789-00)                                                   |\n");
     printf("| Digite o cpf:                                                           |\n");
     printf("|_________________________________________________________________________|\n");
-    fgets(buscacpf,15,stdin); 
+    fgets(buscacpf,16,stdin); 
     strtok(buscacpf, "\n");   
     getchar();
     enc = 0;
@@ -175,6 +175,8 @@ void deletarcliente(void){
         }
     }
     if (enc == 1){
+        printf("Paciente a ser deletado:");
+        printf("\n");
         mostrarclientes(cliente);
         getchar();
         printf("Deseja deletar este paciente? (S ou N):");
@@ -193,6 +195,7 @@ void deletarcliente(void){
     else {
     printf("O Paciente %s não foi encontrada...\n", buscacpf);
     }
+    getchar();
     free(cliente);
     fclose(gcli);   
 }

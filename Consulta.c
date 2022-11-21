@@ -131,13 +131,13 @@ void buscarconsulta (void){
 }
 
 void eliminarconsulta(void){
-    FILE* gc;
     Consulta* con;
     con = (Consulta*)malloc(sizeof(Consulta));
+    FILE* gc;
     int enc;
     char buscacpf[15];
     char resp;
-    gc = fopen("Consultas.dat", "r+b");
+    gc = fopen("Consulta.dat", "r+b");
     if(gc == NULL){
         printf("Consulta não cadastrada");
         exit(1);
@@ -148,8 +148,8 @@ void eliminarconsulta(void){
     printf("| CPF: (123.456.789-00)                                                   |\n");
     printf("| Digite o cpf:                                                           |\n");
     printf("|_________________________________________________________________________|\n");
-    fgets(con->cpf,16,gc); 
-    strtok(con->cpf, "\n");   
+    fgets(buscacpf,16,stdin); 
+    strtok(buscacpf, "\n");   
     getchar();
     enc = 0;
     while ((!enc) && (fread(con, sizeof(Consulta), 1, gc))){
@@ -158,6 +158,8 @@ void eliminarconsulta(void){
         }
     }
     if (enc == 1){
+        printf("Consulta a ser cancelada:");
+        printf("\n");
         mostrarconsulta(con);
         getchar();
         printf("Deseja cancelar esta consulta? (S ou N):");
@@ -176,6 +178,7 @@ void eliminarconsulta(void){
     else {
     printf("A consulta %s não foi encontrada...\n", buscacpf);
     }
+    getchar();
     free(con);
     fclose(gc);   
 }

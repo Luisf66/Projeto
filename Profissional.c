@@ -36,37 +36,30 @@ void cadastrarprofissional(void){
     printf("| Nome:                                                                   |\n");
     fgets(funcionario->nome,40,stdin);    
     strtok(funcionario->nome, "\n");   
-    getchar();
     //
     printf("| CPF: (123.456.789-00)                                                   |\n");
     fgets(funcionario->cpf,15,stdin); 
     strtok(funcionario->cpf, "\n");   
-    getchar();
     //
     printf("| Celular: (00 91234-5678)                                                |\n");
     fgets(funcionario->celular,15,stdin);    
     strtok(funcionario->celular, "\n");   
-    getchar();
     //
     printf("| E-mail:                                                                 |\n");
     fgets(funcionario->email,50,stdin);    
     strtok(funcionario->email, "\n");   
-    getchar();
     //
     printf("| Nascimento Dia:                                                         |\n");
     fgets(funcionario->dd,4,stdin);    
     strtok(funcionario->dd, "\n");   
-    getchar();
     //
     printf("| Nascimento Mês:                                                         |\n");
     fgets(funcionario->mm,4,stdin);    
     strtok(funcionario->mm, "\n");   
-    getchar();
     //
     printf("| Nascimento Ano:                                                         |\n");
     fgets(funcionario->aaaa,6,stdin);   
     strtok(funcionario->aaaa, "\n");   
-    getchar();
     funcionario->status = 1; 
     printf("| 0-voltar                                                                |\n");                                        
     printf("|_________________________________________________________________________|\n");
@@ -147,9 +140,9 @@ void buscarfuncionario (void){
 }
 
 void deletarfuncionario(void){
-    FILE* gfun;
     Profissional* funcionario;
     funcionario = (Profissional*)malloc(sizeof(Profissional));
+    FILE* gfun;
     int enc;
     char buscacpf[15];
     char resp;
@@ -164,8 +157,8 @@ void deletarfuncionario(void){
     printf("| CPF: (123.456.789-00)                                                   |\n");
     printf("| Digite o cpf:                                                           |\n");
     printf("|_________________________________________________________________________|\n");
-    fgets(funcionario->cpf,15,gfun); 
-    strtok(funcionario->cpf, "\n");   
+    fgets(buscacpf,16,stdin); 
+    strtok(buscacpf, "\n");   
     getchar();
     enc = 0;
     while ((!enc) && (fread(funcionario, sizeof(Profissional), 1, gfun))){
@@ -174,6 +167,8 @@ void deletarfuncionario(void){
         }
     }
     if (enc == 1){
+        printf("Funcionário a ser deletado:");
+        printf("\n");
         mostrarfuncionario(funcionario);
         getchar();
         printf("Deseja deletar este Funcionário? (S ou N):");
@@ -192,6 +187,7 @@ void deletarfuncionario(void){
     else {
     printf("O Profissional %s não foi encontrada...\n", buscacpf);
     }
+    getchar();
     free(funcionario);
     fclose(gfun);   
 }
