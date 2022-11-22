@@ -40,6 +40,7 @@ void cadastrarprofissional(void){
     printf("| CPF: (123.456.789-00)                                                   |\n");
     fgets(funcionario->cpf,15,stdin); 
     strtok(funcionario->cpf, "\n");   
+    getchar();
     //
     printf("| Celular: (00 91234-5678)                                                |\n");
     fgets(funcionario->celular,15,stdin);    
@@ -213,13 +214,16 @@ void editarfuncionario(void){
     printf("|_________________________________________________________________________|\n");
     fgets(buscacpf,15,gfun); 
     strtok(buscacpf, "\n");   
+    getchar();
     enc = 0;
     while((!enc) && (fread(funcionario, sizeof(Profissional), 1, gfun))) {
     if ((strcmp(funcionario->cpf, buscacpf) == 0) && (funcionario->status == 1)) {
         enc = 1;
     }
   }
-    if (enc) {
+    if (enc){
+        printf("Profissional a ser editado:");
+        printf("\n");
         mostrarfuncionario(funcionario);
         getchar();
         printf("Deseja realmente editar este Profissional S ou N? ");
@@ -227,11 +231,10 @@ void editarfuncionario(void){
         if (resp == 's' || resp == 'S'){
             printf("___________________________________________________________________________\n");
             printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-            printf("|                           Cadastrar Profissional                            |\n");              
+            printf("|                        Alterar dados do Profissional                    |\n");             
             printf("| Nome:                                                                   |\n");
             fgets(funcionario->nome,40,stdin); 
             strtok(funcionario->nome, "\n");
-            getchar();
             //
             printf("| CPF: (123.456.789-00)                                                   |\n");
             fgets(funcionario->cpf,15,stdin); 
@@ -241,27 +244,22 @@ void editarfuncionario(void){
             printf("| Celular: (00 91234-5678)                                                |\n");
             fgets(funcionario->celular,15,stdin);    
             strtok(funcionario->celular, "\n");
-            getchar();
             //
             printf("| E-mail:                                                                 |\n");
             fgets(funcionario->email,50,stdin);    
-            strtok(funcionario->email, "\n");
-            getchar();
+            strtok(funcionario->email, "\n");;
             //
             printf("| Nascimento Dia:                                                         |\n");
             fgets(funcionario->dd,4,stdin);    
-            strtok(funcionario->dd, "\n");
-            getchar();
+            strtok(funcionario->dd, "\n");;
             //
             printf("| Nascimento Mês:                                                         |\n");
             fgets(funcionario->mm,4,stdin);    
-            strtok(funcionario->mm, "\n");
-            getchar();
+            strtok(funcionario->mm, "\n");;
             //
             printf("| Nascimento Ano:                                                         |\n");
             fgets(funcionario->aaaa,6,stdin);    
-            strtok(funcionario->aaaa, "\n");
-            getchar();
+            strtok(funcionario->aaaa, "\n");;
             //
             funcionario->status = 1;   
             printf("| 0-voltar                                                                |\n");                                    
@@ -270,16 +268,21 @@ void editarfuncionario(void){
             fseek(gfun, (-1)*sizeof(Profissional), SEEK_CUR);
             fwrite(funcionario, sizeof(Profissional), 1, gfun);
             printf("Tecle enter para cadastrar os novos dados");
+            getchar();
+            printf("\n");
             mostrarfuncionario(funcionario);
             printf("Tecle enter para finalizar o cadastro");
             getchar();
             printf("\nProfissional editado com sucesso\n");
-        } else{
+        } 
+        else{
         printf("\nOk, os dados não foram alterados\n");
         }
-        } else{
+        } 
+        else{
             printf("O cpf %s não foi encontrado...\n", buscacpf);
         }
+        getchar();
         free(funcionario);
         fclose(gfun);
 }

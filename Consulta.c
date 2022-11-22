@@ -35,6 +35,7 @@ void agendar(void){
     printf("| CPF: (123.456.789-01)                                                   |\n");  
     fgets(con->cpf,16,stdin);    
     strtok(con->cpf, "\n");
+    getchar();
     //
     printf("| Dia:                                                                    |\n");    
     fgets(con->dd,5,stdin);
@@ -184,60 +185,62 @@ void eliminarconsulta(void){
 }
 
 void editarconsulta(void){
-  FILE* gc;
-  Consulta* con;
-  con = (Consulta*) malloc(sizeof(Consulta));
-  int enc;
-  char resp;
-  char buscacpf[15];
-  gc = fopen("Consulta.dat", "r+b");
-  if (gc == NULL){
-    printf("Consulta não cadastrada\n");
-    printf("Programa encerrando...\n");
-    exit(1);
-  }
+    Consulta* con;
+    con = (Consulta*) malloc(sizeof(Consulta));
+    FILE* gc;
+    int enc;
+    char resp;
+    char buscacpf[15];
+    gc = fopen("Consulta.dat", "r+b");
+        if (gc == NULL){
+            printf("Consulta não cadastrada\n");
+            printf("Programa encerrando...\n");
+            exit(1);
+        }
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                            Remarcar consulta                            |\n");              
     printf("| CPF: (123.456.789-00)                                                   |\n");
     printf("| Digite o cpf:                                                           |\n");
     printf("|_________________________________________________________________________|\n");
-    fgets(con->cpf,15,gc); 
-    strtok(con->cpf, "\n");   
+    fgets(buscacpf,16,stdin); 
+    strtok(buscacpf, "\n");   
     getchar();
-  
-  enc = 0;
-  while((!enc) && (fread(con, sizeof(Consulta), 1, gc))) {
-   if ((strcmp(con->cpf, buscacpf) == 0) && (con->status == 1)) {
-     enc = 1;
-   }
-  }
-  if (enc) {
-    mostrarconsulta(con);
-    getchar();
-    printf("Deseja realmente editar esta consulta S ou N? ");
-    scanf("%c", &resp);
+    enc = 0;
+    while((!enc) && (fread(con, sizeof(Consulta), 1, gc))) {
+        if ((strcmp(con->cpf, buscacpf) == 0) && (con->status == 1)) {
+            enc = 1;
+        }
+    }
+    if (enc){
+        printf("Consulta a ser remarcada:");
+        printf("\n");
+        mostrarconsulta(con);
+        getchar();
+        printf("Deseja realmente editar esta consulta S ou N? ");
+        scanf("%c", &resp);
     if (resp == 's' || resp == 'S'){
         printf("___________________________________________________________________________\n");
         printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
         printf("|                                Remarcar                                 |\n");
-        fgets(con->cpf,15,stdin);    
+        fgets(con->cpf,16,stdin);    
         strtok(con->cpf, "\n");
+        getchar();
         //
         printf("| Dia:                                                                    |\n");    
-        fgets(con->dd,4,stdin);
+        fgets(con->dd,5,stdin);
         strtok(con->dd, "\n");
         //
         printf("| Mês:                                                                    |\n");    
-        fgets(con->mm,4,stdin);
+        fgets(con->mm,5,stdin);
         strtok(con->mm, "\n");
         //
         printf("| Horário desejado: (0~24)                                                |\n");
-        fgets(con->hora,4,stdin);
+        fgets(con->hora,5,stdin);
         strtok(con->hora, "\n");
         //
         printf("| Médico desejado:                                                        |\n");
-        fgets(con->medico,40,stdin);
+        fgets(con->medico,41,stdin);
         strtok(con->medico, "\n");
         //
         con->status = 1;
@@ -246,6 +249,8 @@ void editarconsulta(void){
         fseek(gc, (-1)*sizeof(Consulta), SEEK_CUR);
         fwrite(con, sizeof(Consulta), 1, gc);
         printf("Tecle enter para cadastrar os novos dados");
+        getchar();
+        printf("\n");
         mostrarconsulta(con);
         printf("Tecle enter para finalizar o cadastro");
         getchar();
@@ -256,6 +261,7 @@ void editarconsulta(void){
     } else {
         printf("O cpf %s não foi encontrado...\n", buscacpf);
     }
+    getchar();
     free(con);
     fclose(gc);
 }
