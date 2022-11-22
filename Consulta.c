@@ -223,6 +223,7 @@ void editarconsulta(void){
         printf("___________________________________________________________________________\n");
         printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
         printf("|                                Remarcar                                 |\n");
+        printf("| CPF: (123.456.789-00)                                                   |\n");
         fgets(con->cpf,16,stdin);    
         strtok(con->cpf, "\n");
         getchar();
@@ -230,18 +231,22 @@ void editarconsulta(void){
         printf("| Dia:                                                                    |\n");    
         fgets(con->dd,5,stdin);
         strtok(con->dd, "\n");
+        getchar();
         //
         printf("| Mês:                                                                    |\n");    
         fgets(con->mm,5,stdin);
         strtok(con->mm, "\n");
+        getchar();
         //
         printf("| Horário desejado: (0~24)                                                |\n");
         fgets(con->hora,5,stdin);
         strtok(con->hora, "\n");
+        getchar();
         //
         printf("| Médico desejado:                                                        |\n");
         fgets(con->medico,41,stdin);
         strtok(con->medico, "\n");
+        getchar();
         //
         con->status = 1;
         printf("| 0-voltar                                                                |\n");                                              
