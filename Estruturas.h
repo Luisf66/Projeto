@@ -23,7 +23,7 @@ struct profissional{
     char mm[4];
     char aaaa[6];
     char email[50];
-    char status;
+    int status;
 };
 
 typedef struct consulta Consulta;

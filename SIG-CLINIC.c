@@ -18,6 +18,7 @@
 #include "Paciente.h"
 #include "Pagamento.h"
 #include "Profissional.h"
+#include "Relatorio.h"
 
 //  Assinatura das funções SIG
 char menu(void);
@@ -90,6 +91,9 @@ int main(void) {
                             case '3':
                                 eliminarconsulta();
                                 break;
+                            case '4':
+                                buscarconsulta();
+                                break;
                         }
                         break;
                     case '2':
@@ -120,16 +124,22 @@ int main(void) {
                     case '1':
                         printf("Pacientes cadastrados:");
                         printf("\n");
+                        relatoriocliente();
                         break;
                     case '2':
                         printf("Consultas cadastradas:");
                         printf("\n");
-                        buscarconsulta();
+                        relatorioconsulta();
                         break;
                     case '3':
-                        servicos();
+                        printf("Funcionários cadastrados:");
+                        printf("\n");
+                        relatoriofuncionario();
                         break;
                     case '4':
+                        servicos();
+                        break;
+                    case '5':
                         horario();
                         break;
                 }
@@ -277,8 +287,9 @@ char acesso_online(void){
     printf("|                              Acesso online                              |\n");              
     printf("| 1-Ver todos os pacientes                                                |\n");
     printf("| 2-Ver todas as consultas                                                |\n");
-    printf("| 3-Serviços e profissionais                                              |\n");
-    printf("| 4-Horários de atendimento                                               |\n");
+    printf("| 3-Ver todos os funcionários                                             |\n");
+    printf("| 4-Serviços e profissionais                                              |\n");
+    printf("| 5-Horários de atendimento                                               |\n");    
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
     printf("|_________________________________________________________________________|\n");

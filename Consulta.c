@@ -15,6 +15,7 @@ char agendamento(void){
     printf("| 1-Agendar                                                               |\n");
     printf("| 2-Remarcar                                                              |\n");
     printf("| 3-Cancelar                                                              |\n");
+    printf("| 4-Buscar                                                                |\n");
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
     printf("|_________________________________________________________________________|\n");
