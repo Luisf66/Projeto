@@ -165,7 +165,7 @@ void deletarcliente(void){
     printf("| CPF: (123.456.789-00)                                                   |\n");
     printf("| Digite o cpf:                                                           |\n");
     printf("|_________________________________________________________________________|\n");
-    fgets(buscacpf,16,stdin); 
+    fgets(buscacpf,15,stdin); 
     strtok(buscacpf, "\n");   
     getchar();
     enc = 0;
@@ -219,7 +219,7 @@ void editarcliente(void){
     printf("| CPF: (123.456.789-00)                                                   |\n");
     printf("| 0-voltar                                                                |\n");                                               
     printf("|_________________________________________________________________________|\n");
-    fgets(buscacpf,16,stdin); 
+    fgets(buscacpf,15,stdin); 
     strtok(buscacpf, "\n");   
     getchar();
     enc = 0;
@@ -233,15 +233,18 @@ void editarcliente(void){
         printf("\n");
         mostrarclientes(cliente);
         getchar();
-        printf("Deseja realmente editar este paciente S ou N? ");
+        printf("Deseja realmente editar o paciente listado?");
+        printf("\n");
+        printf("S ou N?");
         scanf("%c", &resp);
         if (resp == 's' || resp == 'S'){
             printf("___________________________________________________________________________\n");
             printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-            printf("|                           Cadastrar paciente                            |\n");              
+            printf("|                        Alterar dados do paciente                        |\n");              
             printf("| Nome:                                                                   |\n");
             fgets(cliente->nome,40,stdin); 
             strtok(cliente->nome, "\n");
+            //getchar();
             //
             printf("| CPF: (123.456.789-00)                                                   |\n");
             fgets(cliente->cpf,15,stdin); 
@@ -251,26 +254,32 @@ void editarcliente(void){
             printf("| Celular: (00 91234-5678)                                                |\n");
             fgets(cliente->celular,15,stdin);    
             strtok(cliente->celular, "\n");
+            //getchar();
             //
             printf("| E-mail:                                                                 |\n");
             fgets(cliente->email,50,stdin);    
             strtok(cliente->email, "\n");
+            //getchar();
             //
             printf("| Nascimento Dia:                                                         |\n");
             fgets(cliente->dd,4,stdin);    
             strtok(cliente->dd, "\n");
+            //getchar();
             //
             printf("| Nascimento Mês:                                                         |\n");
             fgets(cliente->mm,4,stdin);    
             strtok(cliente->mm, "\n");
+            //getchar();
             //
             printf("| Nascimento Ano:                                                         |\n");
             fgets(cliente->aaaa,6,stdin);    
             strtok(cliente->aaaa, "\n");
+            //getchar();
             //
             printf("| Tipo sanguíneo:                                                         |\n");
             fgets(cliente->tipo,4,stdin); 
             strtok(cliente->tipo, "\n");
+            //getchar();
             //
             cliente->status = 1;   
             printf("| 0-voltar                                                                |\n");                                    
