@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "Estruturas.h"
 #include "Profissional.h"
 #include "Consulta.h"
@@ -63,3 +64,30 @@ void relatorioconsulta (void){
     fclose(rcli);
     free(con);
 }
+
+//void consultaproxima (void){
+//    Consulta* con;
+//    con = (Consulta*) malloc(sizeof(Consulta));
+//    FILE* rcli;
+//    rcli = fopen("Consulta.dat","rb");
+//    time_t segundos;
+//    time(&segundos);
+//    data_hora_atual = localtime(&segundos);
+//    printf("Data atual\n");
+//    printf("Dia: %d\n", data_hora_atual->tm_mday);
+//    printf("Mês: %d\n", data_hora_atual->tm_mon+1);
+//    getchar();
+//    if (rcli == NULL){
+//        printf("Arquivo inexistente");
+//        printf("\n");
+//        printf("Programa encerrando...");
+ //       exit(1);
+ //   }
+  //  while(fread(con, sizeof(Consulta), 1, rcli)){
+   //     //if((con->dd == data_hora_atual->tm_mday) && (con->mm == data_hora_atual->tm_mon+1))
+  //      mostrarconsulta(con);
+ //   }
+//    getchar();
+//    fclose(rcli);
+//    free(con);
+//}

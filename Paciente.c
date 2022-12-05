@@ -4,6 +4,7 @@
 #include <string.h>
 #include "Paciente.h"
 #include "Estruturas.h"
+#include "Validacoes.h"
 
 char paciente(void){
     char oppaciente;
@@ -26,9 +27,9 @@ char paciente(void){
 
 
 void cadastrarpaciente(void){
-    //strcpy(, entrada);
     Paciente* cliente;
     cliente = (Paciente*)malloc(sizeof(Paciente));
+    int nomevalido;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -37,6 +38,7 @@ void cadastrarpaciente(void){
     printf("| Nome:                                                                   |\n");
     fgets(cliente->nome,40,stdin); 
     strtok(cliente->nome, "\n");
+    nomevalido = Vnome(cliente->nome);
     //
     printf("| CPF: (123.456.789-00)                                                   |\n");
     fgets(cliente->cpf,15,stdin); 

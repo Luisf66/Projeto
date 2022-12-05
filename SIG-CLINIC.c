@@ -47,6 +47,7 @@ int main(void) {
                 switch (oppaciente){
                     case '1':
                         cadastrarpaciente();
+                        //data_V(cliente->dd, cliente->mm, cliente->aaaa);
                         break;
                     case '2':
                         editarcliente();
@@ -142,6 +143,9 @@ int main(void) {
                     case '5':
                         horario();
                         break;
+                    //case '6':
+                        //consultaproxima();
+                        //break;
                 }
                 break;
         }

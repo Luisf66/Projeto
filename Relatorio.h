@@ -7,3 +7,5 @@ void relatoriofuncionario (void);
 void relatoriocliente (void);
 
 void relatorioconsulta (void);
+
+//void consultaproxima (void);

@@ -44,3 +44,5 @@ struct pagamento{
     char celular[15];
     char email[40];
 };
+
+struct tm *data_hora_atual; 
