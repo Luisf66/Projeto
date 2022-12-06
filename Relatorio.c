@@ -7,6 +7,7 @@
 #include "Profissional.h"
 #include "Consulta.h"
 #include "Paciente.h"
+#include "Servicos.h"
 
 void relatoriofuncionario (void){
     Profissional* funcionario;
@@ -63,6 +64,25 @@ void relatorioconsulta (void){
     getchar();
     fclose(rcli);
     free(con);
+}
+
+void relatorioservicos (void){
+    Servicos* serv;
+    serv = (Servicos*) malloc(sizeof(Servicos));
+    FILE* rser;
+    rser = fopen("servicos.dat","rb");
+    if (rser == NULL){
+        printf("Arquivo inexistente");
+        printf("\n");
+        printf("Programa encerrando...");
+        exit(1);
+    }
+    while(fread(serv, sizeof(Servicos), 1, rser)){
+        mostrarservicos(serv);
+    }
+    getchar();
+    fclose(rser);
+    free(serv);
 }
 
 //void consultaproxima (void){

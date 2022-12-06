@@ -42,7 +42,13 @@ struct pagamento{
     char cpf[15];
     char cnpj[20];
     char celular[15];
-    char email[40];
 };
 
 struct tm *data_hora_atual; 
+
+typedef struct servicos Servicos;
+struct servicos{
+    char nome_serv[25];
+    char nome_prof[41];
+    char status;
+};

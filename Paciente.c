@@ -29,7 +29,7 @@ char paciente(void){
 void cadastrarpaciente(void){
     Paciente* cliente;
     cliente = (Paciente*)malloc(sizeof(Paciente));
-    int nomevalido;
+    //int nomevalido;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
@@ -38,7 +38,7 @@ void cadastrarpaciente(void){
     printf("| Nome:                                                                   |\n");
     fgets(cliente->nome,40,stdin); 
     strtok(cliente->nome, "\n");
-    nomevalido = Vnome(cliente->nome);
+    //nomevalido = Vnome(cliente->nome);
     //
     printf("| CPF: (123.456.789-00)                                                   |\n");
     fgets(cliente->cpf,15,stdin); 
@@ -143,7 +143,7 @@ void buscarcliente (void){
         mostrarclientes(cliente);
     }
     else{
-        printf("O paciente não foi encontrado...\n", buscacpf);
+        printf("O paciente %s não foi encontrado...\n", buscacpf);
     }
     getchar();
     free(cliente);

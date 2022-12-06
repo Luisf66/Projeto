@@ -19,12 +19,13 @@
 #include "Pagamento.h"
 #include "Profissional.h"
 #include "Relatorio.h"
+#include "Servicos.h"
 
 //  Assinatura das funções SIG
 char menu(void);
 void info(void);
 void equipe(void);
-void servicos(void);
+char servicos(void);
 void horario(void);
 char consulta(void);
 char acesso_online(void);
@@ -39,6 +40,7 @@ int main(void) {
     char opagendamento;
     char opacesso_online;
     char oppagamento;
+    char opservicos;
     do{
         opmenu = menu();
         switch (opmenu){
@@ -138,7 +140,15 @@ int main(void) {
                         relatoriofuncionario();
                         break;
                     case '4':
-                        servicos();
+                        opservicos = servicos();
+                        switch (opservicos){
+                            case '1':
+                                cadastrarservicos();
+                                break;
+                            case '2':
+                                relatorioservicos();
+                                break;
+                        }
                         break;
                     case '5':
                         horario();
@@ -221,22 +231,20 @@ void equipe(void){
     
 }
 
-void servicos(void){
+char servicos (void){
+    char opservicos;
     system("clear||cls");
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
     printf("|                         Serviços e Profissionais                        |\n"); 
-    printf("|                                                                         |\n");             
-    printf("| Endocrinologia -- Dr. AAAAAAA   |    Endocrinologia -- Dr. AAAAAAA      |\n");
-    printf("| Clínica geral  -- Dr. BBBBBBB   |    Clínica geral  -- Dr. BBBBBBB      |\n");
-    printf("| Odontologico   -- Dr. CCCCCCC   |    Odontologico   -- Dr. CCCCCCC      |\n");
-    printf("| Cardiologia    -- Dr. DDDDDDD   |    Cardiologia    -- Dr. DDDDDDD      |\n");
-    printf("| Neurologia     -- Dr. EEEEEEE   |    Neurologia     -- Dr. EEEEEEE      |\n");
-    printf("| Ortopedia      -- Dr. FFFFFFF   |    Ortopedia      -- Dr. FFFFFFF      |\n");
-    printf("|_________________________________|_______________________________________|\n");
-    printf("Aperte ENTER para continuar\n");
+    printf("|                                                                         |\n");       
+    printf("| 1-Cadastrar serviços                                                    |\n");  
+    printf("| 2-Ver serviços                                                          |\n");     
+    printf("|_________________________________________________________________________|\n");
+    scanf("%c",&opservicos);
     getchar();
+    return opservicos;
 }
 
 // Horário
