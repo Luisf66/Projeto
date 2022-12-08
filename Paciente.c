@@ -31,14 +31,17 @@ void cadastrarpaciente(void){
     cliente = (Paciente*)malloc(sizeof(Paciente));
     //int nomevalido;
     system("clear||cls");
+    do {
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                           Cadastrar paciente                            |\n");              
     printf("| Nome:                                                                   |\n");
     fgets(cliente->nome,40,stdin); 
-    strtok(cliente->nome, "\n");
-    //nomevalido = Vnome(cliente->nome);
+    tamanho = strlen(cliente->nome);
+    cliente->nome[tamanho-1] = '\0';
+    tamanho = Vnome(cliente->nome);
+}while (tamanho == 0)
     //
     printf("| CPF: (123.456.789-00)                                                   |\n");
     fgets(cliente->cpf,15,stdin); 
