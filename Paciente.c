@@ -29,19 +29,20 @@ char paciente(void){
 void cadastrarpaciente(void){
     Paciente* cliente;
     cliente = (Paciente*)malloc(sizeof(Paciente));
-    //int nomevalido;
+    int tamanho;
+    do{
     system("clear||cls");
-    do {
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                           Cadastrar paciente                            |\n");              
     printf("| Nome:                                                                   |\n");
     fgets(cliente->nome,40,stdin); 
+    getchar();
     tamanho = strlen(cliente->nome);
     cliente->nome[tamanho-1] = '\0';
     tamanho = Vnome(cliente->nome);
-}while (tamanho == 0)
+    }while (tamanho == 0);
     //
     printf("| CPF: (123.456.789-00)                                                   |\n");
     fgets(cliente->cpf,15,stdin); 
@@ -241,6 +242,7 @@ void editarcliente(void){
         printf("Deseja realmente editar o paciente listado?");
         printf("\n");
         printf("S ou N?");
+        getchar();
         scanf("%c", &resp);
         if (resp == 's' || resp == 'S'){
             printf("___________________________________________________________________________\n");

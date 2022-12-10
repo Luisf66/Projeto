@@ -4,9 +4,9 @@
 #include <string.h>
 #include "Estruturas.h"
 // NOME
-int Vnome (Paciente* cliente){
+int Vnome (void* nome){
     int tam;
-    tam = strlen(cliente->nome);
+    tam = strlen(nome);
     if(tam == 0){
         return 0;
     }
@@ -73,7 +73,7 @@ int Vcpf (Paciente* cliente){
     if(tam != 11){
         return 0;
     }
-    Icpf = cliente->cpf - '0';
+    //Icpf = cliente->cpf - '0';
     resultado = (cliente->cpf[0]*10) + (cliente->cpf[1]*9) + (cliente->cpf[2]*8) + (cliente->cpf[4]*7) + (cliente->cpf[5]*6) + (cliente->cpf[6]*5) + (cliente->cpf[8]*4) + (cliente->cpf[9]*3) + (cliente->cpf[10]*2); 
     resultado = (resultado * 10) % 11;
     if(resultado == 10){

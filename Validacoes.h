@@ -1,6 +1,6 @@
 typedef struct paciente Paciente;
 
-int Vnome (Paciente*);
+int Vnome (void* nome);
 
 int Vbissexto (int);
 
