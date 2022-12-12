@@ -30,56 +30,61 @@ void cadastrarpaciente(void){
     Paciente* cliente;
     cliente = (Paciente*)malloc(sizeof(Paciente));
     int tamanho;
+    char confirma;
     do{
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                           Cadastrar paciente                            |\n");              
-    printf("| Nome:                                                                   |\n");
-    fgets(cliente->nome,40,stdin); 
-    getchar();
-    tamanho = strlen(cliente->nome);
-    cliente->nome[tamanho-1] = '\0';
-    tamanho = Vnome(cliente->nome);
-    }while (tamanho == 0);
-    //
-    printf("| CPF: (123.456.789-00)                                                   |\n");
-    fgets(cliente->cpf,15,stdin); 
-    strtok(cliente->cpf, "\n");   
-    getchar();
-    //
-    printf("| Celular: (00 91234-5678)                                                |\n");
-    fgets(cliente->celular,15,stdin);    
-    strtok(cliente->celular, "\n");
-    //
-    printf("| E-mail:                                                                 |\n");
-    fgets(cliente->email,50,stdin);    
-    strtok(cliente->email, "\n");
-    //
-    printf("| Nascimento Dia:                                                         |\n");
-    fgets(cliente->dd,4,stdin);    
-    strtok(cliente->dd, "\n");
-    //
-    printf("| Nascimento Mês:                                                         |\n");
-    fgets(cliente->mm,4,stdin);    
-    strtok(cliente->mm, "\n");
-    //
-    printf("| Nascimento Ano:                                                         |\n");
-    fgets(cliente->aaaa,6,stdin);    
-    strtok(cliente->aaaa, "\n");
-    //
-    printf("| Tipo sanguíneo:                                                         |\n");
-    fgets(cliente->tipo,4,stdin); 
-    strtok(cliente->tipo, "\n");
-    //
-    cliente->status = 1;   
-    printf("| 0-voltar                                                                |\n");                                    
-    printf("|_________________________________________________________________________|\n");
-    printf("Tecle enter para cadastrar");
-    printf("\n");
-    mostrarclientes(cliente);
-    printf("Tecle enter para finalizar o cadastro");
+    //do{
+        system("clear||cls");
+        printf("\n");
+        printf("___________________________________________________________________________\n");
+        printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+        printf("|                           Cadastrar paciente                            |\n");              
+        printf("| Nome:                                                                   |\n");
+        fgets(cliente->nome,40,stdin); 
+        getchar();
+        tamanho = strlen(cliente->nome);
+        cliente->nome[tamanho-1] = '\0';
+        tamanho = Vnome(cliente->nome);
+        //}while (tamanho == 0);
+        //
+        printf("| CPF: (123.456.789-00)                                                   |\n");
+        fgets(cliente->cpf,15,stdin); 
+        strtok(cliente->cpf, "\n");   
+        getchar();
+        //
+        printf("| Celular: (00 91234-5678)                                                |\n");
+        fgets(cliente->celular,15,stdin);    
+        strtok(cliente->celular, "\n");
+        //
+        printf("| E-mail:                                                                 |\n");
+        fgets(cliente->email,50,stdin);    
+        strtok(cliente->email, "\n");
+        //
+        printf("| Nascimento Dia:                                                         |\n");
+        fgets(cliente->dd,4,stdin);    
+        strtok(cliente->dd, "\n");
+        //
+        printf("| Nascimento Mês:                                                         |\n");
+        fgets(cliente->mm,4,stdin);    
+        strtok(cliente->mm, "\n");
+        //
+        printf("| Nascimento Ano:                                                         |\n");
+        fgets(cliente->aaaa,6,stdin);    
+        strtok(cliente->aaaa, "\n");
+        //
+        printf("| Tipo sanguíneo:                                                         |\n");
+        fgets(cliente->tipo,4,stdin); 
+        strtok(cliente->tipo, "\n");
+        //
+        cliente->status = 1;   
+        printf("| 0-voltar                                                                |\n");                                    
+        printf("|_________________________________________________________________________|\n");
+        printf("\nTecle enter para cadastrar\n");
+        mostrarclientes(cliente);
+        printf("\nDados inseridos corretamente? S ou N\n");
+        scanf("%c", &confirma);
+        getchar();
+    }while (confirma != 'S');
+    printf("\nTecle enter para finalizar o cadastro\n");
     getchar();
     gravarcliente(cliente);
     printf("Cadastro realizado");
@@ -121,9 +126,11 @@ void buscarcliente (void){
     char buscacpf[15];
     gcli = fopen("Clientes.dat","rb");
     if (gcli == NULL){
-        printf("Cliente não cadastrado");
-        exit(1);
+        printf("O arquivo não existe");
+        getchar();
     }
+    system("clear||cls");
+    printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                             Buscar paciente                             |\n");              
@@ -141,13 +148,11 @@ void buscarcliente (void){
     }
     fclose(gcli);
     if (enc == 1){
-        printf("\n");
-        printf("Paciente encontrado com sucesso");
-        printf("\n");
+        printf("\nPaciente encontrado com sucesso\n");
         mostrarclientes(cliente);
     }
     else{
-        printf("O paciente %s não foi encontrado...\n", buscacpf);
+        printf("\nO paciente %s não foi encontrado...\n", buscacpf);
     }
     getchar();
     free(cliente);
@@ -162,9 +167,11 @@ void deletarcliente(void){
     char resp;
     gcli = fopen("Clientes.dat", "r+b");
     if(gcli == NULL){
-        printf("Paciente não cadastrado");
-        exit(1);
+        printf("O arquivo não existe");
+        getchar();
     }
+    system("clear||cls");
+    printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                             Deletar paciente                            |\n");              
@@ -181,8 +188,7 @@ void deletarcliente(void){
         }
     }
     if (enc == 1){
-        printf("Paciente a ser deletado:");
-        printf("\n");
+        printf("Paciente a ser deletado:\n");
         mostrarclientes(cliente);
         getchar();
         printf("Deseja deletar este paciente? (S ou N):");
@@ -211,14 +217,16 @@ void editarcliente(void){
     cliente = (Paciente*) malloc(sizeof(Paciente));
     FILE* gcli;
     int enc;
+    char confirma;
     char resp;
     char buscacpf[15];
     gcli = fopen("Clientes.dat", "r+b");
      if (gcli == NULL){
-        printf("Paciente não cadastrado\n");
-        printf("Programa encerrando...\n");
-        exit(1);
+        printf("O arquivo não existe");
+        getchar();
     }
+    system("clear||cls");
+    printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                        Alterar dados do paciente                        |\n");              
@@ -235,68 +243,72 @@ void editarcliente(void){
         }
     }
     if (enc){
-        printf("Paciente a ser editado:");
-        printf("\n");
+        printf("Paciente a ser editado:\n");
         mostrarclientes(cliente);
         getchar();
-        printf("Deseja realmente editar o paciente listado?");
-        printf("\n");
+        printf("Deseja realmente editar o paciente listado?\n");
         printf("S ou N?");
-        getchar();
         scanf("%c", &resp);
+        getchar();
         if (resp == 's' || resp == 'S'){
-            printf("___________________________________________________________________________\n");
-            printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-            printf("|                        Alterar dados do paciente                        |\n");              
-            printf("| Nome:                                                                   |\n");
-            fgets(cliente->nome,40,stdin); 
-            strtok(cliente->nome, "\n");
-            //getchar();
-            //
-            printf("| CPF: (123.456.789-00)                                                   |\n");
-            fgets(cliente->cpf,15,stdin); 
-            strtok(cliente->cpf, "\n");   
+            do{
+                system("clear||cls");
+                printf("\n");
+                printf("___________________________________________________________________________\n");
+                printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+                printf("|                        Alterar dados do paciente                        |\n");              
+                printf("| Nome:                                                                   |\n");
+                fgets(cliente->nome,40,stdin); 
+                strtok(cliente->nome, "\n");
+                getchar();
+
+                printf("| CPF: (123.456.789-00)                                                   |\n");
+                fgets(cliente->cpf,15,stdin); 
+                strtok(cliente->cpf, "\n");  
+                getchar();
+
+                printf("| Celular: (00 91234-5678)                                                |\n");
+                fgets(cliente->celular,15,stdin);    
+                strtok(cliente->celular, "\n");
+                getchar();
+
+                printf("| E-mail:                                                                 |\n");
+                fgets(cliente->email,50,stdin);    
+                strtok(cliente->email, "\n");
+                getchar();
+
+                printf("| Nascimento Dia:                                                         |\n");
+                fgets(cliente->dd,4,stdin);    
+                strtok(cliente->dd, "\n");
+                getchar();
+
+                printf("| Nascimento Mês:                                                         |\n");
+                fgets(cliente->mm,4,stdin);    
+                strtok(cliente->mm, "\n");
+                getchar();
+
+                printf("| Nascimento Ano:                                                         |\n");
+                fgets(cliente->aaaa,6,stdin);    
+                strtok(cliente->aaaa, "\n");
+                getchar();
+
+                printf("| Tipo sanguíneo:                                                         |\n");
+                fgets(cliente->tipo,4,stdin); 
+                strtok(cliente->tipo, "\n");
+                getchar();
+
+                cliente->status = 1;   
+                printf("| 0-voltar                                                                |\n");                                    
+                printf("|_________________________________________________________________________|\n");
+                printf("Tecle enter para cadastrar");
+                fseek(gcli, (-1)*sizeof(Paciente), SEEK_CUR);
+                fwrite(cliente, sizeof(Paciente), 1, gcli);
+                printf("\nDados inseridos corretamente? S ou N\n");
+                scanf("%c", &confirma);
+                getchar();
+            }while (confirma != 'S');
+            printf("Tecle enter para cadastrar os novos dados\n");
             getchar();
-            //
-            printf("| Celular: (00 91234-5678)                                                |\n");
-            fgets(cliente->celular,15,stdin);    
-            strtok(cliente->celular, "\n");
-            //getchar();
-            //
-            printf("| E-mail:                                                                 |\n");
-            fgets(cliente->email,50,stdin);    
-            strtok(cliente->email, "\n");
-            //getchar();
-            //
-            printf("| Nascimento Dia:                                                         |\n");
-            fgets(cliente->dd,4,stdin);    
-            strtok(cliente->dd, "\n");
-            //getchar();
-            //
-            printf("| Nascimento Mês:                                                         |\n");
-            fgets(cliente->mm,4,stdin);    
-            strtok(cliente->mm, "\n");
-            //getchar();
-            //
-            printf("| Nascimento Ano:                                                         |\n");
-            fgets(cliente->aaaa,6,stdin);    
-            strtok(cliente->aaaa, "\n");
-            //getchar();
-            //
-            printf("| Tipo sanguíneo:                                                         |\n");
-            fgets(cliente->tipo,4,stdin); 
-            strtok(cliente->tipo, "\n");
-            //getchar();
-            //
-            cliente->status = 1;   
-            printf("| 0-voltar                                                                |\n");                                    
-            printf("|_________________________________________________________________________|\n");
-            printf("Tecle enter para cadastrar");
-            fseek(gcli, (-1)*sizeof(Paciente), SEEK_CUR);
-            fwrite(cliente, sizeof(Paciente), 1, gcli);
-            printf("Tecle enter para cadastrar os novos dados");
-            getchar();
-            printf("\n");
             mostrarclientes(cliente);
             printf("Tecle enter para finalizar o cadastro");
             getchar();
