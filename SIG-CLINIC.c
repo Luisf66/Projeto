@@ -154,7 +154,7 @@ int main(void) {
                         horario();
                         break;
                     //case '6':
-                        //consultaproxima();
+                        //ordem_alfa_cliente();
                         //break;
                 }
                 break;

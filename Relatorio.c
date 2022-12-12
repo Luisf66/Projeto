@@ -15,8 +15,7 @@ void relatoriofuncionario (void){
     FILE* rfun;
     rfun = fopen("Funcionarios.dat","rb");
     if (rfun == NULL){
-        printf("Arquivo inexistente");
-        printf("\n");
+        printf("Arquivo inexistente\n");
         printf("Programa encerrando...");
         exit(1);
     }
@@ -34,8 +33,7 @@ void relatoriocliente (void){
     FILE* rcli;
     rcli = fopen("Clientes.dat","rb");
     if (rcli == NULL){
-        printf("Arquivo inexistente");
-        printf("\n");
+        printf("Arquivo inexistente\n");
         printf("Programa encerrando...");
         exit(1);
     }
@@ -53,8 +51,7 @@ void relatorioconsulta (void){
     FILE* rcli;
     rcli = fopen("Consulta.dat","rb");
     if (rcli == NULL){
-        printf("Arquivo inexistente");
-        printf("\n");
+        printf("Arquivo inexistente\n");
         printf("Programa encerrando...");
         exit(1);
     }
@@ -72,8 +69,7 @@ void relatorioservicos (void){
     FILE* rser;
     rser = fopen("servicos.dat","rb");
     if (rser == NULL){
-        printf("Arquivo inexistente");
-        printf("\n");
+        printf("Arquivo inexistente\n");
         printf("Programa encerrando...");
         exit(1);
     }
@@ -84,6 +80,7 @@ void relatorioservicos (void){
     fclose(rser);
     free(serv);
 }
+
 
 //void consultaproxima (void){
 //    Consulta* con;
