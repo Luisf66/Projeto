@@ -4,7 +4,7 @@
 #include <string.h>
 #include "Paciente.h"
 #include "Estruturas.h"
-#include "Validacoes.h"
+//#include "Validacoes.h"
 
 char paciente(void){
     char oppaciente;
@@ -31,6 +31,7 @@ void cadastrarpaciente(void){
     cliente = (Paciente*)malloc(sizeof(Paciente));
     int tamanho;
     char confirma;
+    //int validacao_data;
     do{
     //do{
         system("clear||cls");
@@ -40,16 +41,14 @@ void cadastrarpaciente(void){
         printf("|                           Cadastrar paciente                            |\n");              
         printf("| Nome:                                                                   |\n");
         fgets(cliente->nome,40,stdin); 
-        getchar();
         tamanho = strlen(cliente->nome);
         cliente->nome[tamanho-1] = '\0';
-        tamanho = Vnome(cliente->nome);
+        //tamanho = Vnome(cliente->nome);
         //}while (tamanho == 0);
         //
         printf("| CPF: (123.456.789-00)                                                   |\n");
         fgets(cliente->cpf,15,stdin); 
         strtok(cliente->cpf, "\n");   
-        getchar();
         //
         printf("| Celular: (00 91234-5678)                                                |\n");
         fgets(cliente->celular,15,stdin);    
@@ -62,6 +61,7 @@ void cadastrarpaciente(void){
         printf("| Nascimento Dia:                                                         |\n");
         fgets(cliente->dd,4,stdin);    
         strtok(cliente->dd, "\n");
+        //validacao_data = Vdata(cliente->dd,cliente->mm,cliente->aaaa);
         //
         printf("| Nascimento Mês:                                                         |\n");
         fgets(cliente->mm,4,stdin);    
@@ -260,47 +260,38 @@ void editarcliente(void){
                 printf("| Nome:                                                                   |\n");
                 fgets(cliente->nome,40,stdin); 
                 strtok(cliente->nome, "\n");
-                getchar();
 
                 printf("| CPF: (123.456.789-00)                                                   |\n");
                 fgets(cliente->cpf,15,stdin); 
                 strtok(cliente->cpf, "\n");  
-                getchar();
 
                 printf("| Celular: (00 91234-5678)                                                |\n");
                 fgets(cliente->celular,15,stdin);    
                 strtok(cliente->celular, "\n");
-                getchar();
 
                 printf("| E-mail:                                                                 |\n");
                 fgets(cliente->email,50,stdin);    
                 strtok(cliente->email, "\n");
-                getchar();
 
                 printf("| Nascimento Dia:                                                         |\n");
                 fgets(cliente->dd,4,stdin);    
                 strtok(cliente->dd, "\n");
-                getchar();
 
                 printf("| Nascimento Mês:                                                         |\n");
                 fgets(cliente->mm,4,stdin);    
                 strtok(cliente->mm, "\n");
-                getchar();
 
                 printf("| Nascimento Ano:                                                         |\n");
                 fgets(cliente->aaaa,6,stdin);    
                 strtok(cliente->aaaa, "\n");
-                getchar();
 
                 printf("| Tipo sanguíneo:                                                         |\n");
                 fgets(cliente->tipo,4,stdin); 
                 strtok(cliente->tipo, "\n");
-                getchar();
 
                 cliente->status = 1;   
                 printf("| 0-voltar                                                                |\n");                                    
                 printf("|_________________________________________________________________________|\n");
-                printf("Tecle enter para cadastrar");
                 fseek(gcli, (-1)*sizeof(Paciente), SEEK_CUR);
                 fwrite(cliente, sizeof(Paciente), 1, gcli);
                 printf("\nDados inseridos corretamente? S ou N\n");

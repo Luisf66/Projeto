@@ -1,9 +1,10 @@
-typedef struct paciente Paciente;
+//int Vnome (void* nome);
+//typedef struct consulta Consulta;
 
-int Vnome (void* nome);
+int ano_bissexto (int ano);
 
-int Vbissexto (int);
+int validacao_data (int dia,int mes, int ano);
 
-int Vdata (int, int, int);
+int validacao_cpf (char* cpf);
 
-int Vcpf (Paciente*);
+int validacao_hora (char* hora);

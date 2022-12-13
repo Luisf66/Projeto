@@ -4,6 +4,7 @@
 #include <string.h>
 #include "Consulta.h"
 #include "Estruturas.h"
+//#include "Validacoes.h"
 
 char agendamento(void){
     char opagendamento;
