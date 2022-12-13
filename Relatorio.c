@@ -48,18 +48,18 @@ void relatoriocliente (void){
 void relatorioconsulta (void){
     Consulta* con;
     con = (Consulta*) malloc(sizeof(Consulta));
-    FILE* rcli;
-    rcli = fopen("Consulta.dat","rb");
-    if (rcli == NULL){
+    FILE* rcon;
+    rcon = fopen("Consulta.dat","rb");
+    if (rcon == NULL){
         printf("Arquivo inexistente\n");
         printf("Programa encerrando...");
         exit(1);
     }
-    while(fread(con, sizeof(Consulta), 1, rcli)){
+    while(fread(con, sizeof(Consulta), 1, rcon)){
         mostrarconsulta(con);
     }
     getchar();
-    fclose(rcli);
+    fclose(rcon);
     free(con);
 }
 
@@ -108,3 +108,124 @@ void relatorioservicos (void){
 //    fclose(rcli);
 //    free(con);
 //}
+
+
+void removecliente (void){
+    FILE* rcli;
+    char confirma;
+    rcli = fopen("Clientes.dat","rb");
+    if (rcli == NULL){
+        printf("Arquivo inexistente\n");
+        printf("Programa encerrando...");
+        exit(1);
+    }
+    system("clear||cls");
+    printf("\n");
+    printf("___________________________________________________________________________\n");
+    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+    printf("|                             Deletar arquivo                             |\n");    
+    printf("|                                                                         |\n");          
+    printf("| Deseja deletar todo o arquivo de clientes? (S ou N)                     |\n");
+    printf("|_________________________________________________________________________|\n");
+    scanf("%c", &confirma);
+    getchar();
+    fclose(rcli);
+    if(confirma == 'S'){
+        remove("Clientes.dat");
+        printf("Arquivo excluído com sucesso\n");
+    }
+    else{
+        printf("Arquivo não removido");
+    }
+    getchar();
+}
+
+void removefuncionario (void){
+    FILE* rfun;
+    rfun = fopen("Funcionarios.dat","rb");
+    char confirma;
+    if (rfun == NULL){
+        printf("Arquivo inexistente\n");
+        printf("Programa encerrando...");
+        exit(1);
+    }
+    system("clear||cls");
+    printf("\n");
+    printf("___________________________________________________________________________\n");
+    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+    printf("|                             Deletar arquivo                             |\n");    
+    printf("|                                                                         |\n");          
+    printf("| Deseja deletar todo o arquivo de funcionários? (S ou N)                 |\n");
+    printf("|_________________________________________________________________________|\n");
+    scanf("%c", &confirma);
+    getchar();
+    fclose(rfun);
+    if(confirma == 'S'){
+        remove("Funcionarios.dat");
+        printf("Arquivo excluído com sucesso\n");
+    }
+    else{
+        printf("Arquivo não removido");
+    }
+    getchar();
+}
+
+void removeconsulta (void){
+    FILE* rcon;
+    char confirma;
+    rcon = fopen("Consulta.dat","rb");
+    if (rcon == NULL){
+        printf("Arquivo inexistente\n");
+        printf("Programa encerrando...");
+        exit(1);
+    }
+    system("clear||cls");
+    printf("\n");
+    printf("___________________________________________________________________________\n");
+    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+    printf("|                             Deletar arquivo                             |\n");    
+    printf("|                                                                         |\n");          
+    printf("| Deseja deletar todo o arquivo de consultas? (S ou N)                    |\n");
+    printf("|_________________________________________________________________________|\n");
+    scanf("%c", &confirma);
+    getchar();
+    fclose(rcon);
+    if(confirma == 'S'){
+        remove("Consulta.dat");
+        printf("Arquivo excluído com sucesso\n");
+    }
+    else{
+        printf("Arquivo não removido");
+    }
+    getchar();
+}
+
+void removepagamento (void){
+    FILE* rpag;
+    char confirma;
+    rpag = fopen("pagamento.dat","rb");
+    if (rpag == NULL){
+        printf("Arquivo inexistente\n");
+        printf("Programa encerrando...");
+        exit(1);
+    }
+    system("clear||cls");
+    printf("\n");
+    printf("___________________________________________________________________________\n");
+    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
+    printf("|                             Deletar arquivo                             |\n");    
+    printf("|                                                                         |\n");          
+    printf("| Deseja deletar todo o arquivo de pagamento? (S ou N)                    |\n");
+    printf("|_________________________________________________________________________|\n");
+    scanf("%c", &confirma);
+    getchar();
+    fclose(rpag);
+    if(confirma == 'S'){
+        remove("pagamento.dat");
+        printf("Arquivo excluído com sucesso\n");
+    }
+    else{
+        printf("Arquivo não removido");
+    }
+    getchar();
+}

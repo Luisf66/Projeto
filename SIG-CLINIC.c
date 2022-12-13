@@ -29,6 +29,7 @@ char servicos(void);
 void horario(void);
 char consulta(void);
 char acesso_online(void);
+char remover(void);
 
 
 //  Programa principal
@@ -41,6 +42,7 @@ int main(void) {
     char opacesso_online;
     char oppagamento;
     char opservicos;
+    char opremover;
     do{
         opmenu = menu();
         switch (opmenu){
@@ -153,9 +155,23 @@ int main(void) {
                     case '5':
                         horario();
                         break;
-                    //case '6':
-                        //ordem_alfa_cliente();
-                        //break;
+                }
+                break;
+            case '5':
+                opremover = remover();
+                switch (opremover){
+                    case '1':
+                        removecliente();
+                        break;
+                    case '2':
+                        removeconsulta();
+                        break;
+                    case '3':
+                        removefuncionario();
+                        break;
+                    case '4':
+                        removepagamento();
+                        break;
                 }
                 break;
         }
@@ -181,6 +197,7 @@ char menu(void){
     printf("| 2-Informações do profissional                                           |\n");
     printf("| 3-Meus agendamentos                                                     |\n");
     printf("| 4-Acesso online                                                         |\n");
+    printf("| 5-Remover arquivos                                                      |\n");
     printf("| 0-Sair                                                                  |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                                 
     printf("|_________________________________________________________________________|\n");
@@ -308,4 +325,23 @@ char acesso_online(void){
     scanf("%c", &opacesso_online);
     getchar();
     return opacesso_online;
+}
+
+char remover(void){
+    char opremover;
+    system("clear||cls");
+    printf("\n");
+    printf("___________________________________________________________________________\n");
+    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
+    printf("|                           Remoção de arquivos                           |\n");              
+    printf("| 1-Remover arquivo dos pacientes                                         |\n");
+    printf("| 2-Remover arquivo das consultas                                         |\n");
+    printf("| 3-Remover arquivo dos funcionários                                      |\n");
+    printf("| 4-Remover arquivo dos pagamentos                                        |\n");    
+    printf("| 0-voltar                                                                |\n");
+    printf("| Escolha uma das opções:                                                 |\n");                                               
+    printf("|_________________________________________________________________________|\n");
+    scanf("%c", &opremover);
+    getchar();
+    return opremover;
 }

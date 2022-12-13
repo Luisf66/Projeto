@@ -12,3 +12,11 @@ void relatorioconsulta (void);
 void relatorioservicos (void);
 
 //void consultaproxima (void);
+
+void removecliente (void);
+
+void removefuncionario (void);
+
+void removeconsulta (void);
+
+void removepagamento (void);

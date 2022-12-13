@@ -220,7 +220,7 @@ void editarfuncionario(void){
     printf("| CPF: (123.456.789-00)                                                   |\n");
     printf("| 0-voltar                                                                |\n");                                               
     printf("|_________________________________________________________________________|\n");
-    fgets(buscacpf,15,gfun); 
+    fgets(buscacpf,15,stdin); 
     strtok(buscacpf, "\n");   
     getchar();
     enc = 0;
