@@ -5,9 +5,24 @@
 
 int convertedia(char* dd){
     int dia;
-    dia = dd[0]-'0' * 10 + dd[1] -'0';
+    dia = atoi(dd);
     return dia;
 }
+
+int convertemes (char* mm){
+    int mes;
+    mes = atoi(mm);
+    return mes;
+}
+
+int converteano (char* aaaa){
+    int ano;
+    ano = atoi(aaaa);
+    return ano;
+}
+
+
+
 int ano_bissexto (int ano){
     if((ano % 4 == 0) && (ano % 100 != 0)){
         return 1;
@@ -18,7 +33,8 @@ int ano_bissexto (int ano){
     }
 }
 
-int validacao_data (char* dia,char* mes, char* ano){
+int validacao_data (int dia,int mes, int ano){
+    printf("dia = %d",dia);
     int maior_dia;
     // Faixas de dias validos
     if(dia > 31 || dia < 0){
@@ -60,7 +76,7 @@ int validacao_data (char* dia,char* mes, char* ano){
         return 1;
         }   
     }
-    if(mes == 2 && ano_bissexto){
+    if(mes == 2 && ano_bissexto ==1){
         maior_dia = 29;
         if(dia > maior_dia){
             printf("Fora da faixa válida de dias");
