@@ -31,9 +31,12 @@ void cadastrarpaciente(void){
     cliente = (Paciente*)malloc(sizeof(Paciente));
     int tamanho;
     char confirma;
-    //int validacao_data;
+    int dia;
+    int mes;
+    int ano;
+    int validacpf;
+    int validacao;
     do{
-    //do{
         system("clear||cls");
         printf("\n");
         printf("___________________________________________________________________________\n");
@@ -49,6 +52,8 @@ void cadastrarpaciente(void){
         printf("| CPF: (123.456.789-00)                                                   |\n");
         fgets(cliente->cpf,15,stdin); 
         strtok(cliente->cpf, "\n");   
+        validacpf = validacao_cpf(cliente->cpf);
+        
         //
         printf("| Celular: (00 91234-5678)                                                |\n");
         fgets(cliente->celular,15,stdin);    
@@ -61,20 +66,26 @@ void cadastrarpaciente(void){
         printf("| Nascimento Dia:                                                         |\n");
         fgets(cliente->dd,4,stdin);    
         strtok(cliente->dd, "\n");
-        //validacao_data = Vdata(cliente->dd,cliente->mm,cliente->aaaa);
+        printf("Valor antes convertido |%s|\n",cliente->dd);
+        dia = convertedia(cliente->dd);
+        printf("Valor convertido %d\n",dia);
         //
         printf("| Nascimento Mês:                                                         |\n");
         fgets(cliente->mm,4,stdin);    
         strtok(cliente->mm, "\n");
+        mes = convertemes(cliente->mm);
         //
         printf("| Nascimento Ano:                                                         |\n");
         fgets(cliente->aaaa,6,stdin);    
         strtok(cliente->aaaa, "\n");
+        ano = converteano(cliente->aaaa);
         //
         printf("| Tipo sanguíneo:                                                         |\n");
         fgets(cliente->tipo,4,stdin); 
         strtok(cliente->tipo, "\n");
         //
+        validacao = validacao_data(dia,mes,ano);
+
         cliente->status = 1;   
         printf("| 0-voltar                                                                |\n");                                    
         printf("|_________________________________________________________________________|\n");
@@ -83,7 +94,7 @@ void cadastrarpaciente(void){
         printf("\nDados inseridos corretamente? S ou N\n");
         scanf("%c", &confirma);
         getchar();
-    }while (confirma != 'S');
+    }while (confirma == 'S' && validacao != 1);
     printf("\nTecle enter para finalizar o cadastro\n");
     getchar();
     gravarcliente(cliente);
