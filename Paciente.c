@@ -97,8 +97,7 @@ void gravarcliente (Paciente* cliente){
     gcli = fopen("Clientes.dat","ab");
     if (gcli == NULL){
         printf("Arquivo inexistente");
-        printf("Programa encerrando...");
-        exit(1);
+        getchar();;
     }
     fwrite(cliente, sizeof(Paciente),1,gcli);
     fclose(gcli);

@@ -138,8 +138,7 @@ void gravarpagamento (Pagamento* pix){
     gpag = fopen("pagamento.dat","ab");
     if (gpag == NULL){
         printf("Arquivo inexistente");
-        printf("Programa encerrando...");
-        exit(1);
+        getchar();
     }
     fwrite(pix, sizeof(Pagamento),1,gpag);
     fclose(gpag);

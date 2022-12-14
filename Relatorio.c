@@ -16,8 +16,7 @@ void relatoriofuncionario (void){
     rfun = fopen("Funcionarios.dat","rb");
     if (rfun == NULL){
         printf("Arquivo inexistente\n");
-        printf("Programa encerrando...");
-        exit(1);
+        getchar();
     }
     while(fread(funcionario, sizeof(Profissional), 1, rfun)){
         mostrarfuncionario(funcionario);
@@ -34,8 +33,7 @@ void relatoriocliente (void){
     rcli = fopen("Clientes.dat","rb");
     if (rcli == NULL){
         printf("Arquivo inexistente\n");
-        printf("Programa encerrando...");
-        exit(1);
+        getchar();
     }
     while(fread(cliente, sizeof(Paciente), 1, rcli)){
         mostrarclientes(cliente);
@@ -70,8 +68,7 @@ void relatorioservicos (void){
     rser = fopen("servicos.dat","rb");
     if (rser == NULL){
         printf("Arquivo inexistente\n");
-        printf("Programa encerrando...");
-        exit(1);
+        getchar();
     }
     while(fread(serv, sizeof(Servicos), 1, rser)){
         mostrarservicos(serv);
@@ -116,8 +113,7 @@ void removecliente (void){
     rcli = fopen("Clientes.dat","rb");
     if (rcli == NULL){
         printf("Arquivo inexistente\n");
-        printf("Programa encerrando...");
-        exit(1);
+        getchar();
     }
     system("clear||cls");
     printf("\n");
@@ -146,8 +142,7 @@ void removefuncionario (void){
     char confirma;
     if (rfun == NULL){
         printf("Arquivo inexistente\n");
-        printf("Programa encerrando...");
-        exit(1);
+        getchar();
     }
     system("clear||cls");
     printf("\n");
@@ -176,8 +171,7 @@ void removeconsulta (void){
     rcon = fopen("Consulta.dat","rb");
     if (rcon == NULL){
         printf("Arquivo inexistente\n");
-        printf("Programa encerrando...");
-        exit(1);
+        getchar();
     }
     system("clear||cls");
     printf("\n");

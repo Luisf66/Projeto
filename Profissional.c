@@ -87,8 +87,7 @@ void gravarfuncionario (Profissional* funcionario){
     gfun = fopen("Funcionarios.dat","ab");
     if (gfun == NULL){
         printf("Arquivo inexistente");
-        printf("Programa encerrando...");
-        exit(1);
+        getchar();
     }
     fwrite(funcionario, sizeof(Profissional),1,gfun);
     fclose(gfun);

@@ -79,8 +79,7 @@ void gravarconsulta (Consulta* con){
     gc = fopen("Consulta.dat","ab");
     if (gc == NULL){
         printf("Arquivo inexistente");
-        printf("Programa encerrando...");
-        exit(1);
+        getchar();
     }
     fwrite(con, sizeof(Consulta),1,gc);
     fclose(gc);

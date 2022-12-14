@@ -37,8 +37,7 @@ void gravarservicos (Servicos* serv){
     gser = fopen("servicos.dat","ab");
     if (gser == NULL){
         printf("Arquivo inexistente");
-        printf("Programa encerrando...");
-        exit(1);
+        getchar();
     }
     fwrite(serv, sizeof(Servicos),1,gser);
     fclose(gser);
