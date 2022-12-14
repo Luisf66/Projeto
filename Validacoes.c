@@ -3,6 +3,11 @@
 #include <string.h>
 #include "Estruturas.h"
 
+int convertedia(char* dd){
+    int dia;
+    dia = dd[0]-'0' * 10 + dd[1] -'0';
+    return dia;
+}
 int ano_bissexto (int ano){
     if((ano % 4 == 0) && (ano % 100 != 0)){
         return 1;
