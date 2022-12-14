@@ -36,23 +36,26 @@ void cadastrarpaciente(void){
     int ano;
     int validacpf;
     int validacao;
-    do{
+    
         system("clear||cls");
         printf("\n");
         printf("___________________________________________________________________________\n");
         printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-        printf("|                           Cadastrar paciente                            |\n");              
+        printf("|                           Cadastrar paciente                            |\n");
+        //do{              
         printf("| Nome:                                                                   |\n");
         fgets(cliente->nome,40,stdin); 
         tamanho = strlen(cliente->nome);
         cliente->nome[tamanho-1] = '\0';
         //tamanho = Vnome(cliente->nome);
-        //}while (tamanho == 0);
+       //}while (tamanho == 0);
         //
-        printf("| CPF: (123.456.789-00)                                                   |\n");
-        fgets(cliente->cpf,15,stdin); 
-        strtok(cliente->cpf, "\n");   
-        validacpf = validacao_cpf(cliente->cpf);
+        do{
+            printf("| CPF: (Somente números)                                                   |\n");
+            fgets(cliente->cpf,15,stdin); 
+            strtok(cliente->cpf, "\n");   
+            validacpf = validacao_cpf(cliente->cpf);
+        }while(validacpf != 1);
         
         //
         printf("| Celular: (00 91234-5678)                                                |\n");
@@ -63,28 +66,30 @@ void cadastrarpaciente(void){
         fgets(cliente->email,50,stdin);    
         strtok(cliente->email, "\n");
         //
-        printf("| Nascimento Dia:                                                         |\n");
-        fgets(cliente->dd,4,stdin);    
-        strtok(cliente->dd, "\n");
-        printf("Valor antes convertido |%s|\n",cliente->dd);
-        dia = convertedia(cliente->dd);
-        printf("Valor convertido %d\n",dia);
-        //
-        printf("| Nascimento Mês:                                                         |\n");
-        fgets(cliente->mm,4,stdin);    
-        strtok(cliente->mm, "\n");
-        mes = convertemes(cliente->mm);
-        //
-        printf("| Nascimento Ano:                                                         |\n");
-        fgets(cliente->aaaa,6,stdin);    
-        strtok(cliente->aaaa, "\n");
-        ano = converteano(cliente->aaaa);
+        do{
+            printf("| Nascimento Dia:                                                         |\n");
+            fgets(cliente->dd,4,stdin);    
+            strtok(cliente->dd, "\n");
+            dia = convertedia(cliente->dd);
+            //
+            printf("| Nascimento Mês:                                                         |\n");
+            fgets(cliente->mm,4,stdin);    
+            strtok(cliente->mm, "\n");
+            mes = convertemes(cliente->mm);
+            //
+            printf("| Nascimento Ano:                                                         |\n");
+            fgets(cliente->aaaa,6,stdin);    
+            strtok(cliente->aaaa, "\n");
+            ano = converteano(cliente->aaaa); 
+            validacao = validacao_data(dia,mes,ano);
+        }while (validacao != 1);
+        
         //
         printf("| Tipo sanguíneo:                                                         |\n");
         fgets(cliente->tipo,4,stdin); 
         strtok(cliente->tipo, "\n");
         //
-        validacao = validacao_data(dia,mes,ano);
+
 
         cliente->status = 1;   
         printf("| 0-voltar                                                                |\n");                                    
@@ -94,7 +99,7 @@ void cadastrarpaciente(void){
         printf("\nDados inseridos corretamente? S ou N\n");
         scanf("%c", &confirma);
         getchar();
-    }while (confirma == 'S' && validacao != 1);
+    }while (confirma != 'S');
     printf("\nTecle enter para finalizar o cadastro\n");
     getchar();
     gravarcliente(cliente);
