@@ -21,9 +21,16 @@ int converteano (char* aaaa){
     return ano;
 }
 
+int convertehora (char* hh){
+    int hora;
+    hora = atoi(hh);
+    return hora;
+}
+
 
 
 int ano_bissexto (int ano){
+    int bi;
     if((ano % 4 == 0) && (ano % 100 != 0)){
         return 1;
     }else if(ano % 400 == 0){
@@ -31,76 +38,63 @@ int ano_bissexto (int ano){
     }else{
         return 0;
     }
+    return bi;
 }
 
 int validacao_data (int dia,int mes, int ano){
-    printf("Dia = %d",dia);
     int maior_dia;
     // Faixas de dias validos
     if(dia > 31 || dia < 0){
-        printf("\nFora da faixa válida de dias\n");
         return 0;
     }
     else{
-        printf("\nDia dentro da faixa válida\n");
     }
     // Faixa de mês valido
-    printf("Mês = %d",mes);
     if(mes > 12 || mes < 0){
-        printf("\nFora da faixa válida de meses\n");
         return 0;
     }
     else{
-        printf("\nMês dentro da faixa válida\n");
     }
     // Faixa valida de ano
-    printf("Ano = %d",ano);
     if(ano > 2100 || ano < 1500){
-        printf("\nFora da faixa válida de anos\n");
         return 0;
     }
     else{
-        printf("\nAno dentro da faixa válida\n");
     }
     ////////////////////////////////////////////////////////
     // Casos especificos
     if( mes == 4 || mes == 6 || mes == 9 || mes == 11 ){
         maior_dia = 30;
         if(dia > maior_dia){
-            printf("\nFora da faixa válida de dias\n");
             return 0;
         }
         else{
-        printf("\nDia dentro da faixa válida\n");
         }   
     }
-    if(mes == 2 && ano_bissexto ==1){
+    if(mes == 2 && ano_bissexto == 1){
         maior_dia = 29;
         if(dia > maior_dia){
-            printf("\nFora da faixa válida de dias\n");
             return 0;
         }
         else{
-        printf("\nDia dentro da faixa válida\n");
         }   
     }
     else{
         maior_dia = 31;
         if(dia > maior_dia){
-            printf("\nFora da faixa válida de dias\n");
             return 0;
         }
         else{
-        printf("\nDia dentro da faixa válida\n");
         }   
     }
+    printf("Tudo certo\n");
     return 1;
 }
 
 int validacao_cpf (char* cpf){
+    int bi;
     int tam, soma, d1, d2;
     int cpfInt[11];
-
     tam = strlen(cpf);
     if(tam != 11){
         return 0;
@@ -136,23 +130,54 @@ int validacao_cpf (char* cpf){
     if(cpfInt[10] != d2){
         return 0;
     }
-    printf("Cpf válido");
+    printf("Cpf válido\n");
     return 1;
 }
 
-int validacao_hora (char* hora){
-    int tam;
-    tam = strlen(hora);
-    if(tam == 0){
-        return 0;
-    }
-    else{
-        return 1;
-    }
+int validacao_hora (int hora){
     if( hora > 24 || hora < 0){
         return 0;
     }
-    else{
-        return 1;
+    return 1;
+}
+
+int data_consulta (int dia,int mes){
+    int maior_dia;
+    // Faixas de dias validos
+    if(dia > 31 || dia < 0){
+        return 0;
     }
+    else{
+    }
+    // Faixa de mês valido
+    if(mes > 12 || mes < 0){
+        return 0;
+    }
+    else{
+    }
+    if( mes == 4 || mes == 6 || mes == 9 || mes == 11 ){
+        maior_dia = 30;
+        if(dia > maior_dia){
+            return 0;
+        }
+        else{
+        }   
+    }
+    if(mes == 2 && bi ==1){
+        maior_dia = 29;
+        if(dia > maior_dia){
+            return 0;
+        }
+        else{
+        }   
+    }
+    else{
+        maior_dia = 31;
+        if(dia > maior_dia){
+            return 0;
+        }
+        else{
+        }   
+    }
+    return 1;
 }
