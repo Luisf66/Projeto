@@ -4,7 +4,7 @@
 #include <string.h>
 #include "Paciente.h"
 #include "Estruturas.h"
-//#include "Validacoes.h"
+#include "Validacoes.h"
 
 char paciente(void){
     char oppaciente;
@@ -36,6 +36,7 @@ void cadastrarpaciente(void){
     int ano;
     int validacpf;
     int validacao;
+    do{
     
         system("clear||cls");
         printf("\n");
@@ -83,14 +84,11 @@ void cadastrarpaciente(void){
             ano = converteano(cliente->aaaa); 
             validacao = validacao_data(dia,mes,ano);
         }while (validacao != 1);
-        
         //
         printf("| Tipo sanguíneo:                                                         |\n");
         fgets(cliente->tipo,4,stdin); 
         strtok(cliente->tipo, "\n");
         //
-
-
         cliente->status = 1;   
         printf("| 0-voltar                                                                |\n");                                    
         printf("|_________________________________________________________________________|\n");
