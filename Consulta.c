@@ -4,7 +4,7 @@
 #include <string.h>
 #include "Consulta.h"
 #include "Estruturas.h"
-//#include "Validacoes.h"
+#include "Validacoes.h"
 
 char agendamento(void){
     char opagendamento;
@@ -30,29 +30,47 @@ void agendar(void){
     Consulta* con;
     con = (Consulta*)malloc(sizeof(Consulta));
     char confirma;
+    int dia;
+    int mes;
+    int validacpf;
+    int validadata;
     do{
         system("clear||cls");
         printf("\n");
         printf("___________________________________________________________________________\n");
         printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
         printf("|                                 Agendar                                 |\n"); 
+        do{
         printf("| CPF: (123.456.789-01)                                                   |\n");  
         fgets(con->cpf,16,stdin);    
         strtok(con->cpf, "\n");
-        getchar();
         //
+        validacpf = validacao_cpf(con->cpf);
+        }while (validacpf != 1 );
+        //
+        do{
         printf("| Dia:                                                                    |\n");    
-        fgets(con->dd,5,stdin);
+        fgets(con->dd,4,stdin);
         strtok(con->dd, "\n");
+        dia = convertedia(con->dd);
         //
         printf("| Mês:                                                                    |\n");    
-        fgets(con->mm,5,stdin);
+        fgets(con->mm,4,stdin);
         strtok(con->mm, "\n");
+        mes = convertemes(con->mm);
+        //
+        validadata = data_consulta(dia,mes);
+        }while(validadata != 1);
         //
         printf("| Horário desejado: (0~24)                                                |\n");
-        fgets(con->hora,5,stdin);
+        fgets(con->hora,4,stdin);
         strtok(con->hora, "\n");
+        printf("Hora char %s",con->hora);
+        //hora = convertehora(con->hora);
+        //printf("Hora int %i",hora);
         //
+        //validahora = validacao_hora(hora);
+        //}while(validahora != 1);
         printf("| Médico desejado:                                                        |\n");
         fgets(con->medico,41,stdin);
         strtok(con->medico, "\n");
@@ -101,6 +119,7 @@ void buscarconsulta (void){
     con = (Consulta *)malloc(sizeof(Consulta));
     FILE* gc;
     int enc;
+    int validacpf;
     char buscacpf[15];
     gc = fopen("Consulta.dat","rb");
     if (gc == NULL){
@@ -111,13 +130,16 @@ void buscarconsulta (void){
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                             Buscar consulta                             |\n");              
+    printf("|                             Buscar consulta                             |\n");    
+    do{          
     printf("| CPF: (123.456.789-00)                                                   |\n");
     printf("| Digite o cpf:                                                           |\n");
     printf("|_________________________________________________________________________|\n");
     fgets(buscacpf,15,stdin);    
     strtok(buscacpf, "\n");
     getchar();
+    validacpf = validacao_cpf(buscacpf);
+    }while (validacpf != 1);
     enc = 0;
     while ((!enc) && (fread(con, sizeof(Consulta), 1, gc))){
         if ((strcmp(con->cpf,buscacpf) == 0)){
@@ -143,6 +165,7 @@ void eliminarconsulta(void){
     int enc;
     char buscacpf[15];
     char resp;
+    int validacpf;
     gc = fopen("Consulta.dat", "r+b");
     if(gc == NULL){
         printf("O arquivo não existe");
@@ -150,6 +173,7 @@ void eliminarconsulta(void){
     }
     system("clear||cls");
     printf("\n");
+    do{
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                             Deletar consulta                            |\n");              
@@ -159,6 +183,8 @@ void eliminarconsulta(void){
     fgets(buscacpf,16,stdin); 
     strtok(buscacpf, "\n");   
     getchar();
+    validacpf = validacao_cpf(buscacpf);
+    }while (validacpf != 1);
     enc = 0;
     while ((!enc) && (fread(con, sizeof(Consulta), 1, gc))){
         if ((strcmp(con->cpf,buscacpf) == 0)){
@@ -198,6 +224,10 @@ void editarconsulta(void){
     int enc;
     char resp;
     char buscacpf[15];
+    int validacpf;
+    int dia;
+    int mes;
+    int validadata;
     gc = fopen("Consulta.dat", "r+b");
         if (gc == NULL){
             printf("O arquivo não existe");
@@ -207,13 +237,16 @@ void editarconsulta(void){
     printf("\n");
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                            Remarcar consulta                            |\n");              
+    printf("|                            Remarcar consulta                            |\n"); 
+    do{            
     printf("| CPF: (123.456.789-00)                                                   |\n");
     printf("| Digite o cpf:                                                           |\n");
     printf("|_________________________________________________________________________|\n");
     fgets(buscacpf,16,stdin); 
     strtok(buscacpf, "\n");   
     getchar();
+    validacpf = validacao_cpf(buscacpf);
+    }while (validacpf != 1);
     enc = 0;
     while((!enc) && (fread(con, sizeof(Consulta), 1, gc))) {
         if ((strcmp(con->cpf, buscacpf) == 0) && (con->status == 1)) {
@@ -233,27 +266,41 @@ void editarconsulta(void){
                 printf("\n");
                 printf("___________________________________________________________________________\n");
                 printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-                printf("|                                Remarcar                                 |\n");
-                printf("| CPF: (123.456.789-00)                                                   |\n");
+                printf("|                                 Remarcar                                |\n"); 
+                do{
+                printf("| CPF: (123.456.789-01)                                                   |\n");  
                 fgets(con->cpf,16,stdin);    
                 strtok(con->cpf, "\n");
-
+                getchar();
+                //
+                validacpf = validacao_cpf(con->cpf);
+                }while (validacpf != 1 );
+                //
+                do{
                 printf("| Dia:                                                                    |\n");    
                 fgets(con->dd,5,stdin);
                 strtok(con->dd, "\n");
-
+                dia = convertedia(con->dd);
+                //
                 printf("| Mês:                                                                    |\n");    
                 fgets(con->mm,5,stdin);
                 strtok(con->mm, "\n");
-
+                mes = convertemes(con->mm);
+                //
+                validadata = data_consulta(dia,mes);
+                }while(validadata != 1);
+                //
                 printf("| Horário desejado: (0~24)                                                |\n");
                 fgets(con->hora,5,stdin);
                 strtok(con->hora, "\n");
-
+                //hora = convertehora(con->hora);
+                //}while(validahora != 1);
+                //
+                //validahora = validacao_hora(hora);
                 printf("| Médico desejado:                                                        |\n");
                 fgets(con->medico,41,stdin);
                 strtok(con->medico, "\n");
-
+                //
                 con->status = 1;
                 printf("| 0-voltar                                                                |\n");                                              
                 printf("|_________________________________________________________________________|\n");
