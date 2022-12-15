@@ -14,3 +14,7 @@ void buscarconsulta (void);
 void eliminarconsulta(void);
 
 void editarconsulta(void);
+
+int convertehora (char* hh);
+
+int data_consulta (int dia,int mes);
