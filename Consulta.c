@@ -32,6 +32,7 @@ void agendar(void){
     char confirma;
     int dia;
     int mes;
+    int ano;
     int validacpf;
     int validadata;
     do{
@@ -41,10 +42,9 @@ void agendar(void){
         printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
         printf("|                                 Agendar                                 |\n"); 
         do{
-        printf("| CPF: (123.456.789-01)                                                   |\n");  
-        fgets(con->cpf,16,stdin);    
+        printf("| CPF: (Somente números)                                                  |\n");  
+        fgets(con->cpf,13,stdin);    
         strtok(con->cpf, "\n");
-        //
         validacpf = validacao_cpf(con->cpf);
         }while (validacpf != 1 );
         //
@@ -59,7 +59,12 @@ void agendar(void){
         strtok(con->mm, "\n");
         mes = convertemes(con->mm);
         //
-        validadata = data_consulta(dia,mes);
+        printf("| Ano:                                                                    |\n");    
+        fgets(con->aaaa,6,stdin);
+        strtok(con->aaaa, "\n");
+        ano = converteano(con->aaaa);
+        //
+        validadata = validacao_data(dia,mes,ano);
         }while(validadata != 1);
         //
         printf("| Horário desejado: (0~24)                                                |\n");
@@ -227,6 +232,7 @@ void editarconsulta(void){
     int validacpf;
     int dia;
     int mes;
+    int ano;
     int validadata;
     gc = fopen("Consulta.dat", "r+b");
         if (gc == NULL){
@@ -287,7 +293,12 @@ void editarconsulta(void){
                 strtok(con->mm, "\n");
                 mes = convertemes(con->mm);
                 //
-                validadata = data_consulta(dia,mes);
+                printf("| Ano:                                                                    |\n");    
+                fgets(con->aaaa,6,stdin);
+                strtok(con->aaaa, "\n");
+                ano = converteano(con->aaaa);
+                //
+                validadata = validacao_data(dia,mes,ano);
                 }while(validadata != 1);
                 //
                 printf("| Horário desejado: (0~24)                                                |\n");

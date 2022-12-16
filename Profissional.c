@@ -4,6 +4,7 @@
 #include <string.h>
 #include "Profissional.h"
 #include "Estruturas.h"
+#include "Validacoes.h"
 
 char profissionais(void){
     char opprofissional;
@@ -29,6 +30,11 @@ void cadastrarprofissional(void){
     Profissional* funcionario;
     funcionario = (Profissional*)malloc(sizeof(Profissional));
     char confirma;
+    int dia;
+    int mes;
+    int ano;
+    int validacpf;
+    int validacao;
     do{
         system("clear||cls");
         printf("\n");
@@ -39,10 +45,16 @@ void cadastrarprofissional(void){
         fgets(funcionario->nome,40,stdin);    
         strtok(funcionario->nome, "\n");   
         //
-        printf("| CPF: (123.456.789-00)                                                   |\n");
-        fgets(funcionario->cpf,15,stdin); 
-        strtok(funcionario->cpf, "\n");   
-        getchar();
+        printf("| Função:                                                                 |\n");
+        fgets(funcionario->funcao,36,stdin);    
+        strtok(funcionario->funcao, "\n");  
+        //
+        do{
+            printf("| CPF: (Somente números)                                                  |\n");
+            fgets(funcionario->cpf,13,stdin); 
+            strtok(funcionario->cpf, "\n");   
+            validacpf = validacao_cpf(funcionario->cpf);
+        }while(validacpf != 1);
         //
         printf("| Celular: (00 91234-5678)                                                |\n");
         fgets(funcionario->celular,15,stdin);    
@@ -52,18 +64,23 @@ void cadastrarprofissional(void){
         fgets(funcionario->email,50,stdin);    
         strtok(funcionario->email, "\n");   
         //
-        printf("| Nascimento Dia:                                                         |\n");
-        fgets(funcionario->dd,4,stdin);    
-        strtok(funcionario->dd, "\n");   
-        //
-        printf("| Nascimento Mês:                                                         |\n");
-        fgets(funcionario->mm,4,stdin);    
-        strtok(funcionario->mm, "\n");   
-        //
-        printf("| Nascimento Ano:                                                         |\n");
-        fgets(funcionario->aaaa,6,stdin);   
-        strtok(funcionario->aaaa, "\n");   
-
+        do{
+            printf("| Nascimento Dia:                                                         |\n");
+            fgets(funcionario->dd,4,stdin);    
+            strtok(funcionario->dd, "\n");   
+            dia = convertedia(funcionario->dd);
+            //
+            printf("| Nascimento Mês:                                                         |\n");
+            fgets(funcionario->mm,4,stdin);    
+            strtok(funcionario->mm, "\n");   
+            mes = convertemes(funcionario->mm);
+            //
+            printf("| Nascimento Ano:                                                         |\n");
+            fgets(funcionario->aaaa,6,stdin);   
+            strtok(funcionario->aaaa, "\n"); 
+            ano = converteano(funcionario->aaaa);
+            validacao = validacao_data(dia,mes,ano);
+        }while(validacao != 1);                 
         funcionario->status = 1; 
         printf("| 0-voltar                                                                |\n");                                        
         printf("|_________________________________________________________________________|\n");
@@ -103,6 +120,7 @@ void mostrarfuncionario (Profissional* funcionario){
     printf("| Mês: %s\n",funcionario->mm);
     printf("| Ano: %s\n",funcionario->aaaa);
     printf("| Status: %i\n",funcionario->status);
+    printf("| Função: %s\n",funcionario->funcao);
     printf("|_________________________________________________________________________|\n");
 }
 
@@ -111,7 +129,7 @@ void buscarfuncionario (void){
     funcionario = (Profissional *)malloc(sizeof(Profissional));
     FILE* gfun;
     int enc;
-    char buscacpf[15];
+    char buscacpf[14];
     gfun = fopen("Funcionarios.dat","rb");
     if (gfun == NULL){
         printf("O arquivo não existe");
@@ -122,10 +140,10 @@ void buscarfuncionario (void){
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                          Buscar profissional                            |\n");              
-    printf("| CPF: (123.456.789-00)                                                   |\n");
+    printf("| CPF: (Somente números)                                                  |\n");
     printf("| Digite o cpf:                                                           |\n");
     printf("|_________________________________________________________________________|\n");
-    fgets(buscacpf,15,stdin); 
+    fgets(buscacpf,13,stdin); 
     strtok(buscacpf, "\n"); 
     getchar();   
     enc = 0;
@@ -151,7 +169,7 @@ void deletarfuncionario(void){
     funcionario = (Profissional*)malloc(sizeof(Profissional));
     FILE* gfun;
     int enc;
-    char buscacpf[15];
+    char buscacpf[14];
     char resp;
     gfun = fopen("Funcionarios.dat", "r+b");
     if(gfun == NULL){
@@ -161,10 +179,10 @@ void deletarfuncionario(void){
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                           Deletar Profissional                          |\n");              
-    printf("| CPF: (123.456.789-00)                                                   |\n");
+    printf("| CPF: (Somente números)                                                  |\n");
     printf("| Digite o cpf:                                                           |\n");
     printf("|_________________________________________________________________________|\n");
-    fgets(buscacpf,16,stdin); 
+    fgets(buscacpf,13,stdin); 
     strtok(buscacpf, "\n");   
     getchar();
     enc = 0;
@@ -203,9 +221,14 @@ void editarfuncionario(void){
     Profissional* funcionario;
     funcionario = (Profissional*) malloc(sizeof(Profissional));
     char confirma;
+    int dia;
+    int mes;
+    int ano;
+    int validacpf;
+    int validacao;
     int enc;
     char resp;
-    char buscacpf[15];
+    char buscacpf[14];
     gfun = fopen("Funcionarios.dat", "r+b");
     if (gfun == NULL){
         printf("O arquivo não existe");
@@ -216,10 +239,10 @@ void editarfuncionario(void){
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                        Alterar dados do Profissional                    |\n");              
-    printf("| CPF: (123.456.789-00)                                                   |\n");
+    printf("| CPF: (Somente números)                                                  |\n");
     printf("| 0-voltar                                                                |\n");                                               
     printf("|_________________________________________________________________________|\n");
-    fgets(buscacpf,15,stdin); 
+    fgets(buscacpf,13,stdin); 
     strtok(buscacpf, "\n");   
     getchar();
     enc = 0;
@@ -243,35 +266,46 @@ void editarfuncionario(void){
                 printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
                 printf("|                        Alterar dados do Profissional                    |\n");             
                 printf("| Nome:                                                                   |\n");
-                fgets(funcionario->nome,40,stdin); 
-                strtok(funcionario->nome, "\n");
+                fgets(funcionario->nome,40,stdin);    
+                strtok(funcionario->nome, "\n");   
                 //
-                printf("| CPF: (123.456.789-00)                                                   |\n");
-                fgets(funcionario->cpf,15,stdin); 
-                strtok(funcionario->cpf, "\n");   
-                getchar();
+                printf("| Função:                                                                 |\n");
+                fgets(funcionario->funcao,36,stdin);    
+                strtok(funcionario->funcao, "\n");  
+                //
+                do{
+                    printf("| CPF: (Somente números)                                                  |\n");
+                    fgets(funcionario->cpf,13,stdin); 
+                    strtok(funcionario->cpf, "\n");   
+                    validacpf = validacao_cpf(funcionario->cpf);
+                }while(validacpf != 1);
                 //
                 printf("| Celular: (00 91234-5678)                                                |\n");
                 fgets(funcionario->celular,15,stdin);    
-                strtok(funcionario->celular, "\n");
+                strtok(funcionario->celular, "\n");   
                 //
                 printf("| E-mail:                                                                 |\n");
                 fgets(funcionario->email,50,stdin);    
-                strtok(funcionario->email, "\n");;
+                strtok(funcionario->email, "\n");   
                 //
-                printf("| Nascimento Dia:                                                         |\n");
-                fgets(funcionario->dd,4,stdin);    
-                strtok(funcionario->dd, "\n");;
-                //
-                printf("| Nascimento Mês:                                                         |\n");
-                fgets(funcionario->mm,4,stdin);    
-                strtok(funcionario->mm, "\n");;
-                //
-                printf("| Nascimento Ano:                                                         |\n");
-                fgets(funcionario->aaaa,6,stdin);    
-                strtok(funcionario->aaaa, "\n");;
-                //
-                funcionario->status = 1;   
+                do{
+                    printf("| Nascimento Dia:                                                         |\n");
+                    fgets(funcionario->dd,4,stdin);    
+                    strtok(funcionario->dd, "\n");   
+                    dia = convertedia(funcionario->dd);
+                    //
+                    printf("| Nascimento Mês:                                                         |\n");
+                    fgets(funcionario->mm,4,stdin);    
+                    strtok(funcionario->mm, "\n");   
+                    mes = convertemes(funcionario->mm);
+                    //
+                    printf("| Nascimento Ano:                                                         |\n");
+                    fgets(funcionario->aaaa,6,stdin);   
+                    strtok(funcionario->aaaa, "\n"); 
+                    ano = converteano(funcionario->aaaa);
+                    validacao = validacao_data(dia,mes,ano);
+                }while(validacao != 1);                 
+                funcionario->status = 1; 
                 printf("| 0-voltar                                                                |\n");                                    
                 printf("|_________________________________________________________________________|\n");
                 printf("Tecle enter para cadastrar");

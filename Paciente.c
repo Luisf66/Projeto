@@ -37,7 +37,6 @@ void cadastrarpaciente(void){
     int validacpf;
     int validacao;
     do{
-    
         system("clear||cls");
         printf("\n");
         printf("___________________________________________________________________________\n");
@@ -53,7 +52,7 @@ void cadastrarpaciente(void){
         //
         do{
             printf("| CPF: (Somente números)                                                   |\n");
-            fgets(cliente->cpf,15,stdin); 
+            fgets(cliente->cpf,13,stdin); 
             strtok(cliente->cpf, "\n");   
             validacpf = validacao_cpf(cliente->cpf);
         }while(validacpf != 1);
@@ -86,8 +85,12 @@ void cadastrarpaciente(void){
         }while (validacao != 1);
         //
         printf("| Tipo sanguíneo:                                                         |\n");
-        fgets(cliente->tipo,4,stdin); 
+        fgets(cliente->tipo,5,stdin); 
         strtok(cliente->tipo, "\n");
+        //
+        printf("| Sexo:                                                                   |\n");
+        fgets(cliente->sexo,3,stdin); 
+        strtok(cliente->sexo, "\n");
         //
         cliente->status = 1;   
         printf("| 0-voltar                                                                |\n");                                    
@@ -128,6 +131,7 @@ void mostrarclientes (Paciente* cliente){
     printf("| Ano: %s\n",cliente->aaaa);
     printf("| Tipo sanguíneo: %s\n",cliente->tipo);
     printf("| Status: %i\n",cliente->status);
+    printf("| Sexo: %s\n",cliente->sexo);
     printf("|_________________________________________________________________________|\n");
 }
 
@@ -136,7 +140,7 @@ void buscarcliente (void){
     cliente = (Paciente *)malloc(sizeof(Paciente));
     FILE* gcli;
     int enc;
-    char buscacpf[15];
+    char buscacpf[14];
     gcli = fopen("Clientes.dat","rb");
     if (gcli == NULL){
         printf("O arquivo não existe");
@@ -147,10 +151,10 @@ void buscarcliente (void){
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                             Buscar paciente                             |\n");              
-    printf("| CPF: (123.456.789-00)                                                   |\n");
+    printf("| CPF: (Somente números)                                                   |\n");
     printf("| Digite o cpf:                                                           |\n");
     printf("|_________________________________________________________________________|\n");
-    fgets(buscacpf,15,stdin); 
+    fgets(buscacpf,13,stdin); 
     strtok(buscacpf, "\n"); 
     getchar();  
     enc = 0;
@@ -176,7 +180,7 @@ void deletarcliente(void){
     cliente = (Paciente*)malloc(sizeof(Paciente));
     FILE* gcli;
     int enc;
-    char buscacpf[15];
+    char buscacpf[14];
     char resp;
     gcli = fopen("Clientes.dat", "r+b");
     if(gcli == NULL){
@@ -188,10 +192,10 @@ void deletarcliente(void){
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                             Deletar paciente                            |\n");              
-    printf("| CPF: (123.456.789-00)                                                   |\n");
+    printf("| CPF: (Somente números)                                                   |\n");
     printf("| Digite o cpf:                                                           |\n");
     printf("|_________________________________________________________________________|\n");
-    fgets(buscacpf,15,stdin); 
+    fgets(buscacpf,13,stdin); 
     strtok(buscacpf, "\n");   
     getchar();
     enc = 0;
@@ -231,8 +235,14 @@ void editarcliente(void){
     FILE* gcli;
     int enc;
     char confirma;
+    int tamanho;
     char resp;
-    char buscacpf[15];
+    char buscacpf[14];
+    int dia;
+    int mes;
+    int ano;
+    int validacpf;
+    int validacao;
     gcli = fopen("Clientes.dat", "r+b");
      if (gcli == NULL){
         printf("O arquivo não existe");
@@ -243,10 +253,10 @@ void editarcliente(void){
     printf("___________________________________________________________________________\n");
     printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
     printf("|                        Alterar dados do paciente                        |\n");              
-    printf("| CPF: (123.456.789-00)                                                   |\n");
+    printf("| CPF: (Somente números)                                                   |\n");
     printf("| 0-voltar                                                                |\n");                                               
     printf("|_________________________________________________________________________|\n");
-    fgets(buscacpf,15,stdin); 
+    fgets(buscacpf,14,stdin); 
     strtok(buscacpf, "\n");   
     getchar();
     enc = 0;
@@ -269,51 +279,64 @@ void editarcliente(void){
                 printf("\n");
                 printf("___________________________________________________________________________\n");
                 printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-                printf("|                        Alterar dados do paciente                        |\n");              
+                printf("|                      Alterar dados do paciente                          |\n");             
                 printf("| Nome:                                                                   |\n");
                 fgets(cliente->nome,40,stdin); 
-                strtok(cliente->nome, "\n");
-
-                printf("| CPF: (123.456.789-00)                                                   |\n");
-                fgets(cliente->cpf,15,stdin); 
-                strtok(cliente->cpf, "\n");  
-
+                tamanho = strlen(cliente->nome);
+                cliente->nome[tamanho-1] = '\0';
+                //
+                do{
+                    printf("| CPF: (Somente números)                                                   |\n");
+                    fgets(cliente->cpf,13,stdin); 
+                    strtok(cliente->cpf, "\n");   
+                    validacpf = validacao_cpf(cliente->cpf);
+                }while(validacpf != 1);
+                //
                 printf("| Celular: (00 91234-5678)                                                |\n");
                 fgets(cliente->celular,15,stdin);    
                 strtok(cliente->celular, "\n");
-
+                //
                 printf("| E-mail:                                                                 |\n");
                 fgets(cliente->email,50,stdin);    
                 strtok(cliente->email, "\n");
-
-                printf("| Nascimento Dia:                                                         |\n");
-                fgets(cliente->dd,4,stdin);    
-                strtok(cliente->dd, "\n");
-
-                printf("| Nascimento Mês:                                                         |\n");
-                fgets(cliente->mm,4,stdin);    
-                strtok(cliente->mm, "\n");
-
-                printf("| Nascimento Ano:                                                         |\n");
-                fgets(cliente->aaaa,6,stdin);    
-                strtok(cliente->aaaa, "\n");
-
+                //
+                do{
+                    printf("| Nascimento Dia:                                                         |\n");
+                    fgets(cliente->dd,4,stdin);    
+                    strtok(cliente->dd, "\n");
+                    dia = convertedia(cliente->dd);
+                    //
+                    printf("| Nascimento Mês:                                                         |\n");
+                    fgets(cliente->mm,4,stdin);    
+                    strtok(cliente->mm, "\n");
+                    mes = convertemes(cliente->mm);
+                    //
+                    printf("| Nascimento Ano:                                                         |\n");
+                    fgets(cliente->aaaa,6,stdin);    
+                    strtok(cliente->aaaa, "\n");
+                    ano = converteano(cliente->aaaa); 
+                    validacao = validacao_data(dia,mes,ano);
+                }while (validacao != 1);
+                //
                 printf("| Tipo sanguíneo:                                                         |\n");
-                fgets(cliente->tipo,4,stdin); 
+                fgets(cliente->tipo,5,stdin); 
                 strtok(cliente->tipo, "\n");
-
+                //
+                printf("| Sexo:                                                                   |\n");
+                fgets(cliente->sexo,3,stdin); 
+                strtok(cliente->sexo, "\n");
+                //
                 cliente->status = 1;   
                 printf("| 0-voltar                                                                |\n");                                    
                 printf("|_________________________________________________________________________|\n");
                 fseek(gcli, (-1)*sizeof(Paciente), SEEK_CUR);
                 fwrite(cliente, sizeof(Paciente), 1, gcli);
+                printf("\nTecle enter para cadastrar\n");
+                mostrarclientes(cliente);
                 printf("\nDados inseridos corretamente? S ou N\n");
                 scanf("%c", &confirma);
                 getchar();
             }while (confirma != 'S');
-            printf("Tecle enter para cadastrar os novos dados\n");
-            getchar();
-            mostrarclientes(cliente);
             printf("Tecle enter para finalizar o cadastro");
             getchar();
             printf("\nPaciente editado com sucesso\n");
