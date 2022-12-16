@@ -33,8 +33,10 @@ void agendar(void){
     int dia;
     int mes;
     int ano;
+    int hora;
     int validacpf;
     int validadata;
+    int validahora;
     do{
         system("clear||cls");
         printf("\n");
@@ -67,15 +69,14 @@ void agendar(void){
         validadata = validacao_data(dia,mes,ano);
         }while(validadata != 1);
         //
+        do{
         printf("| Horário desejado: (0~24)                                                |\n");
         fgets(con->hora,4,stdin);
         strtok(con->hora, "\n");
-        printf("Hora char %s",con->hora);
-        //hora = convertehora(con->hora);
-        //printf("Hora int %i",hora);
+        hora = convertehora(con->hora);
+        validahora = validacao_hora(hora);
+        }while(validahora != 1);
         //
-        //validahora = validacao_hora(hora);
-        //}while(validahora != 1);
         printf("| Médico desejado:                                                        |\n");
         fgets(con->medico,41,stdin);
         strtok(con->medico, "\n");
