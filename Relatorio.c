@@ -51,7 +51,7 @@ void relatorioconsulta (void){
     if (rcon == NULL){
         printf("Arquivo inexistente\n");
         printf("Programa encerrando...");
-        exit(1);
+        getchar();
     }
     while(fread(con, sizeof(Consulta), 1, rcon)){
         mostrarconsulta(con);
