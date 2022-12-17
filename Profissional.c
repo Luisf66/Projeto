@@ -35,12 +35,13 @@ void cadastrarprofissional(void){
     int ano;
     int validacpf;
     int validacao;
+    int cpfigual;
     do{
         system("clear||cls");
         printf("\n");
         printf("___________________________________________________________________________\n");
         printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-        printf("|                          Cadastrar profissional                         |\n");              
+        printf("|                          Cadastrar profissional                         |\n");             
         printf("| Nome:                                                                   |\n");
         fgets(funcionario->nome,40,stdin);    
         strtok(funcionario->nome, "\n");   
@@ -50,10 +51,13 @@ void cadastrarprofissional(void){
         strtok(funcionario->funcao, "\n");  
         //
         do{
+            do{
             printf("| CPF: (Somente números)                                                  |\n");
             fgets(funcionario->cpf,13,stdin); 
-            strtok(funcionario->cpf, "\n");   
+            strtok(funcionario->cpf, "\n");  
+            cpfigual = validacao_cadastro(funcionario->cpf); 
             validacpf = validacao_cpf(funcionario->cpf);
+            }while (cpfigual != 1);
         }while(validacpf != 1);
         //
         printf("| Celular: (00 91234-5678)                                                |\n");

@@ -120,3 +120,27 @@ int validacao_hora (int hora){
     }
     return 1;
 }
+
+int validacao_cadastro (char* cpf){
+    Profissional* funcionario;
+    funcionario = (Profissional *)malloc(sizeof(Profissional));
+    FILE* gfun;
+    int enc;
+    char buscacpf[13];
+    gfun = fopen("Funcionarios.dat","rb");
+    enc = 0;
+    printf("Digite o mesmo cpf para a verificação:\n");
+    fgets(buscacpf,13,stdin); 
+    strtok(buscacpf, "\n"); 
+    while ((!enc) && (fread(funcionario, sizeof(Profissional), 1, gfun))){
+        if ((strcmp(funcionario->cpf,buscacpf) == 0)){
+            enc = 1;
+        }
+    fclose(gfun);
+    if (enc == 1){
+        printf("Funcionário já cadastrado\n");
+        return 0;
+    }
+    }
+    return 1;
+}

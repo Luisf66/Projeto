@@ -16,3 +16,5 @@ int convertemes (char* mm);
 int converteano (char* aaaa);
 
 int convertehora (char* hh);
+
+int validacao_cadastro (char* cpf);
