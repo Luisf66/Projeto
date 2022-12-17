@@ -81,9 +81,9 @@ void agendar(void){
         fgets(con->medico,41,stdin);
         strtok(con->medico, "\n");
         //
-        //printf("| Método de pagamento:                                                    |\n");
-        //fgets(con->pagamento,10,stdin);
-        //strtok(con->pagamento, "\n");
+        printf("| Método de pagamento:                                                    |\n");
+        fgets(con->pagamento,15,stdin);
+        strtok(con->pagamento, "\n");
         //
         con->status = 1;
         printf("| 0-voltar                                                                |\n");                                              
@@ -121,7 +121,7 @@ void mostrarconsulta (Consulta* con){
     printf("| Ano: %s\n",con->aaaa);
     printf("| Horário cadastrado: %s\n",con->hora);
     printf("| Médico cadastrado: %s\n",con->medico);
-    //printf("| Pagamento: %s\n",con->pagamento);
+    printf("| Pagamento: %s\n",con->pagamento);
     printf("| Status: %i\n",con->status);
     printf("|_________________________________________________________________________|\n");
 }
@@ -320,9 +320,9 @@ void editarconsulta(void){
                 fgets(con->medico,41,stdin);
                 strtok(con->medico, "\n");
                 //
-                //printf("| Método de pagamento:                                                    |\n");
-                //fgets(con->pagamento,10,stdin);
-                //strtok(con->pagamento, "\n");
+                printf("| Método de pagamento:                                                    |\n");
+                fgets(con->pagamento,15,stdin);
+                strtok(con->pagamento, "\n");
                 //
                 con->status = 1;
                 printf("| 0-voltar                                                                |\n");                                              

@@ -35,9 +35,10 @@ struct consulta{
     char mm[4];
     char hora[4];
     char medico[41];
+    char pagamento[15];
     char aaaa[6];
     char status;
-    //char pagamento[9];
+    
 };
 
 struct tm *data_hora_atual; 

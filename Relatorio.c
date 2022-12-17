@@ -194,32 +194,3 @@ void removeconsulta (void){
     getchar();
 }
 
-void removepagamento (void){
-    FILE* rpag;
-    char confirma;
-    rpag = fopen("pagamento.dat","rb");
-    if (rpag == NULL){
-        printf("Arquivo inexistente\n");
-        printf("Programa encerrando...");
-        exit(1);
-    }
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|        ----- Sistema de Agendamento para Clínicas Médicas -----         |\n");
-    printf("|                             Deletar arquivo                             |\n");    
-    printf("|                                                                         |\n");          
-    printf("| Deseja deletar todo o arquivo de pagamento? (S ou N)                    |\n");
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c", &confirma);
-    getchar();
-    fclose(rpag);
-    if(confirma == 'S'){
-        remove("pagamento.dat");
-        printf("Arquivo excluído com sucesso\n");
-    }
-    else{
-        printf("Arquivo não removido");
-    }
-    getchar();
-}
