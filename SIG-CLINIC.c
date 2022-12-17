@@ -16,7 +16,6 @@
 #include <stdlib.h>
 #include "Consulta.h"
 #include "Paciente.h"
-#include "Pagamento.h"
 #include "Profissional.h"
 #include "Relatorio.h"
 #include "Servicos.h"
@@ -27,7 +26,6 @@ void info(void);
 void equipe(void);
 char servicos(void);
 void horario(void);
-char consulta(void);
 char acesso_online(void);
 char remover(void);
 
@@ -37,10 +35,8 @@ int main(void) {
     char opmenu;
     char oppaciente;
     char opprofissional;
-    char opconsulta;
     char opagendamento;
     char opacesso_online;
-    char oppagamento;
     char opservicos;
     char opremover;
     do{
@@ -51,7 +47,6 @@ int main(void) {
                 switch (oppaciente){
                     case '1':
                         cadastrarpaciente();
-                        //data_V(cliente->dd, cliente->mm, cliente->aaaa);
                         break;
                     case '2':
                         editarcliente();
@@ -82,47 +77,22 @@ int main(void) {
                 }
                 break;
             case '3':
-                opconsulta = consulta();
-                switch (opconsulta){
+                opagendamento = agendamento();
+                switch (opagendamento){
                     case '1':
-                        opagendamento = agendamento();
-                        switch (opagendamento){
-                            case '1':
-                                agendar();
-                                break;
-                            case '2':
-                                editarconsulta();
-                                break;
-                            case '3':
-                                eliminarconsulta();
-                                break;
-                            case '4':
-                                buscarconsulta();
-                                break;
-                        }
+                        agendar();
                         break;
                     case '2':
-                        oppagamento = pagamento();
-                        switch (oppagamento){
-                            case '1':
-                                pix();
-                                break;
-                            case '2':
-                                debito();
-                                break;
-                            case '3':
-                                credito();
-                                break;
-                            case '4':
-                                boleto();
-                                break;
-                           case '5':
-                                convenio();
-                                break;
-                        }
+                        editarconsulta();
                         break;
-                    }   
-                    break;
+                    case '3':
+                        eliminarconsulta();
+                        break;
+                    case '4':
+                        buscarconsulta();
+                        break;
+                }
+                break;
             case '4':
                 opacesso_online = acesso_online();
                 switch (opacesso_online){
@@ -290,22 +260,6 @@ void horario(void){
     getchar();
 }
 
-char consulta(void){
-    char opconsulta;
-    system("clear||cls");
-    printf("\n");
-    printf("___________________________________________________________________________\n");
-    printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-    printf("|                                 Consulta                                |\n");              
-    printf("| 1-Agendamento                                                           |\n");
-    printf("| 2-Pagamento                                                             |\n");
-    printf("| 0-voltar                                                                |\n");
-    printf("| Escolha uma das opções:                                                 |\n");                                               
-    printf("|_________________________________________________________________________|\n");
-    scanf("%c",&opconsulta);
-    getchar();
-    return opconsulta;
-}
 
 char acesso_online(void){
     char opacesso_online;

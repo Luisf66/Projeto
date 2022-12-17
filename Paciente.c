@@ -58,7 +58,7 @@ void cadastrarpaciente(void){
         }while(validacpf != 1);
         
         //
-        printf("| Celular: (00 91234-5678)                                                |\n");
+        printf("| Celular: (00 912345678)                                                 |\n");
         fgets(cliente->celular,15,stdin);    
         strtok(cliente->celular, "\n");
         //
@@ -88,7 +88,7 @@ void cadastrarpaciente(void){
         fgets(cliente->tipo,5,stdin); 
         strtok(cliente->tipo, "\n");
         //
-        printf("| Sexo:                                                                   |\n");
+        printf("| Sexo: (M ou F)                                                          |\n");
         fgets(cliente->sexo,3,stdin); 
         strtok(cliente->sexo, "\n");
         //
@@ -114,7 +114,7 @@ void gravarcliente (Paciente* cliente){
     gcli = fopen("Clientes.dat","ab");
     if (gcli == NULL){
         printf("Arquivo inexistente");
-        getchar();;
+        getchar();
     }
     fwrite(cliente, sizeof(Paciente),1,gcli);
     fclose(gcli);
@@ -331,7 +331,7 @@ void editarcliente(void){
                 printf("|_________________________________________________________________________|\n");
                 fseek(gcli, (-1)*sizeof(Paciente), SEEK_CUR);
                 fwrite(cliente, sizeof(Paciente), 1, gcli);
-                printf("\nTecle enter para cadastrar\n");
+                printf("\nTecle enter para cadastrar os novos dados\n");
                 mostrarclientes(cliente);
                 printf("\nDados inseridos corretamente? S ou N\n");
                 scanf("%c", &confirma);

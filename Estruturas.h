@@ -37,13 +37,7 @@ struct consulta{
     char medico[41];
     char aaaa[6];
     char status;
-};
-
-typedef struct pagamento Pagamento;
-struct pagamento{
-    char cpf[13];
-    char cnpj[20];
-    char celular[15];
+    //char pagamento[9];
 };
 
 struct tm *data_hora_atual; 
