@@ -121,7 +121,7 @@ int validacao_hora (int hora){
     return 1;
 }
 
-int validacao_cadastro (char* cpf){
+int validacao_cadastro_funcionario (char* cpf){
     Profissional* funcionario;
     funcionario = (Profissional *)malloc(sizeof(Profissional));
     FILE* gfun;
@@ -142,5 +142,77 @@ int validacao_cadastro (char* cpf){
         return 0;
     }
     }
+    free(funcionario);
     return 1;
 }
+
+
+int validacao_cadastro_cliente (char* cpf){
+    Paciente* cliente;
+    cliente = (Paciente *)malloc(sizeof(Paciente));
+    FILE* gcli;
+    int enc;
+    char buscacpf[13];
+    gcli = fopen("Clientes.dat","rb");
+    enc = 0;
+    printf("Digite o mesmo cpf para a verificação:\n");
+    fgets(buscacpf,13,stdin); 
+    strtok(buscacpf, "\n"); 
+    while ((!enc) && (fread(cliente, sizeof(Paciente), 1, gcli))){
+        if ((strcmp(cliente->cpf,buscacpf) == 0)){
+            enc = 1;
+        }
+    fclose(gcli);
+    if (enc == 1){
+        printf("Cliente já cadastrado\n");
+        return 0;
+    }
+    }
+    free(cliente);
+    return 1;
+}
+
+//int validacao_cadastro_consulta (int dia,int mes,int ano,int hora,char* cpf){
+    //Consulta* con;
+    //con = (Consulta *)malloc(sizeof(Consulta));
+    //FILE* gcon;
+    //int enc;
+    //int soma1;
+    //int soma2;
+    //int soma3;
+    //int soma4;
+    //int soma5;
+    //int somatotal;
+    //int dias;
+    //int meses;
+    //int anos;
+    //int horas;
+    //char buscacpf[14];
+    //gcon = fopen("Consulta.dat","rb");
+   // enc = 0;
+    //while ((!enc) && (fread(con, sizeof(Consulta), 1, gcon))){
+    //    if ((strcmp(con->cpf,buscacpf) == 0)){
+    //        soma1 = 1;
+    //    }
+    //    if ((strcmp(con->dd,dias) == 0)){
+    //        soma2 = 1;
+    //    };
+    //    if ((strcmp(con->mm,meses) == 0)){
+    //        soma3 = 1;
+     //   };
+    //       soma4 = 1;
+     //   };
+    //    if ((strcmp(con->hora,horas) == 0)){
+     //       soma5 = 1;
+    //    };
+    //    somatotal = soma1 + soma2 + soma3 + soma4 + soma5;
+    //    if(somatotal == 5){
+    //        enc = 1;
+    //        printf("Consulta já cadastrada\n");
+    //        return 0;
+    //    }     
+    //fclose(gcon);
+    //}
+    //free(con);
+   // return 1;
+//}

@@ -52,11 +52,11 @@ void cadastrarprofissional(void){
         //
         do{
             do{
-            printf("| CPF: (Somente números)                                                  |\n");
-            fgets(funcionario->cpf,13,stdin); 
-            strtok(funcionario->cpf, "\n");  
-            cpfigual = validacao_cadastro(funcionario->cpf); 
-            validacpf = validacao_cpf(funcionario->cpf);
+                printf("| CPF: (Somente números)                                                  |\n");
+                fgets(funcionario->cpf,13,stdin); 
+                strtok(funcionario->cpf, "\n");  
+                cpfigual = validacao_cadastro_funcionario(funcionario->cpf); 
+                validacpf = validacao_cpf(funcionario->cpf);
             }while (cpfigual != 1);
         }while(validacpf != 1);
         //

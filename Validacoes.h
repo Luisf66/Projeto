@@ -17,4 +17,8 @@ int converteano (char* aaaa);
 
 int convertehora (char* hh);
 
-int validacao_cadastro (char* cpf);
+int validacao_cadastro_funcionario (char* cpf);
+
+int validacao_cadastro_cliente (char* cpf);
+
+//int validacao_cadastro_consulta (int dia,int mes,int ano,int hora,char* cpf);

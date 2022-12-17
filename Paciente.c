@@ -36,6 +36,7 @@ void cadastrarpaciente(void){
     int ano;
     int validacpf;
     int validacao;
+    int cpfigual;
     do{
         system("clear||cls");
         printf("\n");
@@ -51,10 +52,13 @@ void cadastrarpaciente(void){
        //}while (tamanho == 0);
         //
         do{
-            printf("| CPF: (Somente números)                                                   |\n");
-            fgets(cliente->cpf,13,stdin); 
-            strtok(cliente->cpf, "\n");   
-            validacpf = validacao_cpf(cliente->cpf);
+            do{
+                printf("| CPF: (Somente números)                                                   |\n");
+                fgets(cliente->cpf,13,stdin); 
+                strtok(cliente->cpf, "\n");   
+                validacpf = validacao_cpf(cliente->cpf);
+                cpfigual = validacao_cadastro_cliente(cliente->cpf);
+            }while(cpfigual != 1);
         }while(validacpf != 1);
         
         //

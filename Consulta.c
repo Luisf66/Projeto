@@ -37,45 +37,49 @@ void agendar(void){
     int validacpf;
     int validadata;
     int validahora;
+    //int conflito;
     do{
-        system("clear||cls");
-        printf("\n");
-        printf("___________________________________________________________________________\n");
-        printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
-        printf("|                                 Agendar                                 |\n"); 
-        do{
-            printf("| CPF: (Somente números)                                                  |\n");  
-            fgets(con->cpf,13,stdin);    
-            strtok(con->cpf, "\n");
-            validacpf = validacao_cpf(con->cpf);
-        }while (validacpf != 1 );
-        //
-        do{
-            printf("| Dia:                                                                    |\n");    
-            fgets(con->dd,4,stdin);
-            strtok(con->dd, "\n");
-            dia = convertedia(con->dd);
+        //do{
+            system("clear||cls");
+            printf("\n");
+            printf("___________________________________________________________________________\n");
+            printf("|       ----- Sistema de Agendamento para Clínicas Médicas -----          |\n");
+            printf("|                                 Agendar                                 |\n"); 
+            do{
+                printf("| CPF: (Somente números)                                                  |\n");  
+                fgets(con->cpf,13,stdin);    
+                strtok(con->cpf, "\n");
+                validacpf = validacao_cpf(con->cpf);
+            }while (validacpf != 1 );
             //
-            printf("| Mês:                                                                    |\n");    
-            fgets(con->mm,4,stdin);
-            strtok(con->mm, "\n");
-            mes = convertemes(con->mm);
+            do{
+                printf("| Dia:                                                                    |\n");    
+                fgets(con->dd,4,stdin);
+                strtok(con->dd, "\n");
+                dia = convertedia(con->dd);
+                //
+                printf("| Mês:                                                                    |\n");    
+                fgets(con->mm,4,stdin);
+                strtok(con->mm, "\n");
+                mes = convertemes(con->mm);
+                //
+                printf("| Ano:                                                                    |\n");    
+                fgets(con->aaaa,6,stdin);
+                strtok(con->aaaa, "\n");
+                ano = converteano(con->aaaa);
+                //
+                validadata = validacao_data(dia,mes,ano);
+            }while(validadata != 1);
             //
-            printf("| Ano:                                                                    |\n");    
-            fgets(con->aaaa,6,stdin);
-            strtok(con->aaaa, "\n");
-            ano = converteano(con->aaaa);
-            //
-            validadata = validacao_data(dia,mes,ano);
-        }while(validadata != 1);
-        //
-        do{
-            printf("| Horário desejado: (0~24)                                                |\n");
-            fgets(con->hora,4,stdin);
-            strtok(con->hora, "\n");
-            hora = convertehora(con->hora);
-            validahora = validacao_hora(hora);
-        }while(validahora != 1);
+            do{
+                printf("| Horário desejado: (0~24)                                                |\n");
+                fgets(con->hora,4,stdin);
+                strtok(con->hora, "\n");
+                hora = convertehora(con->hora);
+                validahora = validacao_hora(hora);
+            }while(validahora != 1);
+            //conflito = validacao_cadastro_consulta(dia,mes,ano,hora,con->cpf);
+        //}while(conflito != 1);
         //
         printf("| Médico desejado:                                                        |\n");
         fgets(con->medico,41,stdin);
