@@ -19,4 +19,4 @@ void removefuncionario (void);
 
 void removeconsulta (void);
 
-void removepagamento (void);
+void removeservico (void);

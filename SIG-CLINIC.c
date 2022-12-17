@@ -140,7 +140,7 @@ int main(void) {
                         removefuncionario();
                         break;
                     case '4':
-                        removepagamento();
+                        removeservico();
                         break;
                 }
                 break;
@@ -290,7 +290,8 @@ char remover(void){
     printf("|                           Remoção de arquivos                           |\n");              
     printf("| 1-Remover arquivo dos pacientes                                         |\n");
     printf("| 2-Remover arquivo das consultas                                         |\n");
-    printf("| 3-Remover arquivo dos funcionários                                      |\n");    
+    printf("| 3-Remover arquivo dos funcionários                                      |\n");   
+    printf("| 4-Remover arquivo dos serviços                                          |\n");  
     printf("| 0-voltar                                                                |\n");
     printf("| Escolha uma das opções:                                                 |\n");                                               
     printf("|_________________________________________________________________________|\n");
