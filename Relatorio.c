@@ -13,7 +13,7 @@ void relatoriofuncionario (void){
     Profissional* funcionario;
     funcionario = (Profissional*) malloc(sizeof(Profissional));
     FILE* rfun;
-    rfun = fopen("Funcionarios.dat","rb");
+    rfun = fopen("Funcionarios.dat","ab");
     if (rfun == NULL){
         printf("Arquivo inexistente\n");
         getchar();
@@ -30,7 +30,7 @@ void relatoriocliente (void){
     Paciente* cliente;
     cliente = (Paciente*) malloc(sizeof(Paciente));
     FILE* rcli;
-    rcli = fopen("Clientes.dat","rb");
+    rcli = fopen("Clientes.dat","ab");
     if (rcli == NULL){
         printf("Arquivo inexistente\n");
         getchar();
@@ -47,7 +47,7 @@ void relatorioconsulta (void){
     Consulta* con;
     con = (Consulta*) malloc(sizeof(Consulta));
     FILE* rcon;
-    rcon = fopen("Consulta.dat","rb");
+    rcon = fopen("Consulta.dat","ab");
     if (rcon == NULL){
         printf("Arquivo inexistente\n");
         printf("Programa encerrando...");
@@ -65,7 +65,7 @@ void relatorioservicos (void){
     Servicos* serv;
     serv = (Servicos*) malloc(sizeof(Servicos));
     FILE* rser;
-    rser = fopen("servicos.dat","rb");
+    rser = fopen("servicos.dat","ab");
     if (rser == NULL){
         printf("Arquivo inexistente\n");
         getchar();
@@ -83,7 +83,7 @@ void relatorioservicos (void){
 //    Consulta* con;
 //    con = (Consulta*) malloc(sizeof(Consulta));
 //    FILE* rcli;
-//    rcli = fopen("Consulta.dat","rb");
+//    rcli = fopen("Consulta.dat","ab");
 //    time_t segundos;
 //    time(&segundos);
 //    data_hora_atual = localtime(&segundos);
@@ -110,7 +110,7 @@ void relatorioservicos (void){
 void removecliente (void){
     FILE* rcli;
     char confirma;
-    rcli = fopen("Clientes.dat","rb");
+    rcli = fopen("Clientes.dat","ab");
     if (rcli == NULL){
         printf("Arquivo inexistente\n");
         getchar();
@@ -138,7 +138,7 @@ void removecliente (void){
 
 void removefuncionario (void){
     FILE* rfun;
-    rfun = fopen("Funcionarios.dat","rb");
+    rfun = fopen("Funcionarios.dat","ab");
     char confirma;
     if (rfun == NULL){
         printf("Arquivo inexistente\n");
@@ -168,7 +168,7 @@ void removefuncionario (void){
 void removeconsulta (void){
     FILE* rcon;
     char confirma;
-    rcon = fopen("Consulta.dat","rb");
+    rcon = fopen("Consulta.dat","ab");
     if (rcon == NULL){
         printf("Arquivo inexistente\n");
         getchar();
@@ -197,7 +197,7 @@ void removeconsulta (void){
 void removeservico (void){
     FILE* serv;
     char confirma;
-    serv = fopen("servicos.dat","rb");
+    serv = fopen("servicos.dat","ab");
     if (serv == NULL){
         printf("Arquivo inexistente\n");
         getchar();
